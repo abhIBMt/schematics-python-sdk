@@ -27,7 +27,7 @@ classifiers = [
 ]
 keywords=["ibm", "cloud", "ibm cloud services" ]
 dependencies = [
-    "ibm_cloud_sdk_core>=3.24.4,<4.0.0",
+    "ibm-cloud-sdk-core>=3.24.4,<4.0.0",
 ]
 
 [project.urls]

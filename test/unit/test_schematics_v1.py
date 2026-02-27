@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# (C) Copyright IBM Corp. 2024.
+# (C) Copyright IBM Corp. 2026.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,10 +31,12 @@ import requests
 import responses
 import tempfile
 import urllib
-from ibm_schematics.schematics_v1 import *
+from ibm_cloud.schematics_v1 import *
 
 
-_service = SchematicsV1(authenticator=NoAuthAuthenticator())
+_service = SchematicsV1(
+    authenticator=NoAuthAuthenticator()
+)
 
 _base_url = 'https://schematics.cloud.ibm.com'
 _service.set_service_url(_base_url)
@@ -90,44 +92,6 @@ class TestNewInstance:
             service = SchematicsV1.new_instance(
                 service_name='TEST_SERVICE_NOT_FOUND',
             )
-
-
-class TestListSchematicsLocation:
-    """
-    Test Class for list_schematics_location
-    """
-
-    @responses.activate
-    def test_list_schematics_location_all_params(self):
-        """
-        list_schematics_location()
-        """
-        # Set up mock
-        url = preprocess_url('/v1/locations')
-        mock_response = '[{"name": "name", "id": "id", "country": "country", "geography": "geography", "geography_code": "geography_code", "metro": "metro", "multizone_metro": "multizone_metro", "kind": "kind", "paired_region": ["paired_region"], "restricted": true, "agent_metadata": [{"name": "purpose", "value": ["value"]}]}]'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Invoke method
-        response = _service.list_schematics_location()
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-
-    def test_list_schematics_location_all_params_with_retries(self):
-        # Enable retries and run test_list_schematics_location_all_params.
-        _service.enable_retries()
-        self.test_list_schematics_location_all_params()
-
-        # Disable retries and run test_list_schematics_location_all_params.
-        _service.disable_retries()
-        self.test_list_schematics_location_all_params()
 
 
 class TestListLocations:
@@ -256,7 +220,7 @@ class TestProcessTemplateMetaData:
         """
         # Set up mock
         url = preprocess_url('/v2/template_metadata_processor')
-        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
+        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
         responses.add(
             responses.POST,
             url,
@@ -345,7 +309,7 @@ class TestProcessTemplateMetaData:
         """
         # Set up mock
         url = preprocess_url('/v2/template_metadata_processor')
-        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
+        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
         responses.add(
             responses.POST,
             url,
@@ -432,7 +396,7 @@ class TestProcessTemplateMetaData:
         """
         # Set up mock
         url = preprocess_url('/v2/template_metadata_processor')
-        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
+        mock_response = '{"type": "type", "variables": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}'
         responses.add(
             responses.POST,
             url,
@@ -555,7 +519,7 @@ class TestListWorkspaces:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces')
-        mock_response = '{"count": 5, "limit": 5, "offset": 6, "workspaces": [{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
+        mock_response = '{"count": 0, "limit": 0, "offset": 0, "workspaces": [{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -606,7 +570,7 @@ class TestListWorkspaces:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces')
-        mock_response = '{"count": 5, "limit": 5, "offset": 6, "workspaces": [{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
+        mock_response = '{"count": 0, "limit": 0, "offset": 0, "workspaces": [{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -644,7 +608,7 @@ class TestCreateWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -687,7 +651,7 @@ class TestCreateWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -708,9 +672,7 @@ class TestCreateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -766,12 +728,12 @@ class TestCreateWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -861,7 +823,7 @@ class TestCreateWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -904,7 +866,7 @@ class TestCreateWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -925,9 +887,7 @@ class TestCreateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -983,12 +943,12 @@ class TestCreateWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -1082,7 +1042,7 @@ class TestGetWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -1120,7 +1080,7 @@ class TestGetWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -1163,7 +1123,7 @@ class TestReplaceWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -1206,7 +1166,7 @@ class TestReplaceWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -1227,9 +1187,7 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1290,12 +1248,12 @@ class TestReplaceWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -1378,7 +1336,7 @@ class TestReplaceWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -1421,7 +1379,7 @@ class TestReplaceWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -1442,9 +1400,7 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1505,12 +1461,12 @@ class TestReplaceWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -1591,7 +1547,7 @@ class TestReplaceWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -1634,7 +1590,7 @@ class TestReplaceWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -1655,9 +1611,7 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1718,12 +1672,12 @@ class TestReplaceWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -1912,7 +1866,7 @@ class TestUpdateWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PATCH,
             url,
@@ -1955,7 +1909,7 @@ class TestUpdateWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -1976,9 +1930,7 @@ class TestUpdateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -2039,12 +1991,12 @@ class TestUpdateWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -2125,7 +2077,7 @@ class TestUpdateWorkspace:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString')
-        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"applied_shareddata_ids": ["applied_shareddata_ids"], "catalog_ref": {"dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url", "offering_version": "offering_version", "service_extensions": [{"name": "flavor", "value": "anyValue", "type": "string"}]}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "crn": "crn", "dependencies": {"parents": ["parents"], "children": ["children"]}, "description": "description", "id": "id", "last_health_check_at": "2019-01-01T12:00:00.000Z", "location": "location", "name": "name", "resource_group": "resource_group", "runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_id": "cluster_id", "cluster_name": "cluster_name", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id"}, "status": "status", "tags": ["tags"], "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}], "template_ref": "template_ref", "template_repo": {"branch": "branch", "full_url": "full_url", "has_uploadedgitrepotar": true, "release": "release", "repo_sha_value": "repo_sha_value", "repo_url": "repo_url", "url": "url", "skip_submodules_checkout": true}, "type": ["type"], "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "cart_id": "cart_id", "project_id": "project_id", "last_action_name": "last_action_name", "last_activity_id": "last_activity_id", "last_job": {"job_id": "job_id", "job_name": "job_name", "job_status": "job_status"}, "workspace_status": {"frozen": true, "frozen_at": "2019-01-01T12:00:00.000Z", "frozen_by": "frozen_by", "locked": true, "locked_by": "locked_by", "locked_time": "2019-01-01T12:00:00.000Z"}, "workspace_status_msg": {"status_code": "status_code", "status_msg": "status_msg"}, "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PATCH,
             url,
@@ -2168,7 +2120,7 @@ class TestUpdateWorkspace:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         # Construct a dict representation of a EnvironmentValuesMetadata model
@@ -2189,9 +2141,7 @@ class TestUpdateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -2252,12 +2202,12 @@ class TestUpdateWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -2774,7 +2724,7 @@ class TestGetAllWorkspaceInputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/templates/values')
-        mock_response = '{"runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_created_on": "cluster_created_on", "cluster_id": "cluster_id", "cluster_name": "cluster_name", "cluster_type": "cluster_type", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id", "worker_count": 12, "worker_machine_type": "worker_machine_type"}, "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}]}'
+        mock_response = '{"runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_created_on": "cluster_created_on", "cluster_id": "cluster_id", "cluster_name": "cluster_name", "cluster_type": "cluster_type", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id", "worker_count": 0, "worker_machine_type": "worker_machine_type"}, "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -2812,7 +2762,7 @@ class TestGetAllWorkspaceInputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/templates/values')
-        mock_response = '{"runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_created_on": "cluster_created_on", "cluster_id": "cluster_id", "cluster_name": "cluster_name", "cluster_type": "cluster_type", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id", "worker_count": 12, "worker_machine_type": "worker_machine_type"}, "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}]}'
+        mock_response = '{"runtime_data": [{"engine_cmd": "engine_cmd", "engine_name": "engine_name", "engine_version": "engine_version", "id": "id", "log_store_url": "log_store_url", "output_values": [{"anyKey": "anyValue"}], "resources": [[{"anyKey": "anyValue"}]], "state_store_url": "state_store_url"}], "shared_data": {"cluster_created_on": "cluster_created_on", "cluster_id": "cluster_id", "cluster_name": "cluster_name", "cluster_type": "cluster_type", "entitlement_keys": [{"anyKey": "anyValue"}], "namespace": "namespace", "region": "region", "resource_group_id": "resource_group_id", "worker_count": 0, "worker_machine_type": "worker_machine_type"}, "template_data": [{"env_values": [{"hidden": true, "name": "name", "secure": true, "value": "value"}], "folder": "folder", "compact": false, "has_githubtoken": false, "id": "id", "type": "type", "uninstall_script_name": "uninstall_script_name", "values": "values", "values_metadata": [{"anyKey": "anyValue"}], "values_url": "values_url", "variablestore": [{"description": "description", "name": "name", "secure": true, "type": "type", "value": "value"}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -2940,9 +2890,7 @@ class TestGetWorkspaceOutputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/output_values')
-        mock_response = (
-            '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
-        )
+        mock_response = '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
         responses.add(
             responses.GET,
             url,
@@ -2980,9 +2928,7 @@ class TestGetWorkspaceOutputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/output_values')
-        mock_response = (
-            '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
-        )
+        mock_response = '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
         responses.add(
             responses.GET,
             url,
@@ -3025,7 +2971,7 @@ class TestGetWorkspaceResources:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/resources')
-        mock_response = '[{"folder": "folder", "id": "id", "generated_at": "2019-01-01T12:00:00.000Z", "null_resources": [{"anyKey": "anyValue"}], "related_resources": [{"anyKey": "anyValue"}], "resources": [{"anyKey": "anyValue"}], "resources_count": 15, "type": "type"}]'
+        mock_response = '[{"folder": "folder", "id": "id", "generated_at": "2019-01-01T12:00:00.000Z", "null_resources": [{"anyKey": "anyValue"}], "related_resources": [{"anyKey": "anyValue"}], "resources": [{"anyKey": "anyValue"}], "resources_count": 0, "type": "type"}]'
         responses.add(
             responses.GET,
             url,
@@ -3063,7 +3009,7 @@ class TestGetWorkspaceResources:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/resources')
-        mock_response = '[{"folder": "folder", "id": "id", "generated_at": "2019-01-01T12:00:00.000Z", "null_resources": [{"anyKey": "anyValue"}], "related_resources": [{"anyKey": "anyValue"}], "resources": [{"anyKey": "anyValue"}], "resources_count": 15, "type": "type"}]'
+        mock_response = '[{"folder": "folder", "id": "id", "generated_at": "2019-01-01T12:00:00.000Z", "null_resources": [{"anyKey": "anyValue"}], "related_resources": [{"anyKey": "anyValue"}], "resources": [{"anyKey": "anyValue"}], "resources_count": 0, "type": "type"}]'
         responses.add(
             responses.GET,
             url,
@@ -3763,7 +3709,7 @@ class TestListActions:
         """
         # Set up mock
         url = preprocess_url('/v2/actions')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "actions": [{"name": "Stop Action", "description": "This Action can be used to Stop the targets", "id": "id", "crn": "crn", "location": "us-south", "resource_group": "resource_group", "namespace": "namespace", "tags": ["tags"], "playbook_name": "playbook_name", "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "state": {"status_code": "normal", "status_message": "status_message"}, "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "actions": [{"name": "Stop Action", "description": "This Action can be used to Stop the targets", "id": "id", "crn": "crn", "location": "us-south", "resource_group": "resource_group", "namespace": "namespace", "tags": ["tags"], "playbook_name": "playbook_name", "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "state": {"status_code": "normal", "status_message": "status_message"}, "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -3814,7 +3760,7 @@ class TestListActions:
         """
         # Set up mock
         url = preprocess_url('/v2/actions')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "actions": [{"name": "Stop Action", "description": "This Action can be used to Stop the targets", "id": "id", "crn": "crn", "location": "us-south", "resource_group": "resource_group", "namespace": "namespace", "tags": ["tags"], "playbook_name": "playbook_name", "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "state": {"status_code": "normal", "status_message": "status_message"}, "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "actions": [{"name": "Stop Action", "description": "This Action can be used to Stop the targets", "id": "id", "crn": "crn", "location": "us-south", "resource_group": "resource_group", "namespace": "namespace", "tags": ["tags"], "playbook_name": "playbook_name", "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "state": {"status_code": "normal", "status_message": "status_message"}, "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -3852,7 +3798,7 @@ class TestCreateAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -3915,16 +3861,14 @@ class TestCreateAction:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -3946,12 +3890,12 @@ class TestCreateAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -4017,10 +3961,7 @@ class TestCreateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert (
-            req_body['description']
-            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
-        )
+        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4056,7 +3997,7 @@ class TestCreateAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -4119,16 +4060,14 @@ class TestCreateAction:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4150,12 +4089,12 @@ class TestCreateAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -4219,10 +4158,7 @@ class TestCreateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert (
-            req_body['description']
-            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
-        )
+        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4264,7 +4200,7 @@ class TestGetAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -4308,7 +4244,7 @@ class TestGetAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -4346,7 +4282,7 @@ class TestGetAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -4503,7 +4439,7 @@ class TestUpdateAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PATCH,
             url,
@@ -4566,16 +4502,14 @@ class TestUpdateAction:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4597,12 +4531,12 @@ class TestUpdateAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -4670,10 +4604,7 @@ class TestUpdateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert (
-            req_body['description']
-            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
-        )
+        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4709,7 +4640,7 @@ class TestUpdateAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PATCH,
             url,
@@ -4772,16 +4703,14 @@ class TestUpdateAction:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4803,12 +4732,12 @@ class TestUpdateAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -4874,10 +4803,7 @@ class TestUpdateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert (
-            req_body['description']
-            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
-        )
+        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4913,7 +4839,7 @@ class TestUpdateAction:
         """
         # Set up mock
         url = preprocess_url('/v2/actions/testString')
-        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "Stop Action", "description": "The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.", "location": "us-south", "resource_group": "resource_group", "bastion_connection_type": "ssh", "inventory_connection_type": "ssh", "tags": ["tags"], "user_state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "source_readme_url": "source_readme_url", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "source_type": "local", "command_parameter": "command_parameter", "inventory": "inventory", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "targets_ini": "targets_ini", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "id": "id", "crn": "crn", "account": "account", "source_created_at": "2019-01-01T12:00:00.000Z", "source_created_by": "source_created_by", "source_updated_at": "2019-01-01T12:00:00.000Z", "source_updated_by": "source_updated_by", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "state": {"status_code": "normal", "status_job_id": "status_job_id", "status_message": "status_message"}, "playbook_names": ["playbook_names"], "sys_lock": {"sys_locked": true, "sys_locked_by": "sys_locked_by", "sys_locked_at": "2019-01-01T12:00:00.000Z"}, "git_token_ref": "git_token_ref", "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PATCH,
             url,
@@ -4976,16 +4902,14 @@ class TestUpdateAction:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -5007,12 +4931,12 @@ class TestUpdateAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -5239,7 +5163,7 @@ class TestListWorkspaceActivities:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/actions')
-        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 15, "error": "error", "resources_added": 15, "resources_destroyed": 19, "resources_modified": 18, "scanned_files": 13, "template_variable_count": 23, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
+        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 0, "error": "error", "resources_added": 0, "resources_destroyed": 0, "resources_modified": 0, "scanned_files": 0, "template_variable_count": 0, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
         responses.add(
             responses.GET,
             url,
@@ -5286,7 +5210,7 @@ class TestListWorkspaceActivities:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/actions')
-        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 15, "error": "error", "resources_added": 15, "resources_destroyed": 19, "resources_modified": 18, "scanned_files": 13, "template_variable_count": 23, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
+        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 0, "error": "error", "resources_added": 0, "resources_destroyed": 0, "resources_modified": 0, "scanned_files": 0, "template_variable_count": 0, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
         responses.add(
             responses.GET,
             url,
@@ -5324,7 +5248,7 @@ class TestListWorkspaceActivities:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/actions')
-        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 15, "error": "error", "resources_added": 15, "resources_destroyed": 19, "resources_modified": 18, "scanned_files": 13, "template_variable_count": 23, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
+        mock_response = '{"actions": [{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 0, "error": "error", "resources_added": 0, "resources_destroyed": 0, "resources_modified": 0, "scanned_files": 0, "template_variable_count": 0, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}], "workspace_id": "workspace_id", "workspace_name": "workspace_name"}'
         responses.add(
             responses.GET,
             url,
@@ -5367,7 +5291,7 @@ class TestGetWorkspaceActivity:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/actions/testString')
-        mock_response = '{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 15, "error": "error", "resources_added": 15, "resources_destroyed": 19, "resources_modified": 18, "scanned_files": 13, "template_variable_count": 23, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}'
+        mock_response = '{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 0, "error": "error", "resources_added": 0, "resources_destroyed": 0, "resources_modified": 0, "scanned_files": 0, "template_variable_count": 0, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}'
         responses.add(
             responses.GET,
             url,
@@ -5407,7 +5331,7 @@ class TestGetWorkspaceActivity:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/actions/testString')
-        mock_response = '{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 15, "error": "error", "resources_added": 15, "resources_destroyed": 19, "resources_modified": 18, "scanned_files": 13, "template_variable_count": 23, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}'
+        mock_response = '{"action_id": "action_id", "message": ["message"], "name": "name", "performed_at": "2019-01-01T12:00:00.000Z", "performed_by": "performed_by", "status": "status", "templates": [{"end_time": "2019-01-01T12:00:00.000Z", "log_summary": {"activity_status": "activity_status", "detected_template_type": "detected_template_type", "discarded_files": 0, "error": "error", "resources_added": 0, "resources_destroyed": 0, "resources_modified": 0, "scanned_files": 0, "template_variable_count": 0, "time_taken": 10}, "log_url": "log_url", "message": "message", "start_time": "2019-01-01T12:00:00.000Z", "status": "status", "template_id": "template_id", "template_type": "template_type"}]}'
         responses.add(
             responses.GET,
             url,
@@ -6242,7 +6166,7 @@ class TestListJobs:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "jobs": [{"id": "id", "name": "name", "description": "description", "command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "tags": ["tags"], "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "duration": "duration", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "jobs": [{"id": "id", "name": "name", "description": "description", "command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "tags": ["tags"], "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "duration": "duration", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -6308,7 +6232,7 @@ class TestListJobs:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "jobs": [{"id": "id", "name": "name", "description": "description", "command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "tags": ["tags"], "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "duration": "duration", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "jobs": [{"id": "id", "name": "name", "description": "description", "command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "tags": ["tags"], "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "duration": "duration", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -6346,7 +6270,7 @@ class TestCreateJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.POST,
             url,
@@ -6368,12 +6292,12 @@ class TestCreateJob:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -6406,7 +6330,7 @@ class TestCreateJob:
         job_status_template_model = {}
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -6465,7 +6389,7 @@ class TestCreateJob:
         job_data_template_model = {}
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -6482,6 +6406,49 @@ class TestCreateJob:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
+
         # Construct a dict representation of a InventoryResourceRecord model
         inventory_resource_record_model = {}
         inventory_resource_record_model['name'] = 'testString'
@@ -6490,6 +6457,11 @@ class TestCreateJob:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a dict representation of a JobDataAction model
         job_data_action_model = {}
@@ -6580,11 +6552,6 @@ class TestCreateJob:
         job_data_model['action_job_data'] = job_data_action_model
         job_data_model['system_job_data'] = job_data_system_model
         job_data_model['flow_job_data'] = job_data_flow_model
-
-        # Construct a dict representation of a BastionResourceDefinition model
-        bastion_resource_definition_model = {}
-        bastion_resource_definition_model['name'] = 'testString'
-        bastion_resource_definition_model['host'] = 'testString'
 
         # Construct a dict representation of a JobLogSummaryRepoDownloadJob model
         job_log_summary_repo_download_job_model = {}
@@ -6711,7 +6678,7 @@ class TestCreateJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.POST,
             url,
@@ -6733,12 +6700,12 @@ class TestCreateJob:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -6771,7 +6738,7 @@ class TestCreateJob:
         job_status_template_model = {}
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -6830,7 +6797,7 @@ class TestCreateJob:
         job_data_template_model = {}
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -6847,6 +6814,49 @@ class TestCreateJob:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
+
         # Construct a dict representation of a InventoryResourceRecord model
         inventory_resource_record_model = {}
         inventory_resource_record_model['name'] = 'testString'
@@ -6855,6 +6865,11 @@ class TestCreateJob:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a dict representation of a JobDataAction model
         job_data_action_model = {}
@@ -6945,11 +6960,6 @@ class TestCreateJob:
         job_data_model['action_job_data'] = job_data_action_model
         job_data_model['system_job_data'] = job_data_system_model
         job_data_model['flow_job_data'] = job_data_flow_model
-
-        # Construct a dict representation of a BastionResourceDefinition model
-        bastion_resource_definition_model = {}
-        bastion_resource_definition_model['name'] = 'testString'
-        bastion_resource_definition_model['host'] = 'testString'
 
         # Construct a dict representation of a JobLogSummaryRepoDownloadJob model
         job_log_summary_repo_download_job_model = {}
@@ -7049,7 +7059,7 @@ class TestGetJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs/testString')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.GET,
             url,
@@ -7093,7 +7103,7 @@ class TestGetJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs/testString')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.GET,
             url,
@@ -7131,7 +7141,7 @@ class TestGetJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs/testString')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.GET,
             url,
@@ -7174,7 +7184,7 @@ class TestUpdateJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs/testString')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.PUT,
             url,
@@ -7196,12 +7206,12 @@ class TestUpdateJob:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -7234,7 +7244,7 @@ class TestUpdateJob:
         job_status_template_model = {}
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -7293,7 +7303,7 @@ class TestUpdateJob:
         job_data_template_model = {}
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -7310,6 +7320,49 @@ class TestUpdateJob:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
+
         # Construct a dict representation of a InventoryResourceRecord model
         inventory_resource_record_model = {}
         inventory_resource_record_model['name'] = 'testString'
@@ -7318,6 +7371,11 @@ class TestUpdateJob:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a dict representation of a JobDataAction model
         job_data_action_model = {}
@@ -7408,11 +7466,6 @@ class TestUpdateJob:
         job_data_model['action_job_data'] = job_data_action_model
         job_data_model['system_job_data'] = job_data_system_model
         job_data_model['flow_job_data'] = job_data_flow_model
-
-        # Construct a dict representation of a BastionResourceDefinition model
-        bastion_resource_definition_model = {}
-        bastion_resource_definition_model['name'] = 'testString'
-        bastion_resource_definition_model['host'] = 'testString'
 
         # Construct a dict representation of a JobLogSummaryRepoDownloadJob model
         job_log_summary_repo_download_job_model = {}
@@ -7541,7 +7594,7 @@ class TestUpdateJob:
         """
         # Set up mock
         url = preprocess_url('/v2/jobs/testString')
-        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 10, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
+        mock_response = '{"command_object": "workspace", "command_object_id": "command_object_id", "command_name": "workspace_plan", "command_parameter": "command_parameter", "command_options": ["command_options"], "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "tags": ["tags"], "id": "id", "name": "name", "description": "description", "location": "us-south", "resource_group": "resource_group", "submitted_at": "2019-01-01T12:00:00.000Z", "submitted_by": "submitted_by", "start_at": "2019-01-01T12:00:00.000Z", "end_at": "2019-01-01T12:00:00.000Z", "duration": "duration", "status": {"position_in_queue": 17, "total_in_queue": 14, "workspace_job_status": {"workspace_name": "workspace_name", "status_code": "job_pending", "status_message": "status_message", "flow_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "template_status": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z", "commands": [{"name": "name", "outcome": "outcome"}]}, "action_job_status": {"action_name": "action_name", "status_code": "job_pending", "status_message": "status_message", "bastion_status_code": "none", "bastion_status_message": "bastion_status_message", "targets_status_code": "none", "targets_status_message": "targets_status_message", "updated_at": "2019-01-01T12:00:00.000Z"}, "system_job_status": {"system_status_message": "system_status_message", "system_status_code": "job_pending", "schematics_resource_status": [{"status_code": "job_pending", "status_message": "status_message", "schematics_resource_id": "schematics_resource_id", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_status": {"flow_id": "flow_id", "flow_name": "flow_name", "status_code": "job_pending", "status_message": "status_message", "workitems": [{"workspace_id": "workspace_id", "workspace_name": "workspace_name", "job_id": "job_id", "status_code": "job_pending", "status_message": "status_message", "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "cart_order_data": [{"name": "name", "value": "value", "type": "type", "usage_kind": ["servicetags"]}], "data": {"job_type": "repo_download_job", "workspace_job_data": {"workspace_name": "workspace_name", "flow_id": "flow_id", "flow_name": "flow_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "template_data": [{"template_id": "template_id", "template_name": "template_name", "flow_index": 0, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}, "action_job_data": {"action_name": "action_name", "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "updated_at": "2019-01-01T12:00:00.000Z", "inventory_record": {"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}, "materialized_inventory": "materialized_inventory"}, "system_job_data": {"key_id": "key_id", "schematics_resource_id": ["schematics_resource_id"], "updated_at": "2019-01-01T12:00:00.000Z"}, "flow_job_data": {"flow_id": "flow_id", "flow_name": "flow_name", "workitems": [{"command_object_id": "command_object_id", "command_object_name": "command_object_name", "layers": "layers", "source_type": "local", "source": {"source_type": "local", "git": {"computed_git_repo_url": "computed_git_repo_url", "git_repo_url": "git_repo_url", "git_token": "git_token", "git_repo_folder": "git_repo_folder", "git_release": "git_release", "git_branch": "git_branch", "git_commit": "git_commit", "git_commit_timestamp": "git_commit_timestamp"}, "catalog": {"catalog_name": "catalog_name", "catalog_id": "catalog_id", "offering_name": "offering_name", "offering_version": "offering_version", "offering_kind": "offering_kind", "offering_target_kind": "offering_target_kind", "offering_id": "offering_id", "offering_version_id": "offering_version_id", "offering_version_flavour_name": "offering_version_flavour_name", "offering_repo_url": "offering_repo_url", "offering_provisioner_working_directory": "offering_provisioner_working_directory", "dry_run": false, "owning_account": "owning_account", "item_icon_url": "item_icon_url", "item_id": "item_id", "item_name": "item_name", "item_readme_url": "item_readme_url", "item_url": "item_url", "launch_url": "launch_url"}}, "inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "outputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "settings": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "last_job": {"command_object": "workspace", "command_object_name": "command_object_name", "command_object_id": "command_object_id", "command_name": "workspace_plan", "job_id": "job_id", "job_status": "job_pending"}, "updated_at": "2019-01-01T12:00:00.000Z"}], "updated_at": "2019-01-01T12:00:00.000Z"}}, "bastion": {"name": "name", "host": "host"}, "log_summary": {"job_id": "job_id", "job_type": "repo_download_job", "log_start_at": "2019-01-01T12:00:00.000Z", "log_analyzed_till": "2019-01-01T12:00:00.000Z", "elapsed_time": 12, "log_errors": [{"error_code": "error_code", "error_msg": "error_msg", "error_count": 11}], "repo_download_job": {"scanned_file_count": 18, "quarantined_file_count": 22, "detected_filetype": "detected_filetype", "inputs_count": "inputs_count", "outputs_count": "outputs_count"}, "workspace_job": {"resources_add": 13, "resources_modify": 16, "resources_destroy": 17}, "flow_job": {"workitems_completed": 19, "workitems_pending": 17, "workitems_failed": 16, "workitems": [{"workspace_id": "workspace_id", "job_id": "job_id", "resources_add": 13, "resources_modify": 16, "resources_destroy": 17, "log_url": "log_url"}]}, "action_job": {"target_count": 12, "task_count": 10, "play_count": 10, "recap": {"target": ["target"], "ok": 2, "changed": 7, "failed": 6, "skipped": 7, "unreachable": 11}}, "system_job": {"target_count": 12, "success": 7, "failed": 6}}, "log_store_url": "log_store_url", "state_store_url": "state_store_url", "results_url": "results_url", "updated_at": "2019-01-01T12:00:00.000Z", "job_runner_id": "job_runner_id", "agent": {"id": "id", "name": "name", "assignment_policy_id": "assignment_policy_id"}}'
         responses.add(
             responses.PUT,
             url,
@@ -7563,12 +7616,12 @@ class TestUpdateJob:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -7601,7 +7654,7 @@ class TestUpdateJob:
         job_status_template_model = {}
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -7660,7 +7713,7 @@ class TestUpdateJob:
         job_data_template_model = {}
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -7677,6 +7730,49 @@ class TestUpdateJob:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
+
         # Construct a dict representation of a InventoryResourceRecord model
         inventory_resource_record_model = {}
         inventory_resource_record_model['name'] = 'testString'
@@ -7685,6 +7781,11 @@ class TestUpdateJob:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a dict representation of a JobDataAction model
         job_data_action_model = {}
@@ -7775,11 +7876,6 @@ class TestUpdateJob:
         job_data_model['action_job_data'] = job_data_action_model
         job_data_model['system_job_data'] = job_data_system_model
         job_data_model['flow_job_data'] = job_data_flow_model
-
-        # Construct a dict representation of a BastionResourceDefinition model
-        bastion_resource_definition_model = {}
-        bastion_resource_definition_model['name'] = 'testString'
-        bastion_resource_definition_model['host'] = 'testString'
 
         # Construct a dict representation of a JobLogSummaryRepoDownloadJob model
         job_log_summary_repo_download_job_model = {}
@@ -8425,7 +8521,7 @@ class TestListInventories:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "inventories": [{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "inventories": [{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}]}'
         responses.add(
             responses.GET,
             url,
@@ -8476,7 +8572,7 @@ class TestListInventories:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "inventories": [{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "inventories": [{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}]}'
         responses.add(
             responses.GET,
             url,
@@ -8514,22 +8610,99 @@ class TestCreateInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.POST,
             url,
             body=mock_response,
             content_type='application/json',
-            status=200,
+            status=201,
         )
+
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a VariableMetadata model
+        variable_metadata_model = {}
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a VariableData model
+        variable_data_model = {}
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
 
         # Set up parameter values
         name = 'testString'
         description = 'testString'
         location = 'us-south'
         resource_group = 'testString'
+        connection_type = 'testString'
+        credentials = [credential_variable_data_model]
         inventories_ini = 'testString'
         resource_queries = ['testString']
+        bastion = bastion_resource_definition_model
+        bastion_credential = credential_variable_data_model
+        inventory_view = inventory_view_model
 
         # Invoke method
         response = _service.create_inventory(
@@ -8537,22 +8710,32 @@ class TestCreateInventory:
             description=description,
             location=location,
             resource_group=resource_group,
+            connection_type=connection_type,
+            credentials=credentials,
             inventories_ini=inventories_ini,
             resource_queries=resource_queries,
+            bastion=bastion,
+            bastion_credential=bastion_credential,
+            inventory_view=inventory_view,
             headers={},
         )
 
         # Check for correct operation
         assert len(responses.calls) == 1
-        assert response.status_code == 200
+        assert response.status_code == 201
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'testString'
         assert req_body['description'] == 'testString'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
+        assert req_body['connection_type'] == 'testString'
+        assert req_body['credentials'] == [credential_variable_data_model]
         assert req_body['inventories_ini'] == 'testString'
         assert req_body['resource_queries'] == ['testString']
+        assert req_body['bastion'] == bastion_resource_definition_model
+        assert req_body['bastion_credential'] == credential_variable_data_model
+        assert req_body['inventory_view'] == inventory_view_model
 
     def test_create_inventory_all_params_with_retries(self):
         # Enable retries and run test_create_inventory_all_params.
@@ -8576,7 +8759,7 @@ class TestGetInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories/testString')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.GET,
             url,
@@ -8620,7 +8803,7 @@ class TestGetInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories/testString')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.GET,
             url,
@@ -8658,7 +8841,7 @@ class TestGetInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories/testString')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.GET,
             url,
@@ -8701,14 +8884,86 @@ class TestReplaceInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories/testString')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.PUT,
             url,
             body=mock_response,
             content_type='application/json',
-            status=200,
+            status=201,
         )
+
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a VariableMetadata model
+        variable_metadata_model = {}
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a VariableData model
+        variable_data_model = {}
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
 
         # Set up parameter values
         inventory_id = 'testString'
@@ -8716,8 +8971,13 @@ class TestReplaceInventory:
         description = 'testString'
         location = 'us-south'
         resource_group = 'testString'
+        connection_type = 'testString'
+        credentials = [credential_variable_data_model]
         inventories_ini = 'testString'
         resource_queries = ['testString']
+        bastion = bastion_resource_definition_model
+        bastion_credential = credential_variable_data_model
+        inventory_view = inventory_view_model
 
         # Invoke method
         response = _service.replace_inventory(
@@ -8726,22 +8986,32 @@ class TestReplaceInventory:
             description=description,
             location=location,
             resource_group=resource_group,
+            connection_type=connection_type,
+            credentials=credentials,
             inventories_ini=inventories_ini,
             resource_queries=resource_queries,
+            bastion=bastion,
+            bastion_credential=bastion_credential,
+            inventory_view=inventory_view,
             headers={},
         )
 
         # Check for correct operation
         assert len(responses.calls) == 1
-        assert response.status_code == 200
+        assert response.status_code == 201
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'testString'
         assert req_body['description'] == 'testString'
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
+        assert req_body['connection_type'] == 'testString'
+        assert req_body['credentials'] == [credential_variable_data_model]
         assert req_body['inventories_ini'] == 'testString'
         assert req_body['resource_queries'] == ['testString']
+        assert req_body['bastion'] == bastion_resource_definition_model
+        assert req_body['bastion_credential'] == credential_variable_data_model
+        assert req_body['inventory_view'] == inventory_view_model
 
     def test_replace_inventory_all_params_with_retries(self):
         # Enable retries and run test_replace_inventory_all_params.
@@ -8759,14 +9029,86 @@ class TestReplaceInventory:
         """
         # Set up mock
         url = preprocess_url('/v2/inventories/testString')
-        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"]}'
+        mock_response = '{"name": "name", "id": "id", "description": "description", "location": "us-south", "resource_group": "resource_group", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "inventories_ini": "inventories_ini", "resource_queries": ["resource_queries"], "connection_type": "connection_type", "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "bastion": {"name": "name", "host": "host"}, "bastion_credential": {"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}, "inventory_view": {"groups": [{"name": "name", "vars": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "credentials": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "hosts": [{"name": "name", "credential": [{"name": "name", "value": "-----BEGIN OPENSSH PRIVATE KEY-----\nXXXXXXXXXXXXX\n-----END OPENSSH PRIVATE KEY-----\n", "use_default": false, "metadata": {"type": "string", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "immutable": false, "hidden": true, "required": true, "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}]}]}]}}'
         responses.add(
             responses.PUT,
             url,
             body=mock_response,
             content_type='application/json',
-            status=200,
+            status=201,
         )
+
+        # Construct a dict representation of a CredentialVariableMetadata model
+        credential_variable_metadata_model = {}
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a CredentialVariableData model
+        credential_variable_data_model = {}
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a dict representation of a BastionResourceDefinition model
+        bastion_resource_definition_model = {}
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        # Construct a dict representation of a VariableMetadata model
+        variable_metadata_model = {}
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        # Construct a dict representation of a VariableData model
+        variable_data_model = {}
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        # Construct a dict representation of a Host model
+        host_model = {}
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a dict representation of a Group model
+        group_model = {}
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a dict representation of a InventoryView model
+        inventory_view_model = {}
+        inventory_view_model['groups'] = [group_model]
 
         # Set up parameter values
         inventory_id = 'testString'
@@ -8774,8 +9116,13 @@ class TestReplaceInventory:
         description = 'testString'
         location = 'us-south'
         resource_group = 'testString'
+        connection_type = 'testString'
+        credentials = [credential_variable_data_model]
         inventories_ini = 'testString'
         resource_queries = ['testString']
+        bastion = bastion_resource_definition_model
+        bastion_credential = credential_variable_data_model
+        inventory_view = inventory_view_model
 
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
@@ -8922,7 +9269,7 @@ class TestListResourceQuery:
         """
         # Set up mock
         url = preprocess_url('/v2/resources_query')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "resource_queries": [{"type": "vsi", "name": "name", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "queries": [{"query_type": "workspaces", "query_condition": [{"name": "name", "value": "value", "description": "description"}], "query_select": ["query_select"]}]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "resource_queries": [{"type": "vsi", "name": "name", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "queries": [{"query_type": "workspaces", "query_condition": [{"name": "name", "value": "value", "description": "description"}], "query_select": ["query_select"]}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -8973,7 +9320,7 @@ class TestListResourceQuery:
         """
         # Set up mock
         url = preprocess_url('/v2/resources_query')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "resource_queries": [{"type": "vsi", "name": "name", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "queries": [{"query_type": "workspaces", "query_condition": [{"name": "name", "value": "value", "description": "description"}], "query_select": ["query_select"]}]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "resource_queries": [{"type": "vsi", "name": "name", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "queries": [{"query_type": "workspaces", "query_condition": [{"name": "name", "value": "value", "description": "description"}], "query_select": ["query_select"]}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -9498,545 +9845,6 @@ class TestNewInstance:
             )
 
 
-class TestListAgent:
-    """
-    Test Class for list_agent
-    """
-
-    @responses.activate
-    def test_list_agent_all_params(self):
-        """
-        list_agent()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}]}'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Set up parameter values
-        offset = 0
-        limit = 100
-        profile = 'summary'
-        filter = 'all'
-
-        # Invoke method
-        response = _service.list_agent(
-            offset=offset,
-            limit=limit,
-            profile=profile,
-            filter=filter,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-        # Validate query params
-        query_string = responses.calls[0].request.url.split('?', 1)[1]
-        query_string = urllib.parse.unquote_plus(query_string)
-        assert 'offset={}'.format(offset) in query_string
-        assert 'limit={}'.format(limit) in query_string
-        assert 'profile={}'.format(profile) in query_string
-        assert 'filter={}'.format(filter) in query_string
-
-    def test_list_agent_all_params_with_retries(self):
-        # Enable retries and run test_list_agent_all_params.
-        _service.enable_retries()
-        self.test_list_agent_all_params()
-
-        # Disable retries and run test_list_agent_all_params.
-        _service.disable_retries()
-        self.test_list_agent_all_params()
-
-    @responses.activate
-    def test_list_agent_required_params(self):
-        """
-        test_list_agent_required_params()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}]}'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Invoke method
-        response = _service.list_agent()
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-
-    def test_list_agent_required_params_with_retries(self):
-        # Enable retries and run test_list_agent_required_params.
-        _service.enable_retries()
-        self.test_list_agent_required_params()
-
-        # Disable retries and run test_list_agent_required_params.
-        _service.disable_retries()
-        self.test_list_agent_required_params()
-
-
-class TestRegisterAgent:
-    """
-    Test Class for register_agent
-    """
-
-    @responses.activate
-    def test_register_agent_all_params(self):
-        """
-        register_agent()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.POST,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=201,
-        )
-
-        # Construct a dict representation of a AgentUserState model
-        agent_user_state_model = {}
-        agent_user_state_model['state'] = 'enable'
-
-        # Set up parameter values
-        name = 'MyDevAgent'
-        agent_location = 'us-south'
-        location = 'us-south'
-        profile_id = 'testString'
-        description = 'Register agent'
-        resource_group = 'testString'
-        tags = ['testString']
-        user_state = agent_user_state_model
-
-        # Invoke method
-        response = _service.register_agent(
-            name,
-            agent_location,
-            location,
-            profile_id,
-            description=description,
-            resource_group=resource_group,
-            tags=tags,
-            user_state=user_state,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 201
-        # Validate body params
-        req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
-        assert req_body['name'] == 'MyDevAgent'
-        assert req_body['agent_location'] == 'us-south'
-        assert req_body['location'] == 'us-south'
-        assert req_body['profile_id'] == 'testString'
-        assert req_body['description'] == 'Register agent'
-        assert req_body['resource_group'] == 'testString'
-        assert req_body['tags'] == ['testString']
-        assert req_body['user_state'] == agent_user_state_model
-
-    def test_register_agent_all_params_with_retries(self):
-        # Enable retries and run test_register_agent_all_params.
-        _service.enable_retries()
-        self.test_register_agent_all_params()
-
-        # Disable retries and run test_register_agent_all_params.
-        _service.disable_retries()
-        self.test_register_agent_all_params()
-
-    @responses.activate
-    def test_register_agent_value_error(self):
-        """
-        test_register_agent_value_error()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.POST,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=201,
-        )
-
-        # Construct a dict representation of a AgentUserState model
-        agent_user_state_model = {}
-        agent_user_state_model['state'] = 'enable'
-
-        # Set up parameter values
-        name = 'MyDevAgent'
-        agent_location = 'us-south'
-        location = 'us-south'
-        profile_id = 'testString'
-        description = 'Register agent'
-        resource_group = 'testString'
-        tags = ['testString']
-        user_state = agent_user_state_model
-
-        # Pass in all but one required param and check for a ValueError
-        req_param_dict = {
-            "name": name,
-            "agent_location": agent_location,
-            "location": location,
-            "profile_id": profile_id,
-        }
-        for param in req_param_dict.keys():
-            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
-            with pytest.raises(ValueError):
-                _service.register_agent(**req_copy)
-
-    def test_register_agent_value_error_with_retries(self):
-        # Enable retries and run test_register_agent_value_error.
-        _service.enable_retries()
-        self.test_register_agent_value_error()
-
-        # Disable retries and run test_register_agent_value_error.
-        _service.disable_retries()
-        self.test_register_agent_value_error()
-
-
-class TestGetAgent:
-    """
-    Test Class for get_agent
-    """
-
-    @responses.activate
-    def test_get_agent_all_params(self):
-        """
-        get_agent()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Set up parameter values
-        agent_id = 'testString'
-        profile = 'summary'
-
-        # Invoke method
-        response = _service.get_agent(
-            agent_id,
-            profile=profile,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-        # Validate query params
-        query_string = responses.calls[0].request.url.split('?', 1)[1]
-        query_string = urllib.parse.unquote_plus(query_string)
-        assert 'profile={}'.format(profile) in query_string
-
-    def test_get_agent_all_params_with_retries(self):
-        # Enable retries and run test_get_agent_all_params.
-        _service.enable_retries()
-        self.test_get_agent_all_params()
-
-        # Disable retries and run test_get_agent_all_params.
-        _service.disable_retries()
-        self.test_get_agent_all_params()
-
-    @responses.activate
-    def test_get_agent_required_params(self):
-        """
-        test_get_agent_required_params()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Set up parameter values
-        agent_id = 'testString'
-
-        # Invoke method
-        response = _service.get_agent(
-            agent_id,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 200
-
-    def test_get_agent_required_params_with_retries(self):
-        # Enable retries and run test_get_agent_required_params.
-        _service.enable_retries()
-        self.test_get_agent_required_params()
-
-        # Disable retries and run test_get_agent_required_params.
-        _service.disable_retries()
-        self.test_get_agent_required_params()
-
-    @responses.activate
-    def test_get_agent_value_error(self):
-        """
-        test_get_agent_value_error()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.GET,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=200,
-        )
-
-        # Set up parameter values
-        agent_id = 'testString'
-
-        # Pass in all but one required param and check for a ValueError
-        req_param_dict = {
-            "agent_id": agent_id,
-        }
-        for param in req_param_dict.keys():
-            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
-            with pytest.raises(ValueError):
-                _service.get_agent(**req_copy)
-
-    def test_get_agent_value_error_with_retries(self):
-        # Enable retries and run test_get_agent_value_error.
-        _service.enable_retries()
-        self.test_get_agent_value_error()
-
-        # Disable retries and run test_get_agent_value_error.
-        _service.disable_retries()
-        self.test_get_agent_value_error()
-
-
-class TestDeleteAgent:
-    """
-    Test Class for delete_agent
-    """
-
-    @responses.activate
-    def test_delete_agent_all_params(self):
-        """
-        delete_agent()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        responses.add(
-            responses.DELETE,
-            url,
-            status=204,
-        )
-
-        # Set up parameter values
-        agent_id = 'testString'
-
-        # Invoke method
-        response = _service.delete_agent(
-            agent_id,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 204
-
-    def test_delete_agent_all_params_with_retries(self):
-        # Enable retries and run test_delete_agent_all_params.
-        _service.enable_retries()
-        self.test_delete_agent_all_params()
-
-        # Disable retries and run test_delete_agent_all_params.
-        _service.disable_retries()
-        self.test_delete_agent_all_params()
-
-    @responses.activate
-    def test_delete_agent_value_error(self):
-        """
-        test_delete_agent_value_error()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        responses.add(
-            responses.DELETE,
-            url,
-            status=204,
-        )
-
-        # Set up parameter values
-        agent_id = 'testString'
-
-        # Pass in all but one required param and check for a ValueError
-        req_param_dict = {
-            "agent_id": agent_id,
-        }
-        for param in req_param_dict.keys():
-            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
-            with pytest.raises(ValueError):
-                _service.delete_agent(**req_copy)
-
-    def test_delete_agent_value_error_with_retries(self):
-        # Enable retries and run test_delete_agent_value_error.
-        _service.enable_retries()
-        self.test_delete_agent_value_error()
-
-        # Disable retries and run test_delete_agent_value_error.
-        _service.disable_retries()
-        self.test_delete_agent_value_error()
-
-
-class TestUpdateAgentRegistration:
-    """
-    Test Class for update_agent_registration
-    """
-
-    @responses.activate
-    def test_update_agent_registration_all_params(self):
-        """
-        update_agent_registration()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.PATCH,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=201,
-        )
-
-        # Construct a dict representation of a AgentUserState model
-        agent_user_state_model = {}
-        agent_user_state_model['state'] = 'enable'
-
-        # Set up parameter values
-        agent_id = 'testString'
-        name = 'MyDevAgent'
-        agent_location = 'us-south'
-        location = 'us-south'
-        profile_id = 'testString'
-        description = 'Register agent'
-        resource_group = 'testString'
-        tags = ['testString']
-        user_state = agent_user_state_model
-
-        # Invoke method
-        response = _service.update_agent_registration(
-            agent_id,
-            name,
-            agent_location,
-            location,
-            profile_id,
-            description=description,
-            resource_group=resource_group,
-            tags=tags,
-            user_state=user_state,
-            headers={},
-        )
-
-        # Check for correct operation
-        assert len(responses.calls) == 1
-        assert response.status_code == 201
-        # Validate body params
-        req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
-        assert req_body['name'] == 'MyDevAgent'
-        assert req_body['agent_location'] == 'us-south'
-        assert req_body['location'] == 'us-south'
-        assert req_body['profile_id'] == 'testString'
-        assert req_body['description'] == 'Register agent'
-        assert req_body['resource_group'] == 'testString'
-        assert req_body['tags'] == ['testString']
-        assert req_body['user_state'] == agent_user_state_model
-
-    def test_update_agent_registration_all_params_with_retries(self):
-        # Enable retries and run test_update_agent_registration_all_params.
-        _service.enable_retries()
-        self.test_update_agent_registration_all_params()
-
-        # Disable retries and run test_update_agent_registration_all_params.
-        _service.disable_retries()
-        self.test_update_agent_registration_all_params()
-
-    @responses.activate
-    def test_update_agent_registration_value_error(self):
-        """
-        test_update_agent_registration_value_error()
-        """
-        # Set up mock
-        url = preprocess_url('/v2/settings/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "agent_location": "us-south", "location": "us-south", "profile_id": "profile_id", "agent_crn": "agent_crn", "id": "id", "registered_at": "2019-01-01T12:00:00.000Z", "registered_by": "registered_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "connection_state": {"state": "Connected", "checked_at": "2019-01-01T12:00:00.000Z"}, "system_state": {"state": "error", "message": "message"}}'
-        responses.add(
-            responses.PATCH,
-            url,
-            body=mock_response,
-            content_type='application/json',
-            status=201,
-        )
-
-        # Construct a dict representation of a AgentUserState model
-        agent_user_state_model = {}
-        agent_user_state_model['state'] = 'enable'
-
-        # Set up parameter values
-        agent_id = 'testString'
-        name = 'MyDevAgent'
-        agent_location = 'us-south'
-        location = 'us-south'
-        profile_id = 'testString'
-        description = 'Register agent'
-        resource_group = 'testString'
-        tags = ['testString']
-        user_state = agent_user_state_model
-
-        # Pass in all but one required param and check for a ValueError
-        req_param_dict = {
-            "agent_id": agent_id,
-            "name": name,
-            "agent_location": agent_location,
-            "location": location,
-            "profile_id": profile_id,
-        }
-        for param in req_param_dict.keys():
-            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
-            with pytest.raises(ValueError):
-                _service.update_agent_registration(**req_copy)
-
-    def test_update_agent_registration_value_error_with_retries(self):
-        # Enable retries and run test_update_agent_registration_value_error.
-        _service.enable_retries()
-        self.test_update_agent_registration_value_error()
-
-        # Disable retries and run test_update_agent_registration_value_error.
-        _service.disable_retries()
-        self.test_update_agent_registration_value_error()
-
-
 class TestListAgentData:
     """
     Test Class for list_agent_data
@@ -10049,7 +9857,7 @@ class TestListAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_metadata": [{"name": "purpose", "value": ["value"]}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_metadata": [{"name": "purpose", "value": ["value"]}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -10100,7 +9908,7 @@ class TestListAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_metadata": [{"name": "purpose", "value": ["value"]}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator"}}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "agents": [{"name": "MyDevAgent", "description": "Register agent", "resource_group": "resource_group", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_metadata": [{"name": "purpose", "value": ["value"]}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator"}, "encryption": {"crn": "crn", "scheme": "scheme"}}]}'
         responses.add(
             responses.GET,
             url,
@@ -10138,7 +9946,7 @@ class TestCreateAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -10174,12 +9982,12 @@ class TestCreateAgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -10267,7 +10075,7 @@ class TestCreateAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.POST,
             url,
@@ -10303,12 +10111,12 @@ class TestCreateAgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -10381,7 +10189,7 @@ class TestGetAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -10425,7 +10233,7 @@ class TestGetAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -10463,7 +10271,7 @@ class TestGetAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.GET,
             url,
@@ -10506,7 +10314,7 @@ class TestUpdateAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -10542,12 +10350,12 @@ class TestUpdateAgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -10639,7 +10447,7 @@ class TestUpdateAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -10675,12 +10483,12 @@ class TestUpdateAgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -10770,7 +10578,7 @@ class TestUpdateAgentData:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/testString')
-        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 9, "max_value": 9, "min_length": 10, "max_length": 10, "matches": "matches", "position": 8, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
+        mock_response = '{"name": "MyDevAgent", "description": "Create Agent", "resource_group": "Default", "tags": ["tags"], "version": "v1.0.0", "schematics_location": "us-south", "agent_location": "us-south", "agent_infrastructure": {"infra_type": "ibm_kubernetes", "cluster_id": "cluster_id", "cluster_resource_group": "cluster_resource_group", "cos_instance_name": "cos_instance_name", "cos_bucket_name": "cos_bucket_name", "cos_bucket_region": "cos_bucket_region"}, "agent_metadata": [{"name": "purpose", "value": ["value"]}], "agent_inputs": [{"name": "name", "value": "value", "use_default": false, "metadata": {"type": "boolean", "aliases": ["aliases"], "description": "description", "cloud_data_type": "cloud_data_type", "default_value": "default_value", "link_status": "normal", "secure": true, "immutable": false, "hidden": true, "required": true, "options": ["options"], "min_value": 0, "max_value": 0, "min_length": 0, "max_length": 0, "matches": "matches", "position": 0, "group_by": "group_by", "source": "source"}, "link": "link"}], "user_state": {"state": "enable", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "agent_crn": "agent_crn", "id": "id", "created_at": "2019-01-01T12:00:00.000Z", "creation_by": "creation_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "system_state": {"status_code": "error", "status_message": "status_message"}, "agent_kpi": {"availability_indicator": "available", "lifecycle_indicator": "consistent", "percent_usage_indicator": "percent_usage_indicator", "application_indicators": ["anyValue"], "infra_indicators": ["anyValue"]}, "recent_prs_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_deploy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "is_redeployed": false, "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_health_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "recent_destroy_job": {"agent_id": "agent_id", "job_id": "job_id", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by", "agent_version": "v1.0.0", "status_code": "job_pending", "status_message": "status_message", "log_url": "log_url"}, "encryption": {"crn": "crn", "scheme": "scheme"}}'
         responses.add(
             responses.PUT,
             url,
@@ -10806,12 +10614,12 @@ class TestUpdateAgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -11002,9 +10810,7 @@ class TestGetAgentVersions:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/versions')
-        mock_response = (
-            '{"supported_agent_versions": [{"display_name": "display_name", "agent_version": "agent_version"}]}'
-        )
+        mock_response = '{"supported_agent_versions": [{"display_name": "display_name", "agent_version": "agent_version"}]}'
         responses.add(
             responses.GET,
             url,
@@ -11934,7 +11740,7 @@ class TestListKms:
         """
         # Set up mock
         url = preprocess_url('/v2/settings/kms_instances')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -11988,7 +11794,7 @@ class TestListKms:
         """
         # Set up mock
         url = preprocess_url('/v2/settings/kms_instances')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -12033,7 +11839,7 @@ class TestListKms:
         """
         # Set up mock
         url = preprocess_url('/v2/settings/kms_instances')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "kms_instances": [{"location": "location", "encryption_scheme": "encryption_scheme", "resource_group": "resource_group", "kms_crn": "kms_crn", "kms_name": "kms_name", "kms_private_endpoint": "kms_private_endpoint", "kms_public_endpoint": "kms_public_endpoint", "keys": [{"name": "name", "crn": "crn", "error": "error"}]}]}'
         responses.add(
             responses.GET,
             url,
@@ -12117,7 +11923,7 @@ class TestListPolicy:
         """
         # Set up mock
         url = preprocess_url('/v2/settings/policies')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "policies": [{"name": "Agent1-DevWS", "id": "id", "crn": "crn", "account": "account", "description": "Policy for job execution of secured workspaces on agent1", "resource_group": "Default", "tags": ["tags"], "location": "us-south", "state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "policy_kind": "agent_assignment_policy", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by"}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "policies": [{"name": "Agent1-DevWS", "id": "id", "crn": "crn", "account": "account", "description": "Policy for job execution of secured workspaces on agent1", "resource_group": "Default", "tags": ["tags"], "location": "us-south", "state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "policy_kind": "agent_assignment_policy", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by"}]}'
         responses.add(
             responses.GET,
             url,
@@ -12165,7 +11971,7 @@ class TestListPolicy:
         """
         # Set up mock
         url = preprocess_url('/v2/settings/policies')
-        mock_response = '{"total_count": 11, "limit": 5, "offset": 6, "policies": [{"name": "Agent1-DevWS", "id": "id", "crn": "crn", "account": "account", "description": "Policy for job execution of secured workspaces on agent1", "resource_group": "Default", "tags": ["tags"], "location": "us-south", "state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "policy_kind": "agent_assignment_policy", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by"}]}'
+        mock_response = '{"total_count": 0, "limit": 0, "offset": 0, "policies": [{"name": "Agent1-DevWS", "id": "id", "crn": "crn", "account": "account", "description": "Policy for job execution of secured workspaces on agent1", "resource_group": "Default", "tags": ["tags"], "location": "us-south", "state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "policy_kind": "agent_assignment_policy", "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z", "updated_by": "updated_by"}]}'
         responses.add(
             responses.GET,
             url,
@@ -12247,26 +12053,26 @@ class TestCreatePolicy:
         scoped_resource_model['id'] = 'testString'
 
         # Set up parameter values
+        kind = 'agent_assignment_policy'
         name = 'Agent1-DevWS'
         description = 'Policy for job execution of secured workspaces on agent1'
         resource_group = 'Default'
         tags = ['policy:secured-job']
         location = 'us-south'
         state = user_state_model
-        kind = 'agent_assignment_policy'
         target = policy_objects_model
         parameter = policy_parameter_model
         scoped_resources = [scoped_resource_model]
 
         # Invoke method
         response = _service.create_policy(
+            kind,
             name=name,
             description=description,
             resource_group=resource_group,
             tags=tags,
             location=location,
             state=state,
-            kind=kind,
             target=target,
             parameter=parameter,
             scoped_resources=scoped_resources,
@@ -12278,13 +12084,13 @@ class TestCreatePolicy:
         assert response.status_code == 201
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
+        assert req_body['kind'] == 'agent_assignment_policy'
         assert req_body['name'] == 'Agent1-DevWS'
         assert req_body['description'] == 'Policy for job execution of secured workspaces on agent1'
         assert req_body['resource_group'] == 'Default'
         assert req_body['tags'] == ['policy:secured-job']
         assert req_body['location'] == 'us-south'
         assert req_body['state'] == user_state_model
-        assert req_body['kind'] == 'agent_assignment_policy'
         assert req_body['target'] == policy_objects_model
         assert req_body['parameter'] == policy_parameter_model
         assert req_body['scoped_resources'] == [scoped_resource_model]
@@ -12297,6 +12103,86 @@ class TestCreatePolicy:
         # Disable retries and run test_create_policy_all_params.
         _service.disable_retries()
         self.test_create_policy_all_params()
+
+    @responses.activate
+    def test_create_policy_value_error(self):
+        """
+        test_create_policy_value_error()
+        """
+        # Set up mock
+        url = preprocess_url('/v2/settings/policies')
+        mock_response = '{"name": "Agent1-DevWS", "description": "Policy for job execution of secured workspaces on agent1", "resource_group": "Default", "tags": ["tags"], "location": "us-south", "state": {"state": "draft", "set_by": "set_by", "set_at": "2019-01-01T12:00:00.000Z"}, "kind": "agent_assignment_policy", "target": {"selector_kind": "ids", "selector_ids": ["selector_ids"], "selector_scope": [{"kind": "workspace", "tags": ["tags"], "resource_groups": ["resource_groups"], "locations": ["us-south"]}]}, "parameter": {"agent_assignment_policy_parameter": {"selector_kind": "ids", "selector_ids": ["selector_ids"], "selector_scope": [{"kind": "workspace", "tags": ["tags"], "resource_groups": ["resource_groups"], "locations": ["us-south"]}]}}, "id": "id", "crn": "crn", "account": "account", "scoped_resources": [{"kind": "workspace", "id": "id"}], "created_at": "2019-01-01T12:00:00.000Z", "created_by": "created_by", "updated_at": "2019-01-01T12:00:00.000Z"}'
+        responses.add(
+            responses.POST,
+            url,
+            body=mock_response,
+            content_type='application/json',
+            status=201,
+        )
+
+        # Construct a dict representation of a UserState model
+        user_state_model = {}
+        user_state_model['state'] = 'draft'
+        user_state_model['set_by'] = 'testString'
+        user_state_model['set_at'] = '2019-01-01T12:00:00Z'
+
+        # Construct a dict representation of a PolicyObjectSelector model
+        policy_object_selector_model = {}
+        policy_object_selector_model['kind'] = 'workspace'
+        policy_object_selector_model['tags'] = ['testString']
+        policy_object_selector_model['resource_groups'] = ['testString']
+        policy_object_selector_model['locations'] = ['us-south']
+
+        # Construct a dict representation of a PolicyObjects model
+        policy_objects_model = {}
+        policy_objects_model['selector_kind'] = 'ids'
+        policy_objects_model['selector_ids'] = ['testString']
+        policy_objects_model['selector_scope'] = [policy_object_selector_model]
+
+        # Construct a dict representation of a AgentAssignmentPolicyParameter model
+        agent_assignment_policy_parameter_model = {}
+        agent_assignment_policy_parameter_model['selector_kind'] = 'ids'
+        agent_assignment_policy_parameter_model['selector_ids'] = ['testString']
+        agent_assignment_policy_parameter_model['selector_scope'] = [policy_object_selector_model]
+
+        # Construct a dict representation of a PolicyParameter model
+        policy_parameter_model = {}
+        policy_parameter_model['agent_assignment_policy_parameter'] = agent_assignment_policy_parameter_model
+
+        # Construct a dict representation of a ScopedResource model
+        scoped_resource_model = {}
+        scoped_resource_model['kind'] = 'workspace'
+        scoped_resource_model['id'] = 'testString'
+
+        # Set up parameter values
+        kind = 'agent_assignment_policy'
+        name = 'Agent1-DevWS'
+        description = 'Policy for job execution of secured workspaces on agent1'
+        resource_group = 'Default'
+        tags = ['policy:secured-job']
+        location = 'us-south'
+        state = user_state_model
+        target = policy_objects_model
+        parameter = policy_parameter_model
+        scoped_resources = [scoped_resource_model]
+
+        # Pass in all but one required param and check for a ValueError
+        req_param_dict = {
+            "kind": kind,
+        }
+        for param in req_param_dict.keys():
+            req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
+            with pytest.raises(ValueError):
+                _service.create_policy(**req_copy)
+
+    def test_create_policy_value_error_with_retries(self):
+        # Enable retries and run test_create_policy_value_error.
+        _service.enable_retries()
+        self.test_create_policy_value_error()
+
+        # Disable retries and run test_create_policy_value_error.
+        _service.disable_retries()
+        self.test_create_policy_value_error()
 
 
 class TestGetPolicy:
@@ -12556,13 +12442,13 @@ class TestUpdatePolicy:
 
         # Set up parameter values
         policy_id = 'testString'
+        kind = 'agent_assignment_policy'
         name = 'Agent1-DevWS'
         description = 'Policy for job execution of secured workspaces on agent1'
         resource_group = 'Default'
         tags = ['policy:secured-job']
         location = 'us-south'
         state = user_state_model
-        kind = 'agent_assignment_policy'
         target = policy_objects_model
         parameter = policy_parameter_model
         scoped_resources = [scoped_resource_model]
@@ -12570,13 +12456,13 @@ class TestUpdatePolicy:
         # Invoke method
         response = _service.update_policy(
             policy_id,
+            kind,
             name=name,
             description=description,
             resource_group=resource_group,
             tags=tags,
             location=location,
             state=state,
-            kind=kind,
             target=target,
             parameter=parameter,
             scoped_resources=scoped_resources,
@@ -12588,13 +12474,13 @@ class TestUpdatePolicy:
         assert response.status_code == 200
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
+        assert req_body['kind'] == 'agent_assignment_policy'
         assert req_body['name'] == 'Agent1-DevWS'
         assert req_body['description'] == 'Policy for job execution of secured workspaces on agent1'
         assert req_body['resource_group'] == 'Default'
         assert req_body['tags'] == ['policy:secured-job']
         assert req_body['location'] == 'us-south'
         assert req_body['state'] == user_state_model
-        assert req_body['kind'] == 'agent_assignment_policy'
         assert req_body['target'] == policy_objects_model
         assert req_body['parameter'] == policy_parameter_model
         assert req_body['scoped_resources'] == [scoped_resource_model]
@@ -12660,13 +12546,13 @@ class TestUpdatePolicy:
 
         # Set up parameter values
         policy_id = 'testString'
+        kind = 'agent_assignment_policy'
         name = 'Agent1-DevWS'
         description = 'Policy for job execution of secured workspaces on agent1'
         resource_group = 'Default'
         tags = ['policy:secured-job']
         location = 'us-south'
         state = user_state_model
-        kind = 'agent_assignment_policy'
         target = policy_objects_model
         parameter = policy_parameter_model
         scoped_resources = [scoped_resource_model]
@@ -12674,6 +12560,7 @@ class TestUpdatePolicy:
         # Pass in all but one required param and check for a ValueError
         req_param_dict = {
             "policy_id": policy_id,
+            "kind": kind,
         }
         for param in req_param_dict.keys():
             req_copy = {key: val if key is not param else None for (key, val) in req_param_dict.items()}
@@ -12763,15 +12650,13 @@ class TestModel_Action:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -12791,12 +12676,12 @@ class TestModel_Action:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -12809,9 +12694,7 @@ class TestModel_Action:
         # Construct a json representation of a Action model
         action_model_json = {}
         action_model_json['name'] = 'Stop Action'
-        action_model_json['description'] = (
-            'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
-        )
+        action_model_json['description'] = 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
         action_model_json['location'] = 'us-south'
         action_model_json['resource_group'] = 'testString'
         action_model_json['bastion_connection_type'] = 'ssh'
@@ -12878,9 +12761,9 @@ class TestModel_ActionList:
 
         # Construct a json representation of a ActionList model
         action_list_model_json = {}
-        action_list_model_json['total_count'] = 26
-        action_list_model_json['limit'] = 26
-        action_list_model_json['offset'] = 26
+        action_list_model_json['total_count'] = 0
+        action_list_model_json['limit'] = 0
+        action_list_model_json['offset'] = 0
         action_list_model_json['actions'] = [action_lite_model]
 
         # Construct a model instance of ActionList by calling from_dict on the json representation
@@ -13008,48 +12891,6 @@ class TestModel_ActionState:
         assert action_state_model_json2 == action_state_model_json
 
 
-class TestModel_Agent:
-    """
-    Test Class for Agent
-    """
-
-    def test_agent_serialization(self):
-        """
-        Test serialization/deserialization for Agent
-        """
-
-        # Construct dict forms of any model objects needed in order to build this model.
-
-        agent_user_state_model = {}  # AgentUserState
-        agent_user_state_model['state'] = 'enable'
-
-        # Construct a json representation of a Agent model
-        agent_model_json = {}
-        agent_model_json['name'] = 'MyDevAgent'
-        agent_model_json['description'] = 'Register agent'
-        agent_model_json['resource_group'] = 'testString'
-        agent_model_json['tags'] = ['testString']
-        agent_model_json['agent_location'] = 'us-south'
-        agent_model_json['location'] = 'us-south'
-        agent_model_json['profile_id'] = 'testString'
-        agent_model_json['user_state'] = agent_user_state_model
-
-        # Construct a model instance of Agent by calling from_dict on the json representation
-        agent_model = Agent.from_dict(agent_model_json)
-        assert agent_model != False
-
-        # Construct a model instance of Agent by calling from_dict on the json representation
-        agent_model_dict = Agent.from_dict(agent_model_json).__dict__
-        agent_model2 = Agent(**agent_model_dict)
-
-        # Verify the model instances are equivalent
-        assert agent_model == agent_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        agent_model_json2 = agent_model.to_dict()
-        assert agent_model_json2 == agent_model_json
-
-
 class TestModel_AgentAssignmentPolicyParameter:
     """
     Test Class for AgentAssignmentPolicyParameter
@@ -13075,18 +12916,12 @@ class TestModel_AgentAssignmentPolicyParameter:
         agent_assignment_policy_parameter_model_json['selector_scope'] = [policy_object_selector_model]
 
         # Construct a model instance of AgentAssignmentPolicyParameter by calling from_dict on the json representation
-        agent_assignment_policy_parameter_model = AgentAssignmentPolicyParameter.from_dict(
-            agent_assignment_policy_parameter_model_json
-        )
+        agent_assignment_policy_parameter_model = AgentAssignmentPolicyParameter.from_dict(agent_assignment_policy_parameter_model_json)
         assert agent_assignment_policy_parameter_model != False
 
         # Construct a model instance of AgentAssignmentPolicyParameter by calling from_dict on the json representation
-        agent_assignment_policy_parameter_model_dict = AgentAssignmentPolicyParameter.from_dict(
-            agent_assignment_policy_parameter_model_json
-        ).__dict__
-        agent_assignment_policy_parameter_model2 = AgentAssignmentPolicyParameter(
-            **agent_assignment_policy_parameter_model_dict
-        )
+        agent_assignment_policy_parameter_model_dict = AgentAssignmentPolicyParameter.from_dict(agent_assignment_policy_parameter_model_json).__dict__
+        agent_assignment_policy_parameter_model2 = AgentAssignmentPolicyParameter(**agent_assignment_policy_parameter_model_dict)
 
         # Verify the model instances are equivalent
         assert agent_assignment_policy_parameter_model == agent_assignment_policy_parameter_model2
@@ -13132,12 +12967,12 @@ class TestModel_AgentData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -13226,7 +13061,7 @@ class TestModel_AgentDataList:
 
         # Construct a json representation of a AgentDataList model
         agent_data_list_model_json = {}
-        agent_data_list_model_json['offset'] = 26
+        agent_data_list_model_json['offset'] = 0
         agent_data_list_model_json['agents'] = [agent_data_lite_model]
 
         # Construct a model instance of AgentDataList by calling from_dict on the json representation
@@ -13322,9 +13157,7 @@ class TestModel_AgentDataRecentDeployJob:
         assert agent_data_recent_deploy_job_model != False
 
         # Construct a model instance of AgentDataRecentDeployJob by calling from_dict on the json representation
-        agent_data_recent_deploy_job_model_dict = AgentDataRecentDeployJob.from_dict(
-            agent_data_recent_deploy_job_model_json
-        ).__dict__
+        agent_data_recent_deploy_job_model_dict = AgentDataRecentDeployJob.from_dict(agent_data_recent_deploy_job_model_json).__dict__
         agent_data_recent_deploy_job_model2 = AgentDataRecentDeployJob(**agent_data_recent_deploy_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13354,15 +13187,11 @@ class TestModel_AgentDataRecentDestroyJob:
         agent_data_recent_destroy_job_model_json['log_url'] = 'testString'
 
         # Construct a model instance of AgentDataRecentDestroyJob by calling from_dict on the json representation
-        agent_data_recent_destroy_job_model = AgentDataRecentDestroyJob.from_dict(
-            agent_data_recent_destroy_job_model_json
-        )
+        agent_data_recent_destroy_job_model = AgentDataRecentDestroyJob.from_dict(agent_data_recent_destroy_job_model_json)
         assert agent_data_recent_destroy_job_model != False
 
         # Construct a model instance of AgentDataRecentDestroyJob by calling from_dict on the json representation
-        agent_data_recent_destroy_job_model_dict = AgentDataRecentDestroyJob.from_dict(
-            agent_data_recent_destroy_job_model_json
-        ).__dict__
+        agent_data_recent_destroy_job_model_dict = AgentDataRecentDestroyJob.from_dict(agent_data_recent_destroy_job_model_json).__dict__
         agent_data_recent_destroy_job_model2 = AgentDataRecentDestroyJob(**agent_data_recent_destroy_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13396,9 +13225,7 @@ class TestModel_AgentDataRecentHealthJob:
         assert agent_data_recent_health_job_model != False
 
         # Construct a model instance of AgentDataRecentHealthJob by calling from_dict on the json representation
-        agent_data_recent_health_job_model_dict = AgentDataRecentHealthJob.from_dict(
-            agent_data_recent_health_job_model_json
-        ).__dict__
+        agent_data_recent_health_job_model_dict = AgentDataRecentHealthJob.from_dict(agent_data_recent_health_job_model_json).__dict__
         agent_data_recent_health_job_model2 = AgentDataRecentHealthJob(**agent_data_recent_health_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13432,9 +13259,7 @@ class TestModel_AgentDataRecentPrsJob:
         assert agent_data_recent_prs_job_model != False
 
         # Construct a model instance of AgentDataRecentPrsJob by calling from_dict on the json representation
-        agent_data_recent_prs_job_model_dict = AgentDataRecentPrsJob.from_dict(
-            agent_data_recent_prs_job_model_json
-        ).__dict__
+        agent_data_recent_prs_job_model_dict = AgentDataRecentPrsJob.from_dict(agent_data_recent_prs_job_model_json).__dict__
         agent_data_recent_prs_job_model2 = AgentDataRecentPrsJob(**agent_data_recent_prs_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13647,52 +13472,6 @@ class TestModel_AgentKPIDataLite:
         assert agent_kpi_data_lite_model_json2 == agent_kpi_data_lite_model_json
 
 
-class TestModel_AgentList:
-    """
-    Test Class for AgentList
-    """
-
-    def test_agent_list_serialization(self):
-        """
-        Test serialization/deserialization for AgentList
-        """
-
-        # Construct dict forms of any model objects needed in order to build this model.
-
-        agent_user_state_model = {}  # AgentUserState
-        agent_user_state_model['state'] = 'enable'
-
-        agent_model = {}  # Agent
-        agent_model['name'] = 'MyDevAgent'
-        agent_model['description'] = 'Register agent'
-        agent_model['resource_group'] = 'testString'
-        agent_model['tags'] = ['testString']
-        agent_model['agent_location'] = 'us-south'
-        agent_model['location'] = 'us-south'
-        agent_model['profile_id'] = 'testString'
-        agent_model['user_state'] = agent_user_state_model
-
-        # Construct a json representation of a AgentList model
-        agent_list_model_json = {}
-        agent_list_model_json['offset'] = 26
-        agent_list_model_json['agents'] = [agent_model]
-
-        # Construct a model instance of AgentList by calling from_dict on the json representation
-        agent_list_model = AgentList.from_dict(agent_list_model_json)
-        assert agent_list_model != False
-
-        # Construct a model instance of AgentList by calling from_dict on the json representation
-        agent_list_model_dict = AgentList.from_dict(agent_list_model_json).__dict__
-        agent_list_model2 = AgentList(**agent_list_model_dict)
-
-        # Verify the model instances are equivalent
-        assert agent_list_model == agent_list_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        agent_list_model_json2 = agent_list_model.to_dict()
-        assert agent_list_model_json2 == agent_list_model_json
-
-
 class TestModel_AgentMetadataInfo:
     """
     Test Class for AgentMetadataInfo
@@ -13886,37 +13665,6 @@ class TestModel_AgentVersions:
         assert agent_versions_model_json2 == agent_versions_model_json
 
 
-class TestModel_AgentSystemState:
-    """
-    Test Class for AgentSystemState
-    """
-
-    def test_agent_system_state_serialization(self):
-        """
-        Test serialization/deserialization for AgentSystemState
-        """
-
-        # Construct a json representation of a AgentSystemState model
-        agent_system_state_model_json = {}
-        agent_system_state_model_json['state'] = 'error'
-        agent_system_state_model_json['message'] = 'testString'
-
-        # Construct a model instance of AgentSystemState by calling from_dict on the json representation
-        agent_system_state_model = AgentSystemState.from_dict(agent_system_state_model_json)
-        assert agent_system_state_model != False
-
-        # Construct a model instance of AgentSystemState by calling from_dict on the json representation
-        agent_system_state_model_dict = AgentSystemState.from_dict(agent_system_state_model_json).__dict__
-        agent_system_state_model2 = AgentSystemState(**agent_system_state_model_dict)
-
-        # Verify the model instances are equivalent
-        assert agent_system_state_model == agent_system_state_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        agent_system_state_model_json2 = agent_system_state_model.to_dict()
-        assert agent_system_state_model_json2 == agent_system_state_model_json
-
-
 class TestModel_BastionResourceDefinition:
     """
     Test Class for BastionResourceDefinition
@@ -13937,9 +13685,7 @@ class TestModel_BastionResourceDefinition:
         assert bastion_resource_definition_model != False
 
         # Construct a model instance of BastionResourceDefinition by calling from_dict on the json representation
-        bastion_resource_definition_model_dict = BastionResourceDefinition.from_dict(
-            bastion_resource_definition_model_json
-        ).__dict__
+        bastion_resource_definition_model_dict = BastionResourceDefinition.from_dict(bastion_resource_definition_model_json).__dict__
         bastion_resource_definition_model2 = BastionResourceDefinition(**bastion_resource_definition_model_dict)
 
         # Verify the model instances are equivalent
@@ -14108,37 +13854,6 @@ class TestModel_CommandsInfo:
         assert commands_info_model_json2 == commands_info_model_json
 
 
-class TestModel_ConnectionState:
-    """
-    Test Class for ConnectionState
-    """
-
-    def test_connection_state_serialization(self):
-        """
-        Test serialization/deserialization for ConnectionState
-        """
-
-        # Construct a json representation of a ConnectionState model
-        connection_state_model_json = {}
-        connection_state_model_json['state'] = 'Connected'
-        connection_state_model_json['checked_at'] = '2019-01-01T12:00:00Z'
-
-        # Construct a model instance of ConnectionState by calling from_dict on the json representation
-        connection_state_model = ConnectionState.from_dict(connection_state_model_json)
-        assert connection_state_model != False
-
-        # Construct a model instance of ConnectionState by calling from_dict on the json representation
-        connection_state_model_dict = ConnectionState.from_dict(connection_state_model_json).__dict__
-        connection_state_model2 = ConnectionState(**connection_state_model_dict)
-
-        # Verify the model instances are equivalent
-        assert connection_state_model == connection_state_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        connection_state_model_json2 = connection_state_model.to_dict()
-        assert connection_state_model_json2 == connection_state_model_json
-
-
 class TestModel_CredentialVariableData:
     """
     Test Class for CredentialVariableData
@@ -14161,16 +13876,14 @@ class TestModel_CredentialVariableData:
         credential_variable_metadata_model['immutable'] = True
         credential_variable_metadata_model['hidden'] = True
         credential_variable_metadata_model['required'] = True
-        credential_variable_metadata_model['position'] = 38
+        credential_variable_metadata_model['position'] = 0
         credential_variable_metadata_model['group_by'] = 'testString'
         credential_variable_metadata_model['source'] = 'testString'
 
         # Construct a json representation of a CredentialVariableData model
         credential_variable_data_model_json = {}
         credential_variable_data_model_json['name'] = 'testString'
-        credential_variable_data_model_json['value'] = (
-            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
-        )
+        credential_variable_data_model_json['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
         credential_variable_data_model_json['use_default'] = True
         credential_variable_data_model_json['metadata'] = credential_variable_metadata_model
 
@@ -14179,9 +13892,7 @@ class TestModel_CredentialVariableData:
         assert credential_variable_data_model != False
 
         # Construct a model instance of CredentialVariableData by calling from_dict on the json representation
-        credential_variable_data_model_dict = CredentialVariableData.from_dict(
-            credential_variable_data_model_json
-        ).__dict__
+        credential_variable_data_model_dict = CredentialVariableData.from_dict(credential_variable_data_model_json).__dict__
         credential_variable_data_model2 = CredentialVariableData(**credential_variable_data_model_dict)
 
         # Verify the model instances are equivalent
@@ -14213,20 +13924,16 @@ class TestModel_CredentialVariableMetadata:
         credential_variable_metadata_model_json['immutable'] = True
         credential_variable_metadata_model_json['hidden'] = True
         credential_variable_metadata_model_json['required'] = True
-        credential_variable_metadata_model_json['position'] = 38
+        credential_variable_metadata_model_json['position'] = 0
         credential_variable_metadata_model_json['group_by'] = 'testString'
         credential_variable_metadata_model_json['source'] = 'testString'
 
         # Construct a model instance of CredentialVariableMetadata by calling from_dict on the json representation
-        credential_variable_metadata_model = CredentialVariableMetadata.from_dict(
-            credential_variable_metadata_model_json
-        )
+        credential_variable_metadata_model = CredentialVariableMetadata.from_dict(credential_variable_metadata_model_json)
         assert credential_variable_metadata_model != False
 
         # Construct a model instance of CredentialVariableMetadata by calling from_dict on the json representation
-        credential_variable_metadata_model_dict = CredentialVariableMetadata.from_dict(
-            credential_variable_metadata_model_json
-        ).__dict__
+        credential_variable_metadata_model_dict = CredentialVariableMetadata.from_dict(credential_variable_metadata_model_json).__dict__
         credential_variable_metadata_model2 = CredentialVariableMetadata(**credential_variable_metadata_model_dict)
 
         # Verify the model instances are equivalent
@@ -14321,9 +14028,7 @@ class TestModel_EnvVariableRequestMap:
         assert env_variable_request_map_model != False
 
         # Construct a model instance of EnvVariableRequestMap by calling from_dict on the json representation
-        env_variable_request_map_model_dict = EnvVariableRequestMap.from_dict(
-            env_variable_request_map_model_json
-        ).__dict__
+        env_variable_request_map_model_dict = EnvVariableRequestMap.from_dict(env_variable_request_map_model_json).__dict__
         env_variable_request_map_model2 = EnvVariableRequestMap(**env_variable_request_map_model_dict)
 
         # Verify the model instances are equivalent
@@ -14388,9 +14093,7 @@ class TestModel_EnvironmentValuesMetadata:
         assert environment_values_metadata_model != False
 
         # Construct a model instance of EnvironmentValuesMetadata by calling from_dict on the json representation
-        environment_values_metadata_model_dict = EnvironmentValuesMetadata.from_dict(
-            environment_values_metadata_model_json
-        ).__dict__
+        environment_values_metadata_model_dict = EnvironmentValuesMetadata.from_dict(environment_values_metadata_model_json).__dict__
         environment_values_metadata_model2 = EnvironmentValuesMetadata(**environment_values_metadata_model_dict)
 
         # Verify the model instances are equivalent
@@ -14499,6 +14202,145 @@ class TestModel_GitSource:
         assert git_source_model_json2 == git_source_model_json
 
 
+class TestModel_Group:
+    """
+    Test Class for Group
+    """
+
+    def test_group_serialization(self):
+        """
+        Test serialization/deserialization for Group
+        """
+
+        # Construct dict forms of any model objects needed in order to build this model.
+
+        variable_metadata_model = {}  # VariableMetadata
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        variable_data_model = {}  # VariableData
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        # Construct a json representation of a Group model
+        group_model_json = {}
+        group_model_json['name'] = 'testString'
+        group_model_json['vars'] = [variable_data_model]
+        group_model_json['credentials'] = [credential_variable_data_model]
+        group_model_json['hosts'] = [host_model]
+
+        # Construct a model instance of Group by calling from_dict on the json representation
+        group_model = Group.from_dict(group_model_json)
+        assert group_model != False
+
+        # Construct a model instance of Group by calling from_dict on the json representation
+        group_model_dict = Group.from_dict(group_model_json).__dict__
+        group_model2 = Group(**group_model_dict)
+
+        # Verify the model instances are equivalent
+        assert group_model == group_model2
+
+        # Convert model instance back to dict and verify no loss of data
+        group_model_json2 = group_model.to_dict()
+        assert group_model_json2 == group_model_json
+
+
+class TestModel_Host:
+    """
+    Test Class for Host
+    """
+
+    def test_host_serialization(self):
+        """
+        Test serialization/deserialization for Host
+        """
+
+        # Construct dict forms of any model objects needed in order to build this model.
+
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        # Construct a json representation of a Host model
+        host_model_json = {}
+        host_model_json['name'] = 'testString'
+        host_model_json['credential'] = [credential_variable_data_model]
+
+        # Construct a model instance of Host by calling from_dict on the json representation
+        host_model = Host.from_dict(host_model_json)
+        assert host_model != False
+
+        # Construct a model instance of Host by calling from_dict on the json representation
+        host_model_dict = Host.from_dict(host_model_json).__dict__
+        host_model2 = Host(**host_model_dict)
+
+        # Verify the model instances are equivalent
+        assert host_model == host_model2
+
+        # Convert model instance back to dict and verify no loss of data
+        host_model_json2 = host_model.to_dict()
+        assert host_model_json2 == host_model_json
+
+
 class TestModel_InjectTerraformTemplateInnerTftParametersItem:
     """
     Test Class for InjectTerraformTemplateInnerTftParametersItem
@@ -14515,37 +14357,19 @@ class TestModel_InjectTerraformTemplateInnerTftParametersItem:
         inject_terraform_template_inner_tft_parameters_item_model_json['value'] = 'testString'
 
         # Construct a model instance of InjectTerraformTemplateInnerTftParametersItem by calling from_dict on the json representation
-        inject_terraform_template_inner_tft_parameters_item_model = (
-            InjectTerraformTemplateInnerTftParametersItem.from_dict(
-                inject_terraform_template_inner_tft_parameters_item_model_json
-            )
-        )
+        inject_terraform_template_inner_tft_parameters_item_model = InjectTerraformTemplateInnerTftParametersItem.from_dict(inject_terraform_template_inner_tft_parameters_item_model_json)
         assert inject_terraform_template_inner_tft_parameters_item_model != False
 
         # Construct a model instance of InjectTerraformTemplateInnerTftParametersItem by calling from_dict on the json representation
-        inject_terraform_template_inner_tft_parameters_item_model_dict = (
-            InjectTerraformTemplateInnerTftParametersItem.from_dict(
-                inject_terraform_template_inner_tft_parameters_item_model_json
-            ).__dict__
-        )
-        inject_terraform_template_inner_tft_parameters_item_model2 = InjectTerraformTemplateInnerTftParametersItem(
-            **inject_terraform_template_inner_tft_parameters_item_model_dict
-        )
+        inject_terraform_template_inner_tft_parameters_item_model_dict = InjectTerraformTemplateInnerTftParametersItem.from_dict(inject_terraform_template_inner_tft_parameters_item_model_json).__dict__
+        inject_terraform_template_inner_tft_parameters_item_model2 = InjectTerraformTemplateInnerTftParametersItem(**inject_terraform_template_inner_tft_parameters_item_model_dict)
 
         # Verify the model instances are equivalent
-        assert (
-            inject_terraform_template_inner_tft_parameters_item_model
-            == inject_terraform_template_inner_tft_parameters_item_model2
-        )
+        assert inject_terraform_template_inner_tft_parameters_item_model == inject_terraform_template_inner_tft_parameters_item_model2
 
         # Convert model instance back to dict and verify no loss of data
-        inject_terraform_template_inner_tft_parameters_item_model_json2 = (
-            inject_terraform_template_inner_tft_parameters_item_model.to_dict()
-        )
-        assert (
-            inject_terraform_template_inner_tft_parameters_item_model_json2
-            == inject_terraform_template_inner_tft_parameters_item_model_json
-        )
+        inject_terraform_template_inner_tft_parameters_item_model_json2 = inject_terraform_template_inner_tft_parameters_item_model.to_dict()
+        assert inject_terraform_template_inner_tft_parameters_item_model_json2 == inject_terraform_template_inner_tft_parameters_item_model_json
 
 
 class TestModel_InjectTerraformTemplateInner:
@@ -14571,23 +14395,15 @@ class TestModel_InjectTerraformTemplateInner:
         inject_terraform_template_inner_model_json['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model_json['injection_type'] = 'testString'
         inject_terraform_template_inner_model_json['tft_name'] = 'testString'
-        inject_terraform_template_inner_model_json['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model_json['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         # Construct a model instance of InjectTerraformTemplateInner by calling from_dict on the json representation
-        inject_terraform_template_inner_model = InjectTerraformTemplateInner.from_dict(
-            inject_terraform_template_inner_model_json
-        )
+        inject_terraform_template_inner_model = InjectTerraformTemplateInner.from_dict(inject_terraform_template_inner_model_json)
         assert inject_terraform_template_inner_model != False
 
         # Construct a model instance of InjectTerraformTemplateInner by calling from_dict on the json representation
-        inject_terraform_template_inner_model_dict = InjectTerraformTemplateInner.from_dict(
-            inject_terraform_template_inner_model_json
-        ).__dict__
-        inject_terraform_template_inner_model2 = InjectTerraformTemplateInner(
-            **inject_terraform_template_inner_model_dict
-        )
+        inject_terraform_template_inner_model_dict = InjectTerraformTemplateInner.from_dict(inject_terraform_template_inner_model_json).__dict__
+        inject_terraform_template_inner_model2 = InjectTerraformTemplateInner(**inject_terraform_template_inner_model_dict)
 
         # Verify the model instances are equivalent
         assert inject_terraform_template_inner_model == inject_terraform_template_inner_model2
@@ -14607,6 +14423,72 @@ class TestModel_InventoryResourceRecord:
         Test serialization/deserialization for InventoryResourceRecord
         """
 
+        # Construct dict forms of any model objects needed in order to build this model.
+
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        bastion_resource_definition_model = {}  # BastionResourceDefinition
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        variable_metadata_model = {}  # VariableMetadata
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        variable_data_model = {}  # VariableData
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        inventory_view_model = {}  # InventoryView
+        inventory_view_model['groups'] = [group_model]
+
         # Construct a json representation of a InventoryResourceRecord model
         inventory_resource_record_model_json = {}
         inventory_resource_record_model_json['name'] = 'testString'
@@ -14615,15 +14497,18 @@ class TestModel_InventoryResourceRecord:
         inventory_resource_record_model_json['resource_group'] = 'testString'
         inventory_resource_record_model_json['inventories_ini'] = 'testString'
         inventory_resource_record_model_json['resource_queries'] = ['testString']
+        inventory_resource_record_model_json['connection_type'] = 'testString'
+        inventory_resource_record_model_json['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model_json['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model_json['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model_json['inventory_view'] = inventory_view_model
 
         # Construct a model instance of InventoryResourceRecord by calling from_dict on the json representation
         inventory_resource_record_model = InventoryResourceRecord.from_dict(inventory_resource_record_model_json)
         assert inventory_resource_record_model != False
 
         # Construct a model instance of InventoryResourceRecord by calling from_dict on the json representation
-        inventory_resource_record_model_dict = InventoryResourceRecord.from_dict(
-            inventory_resource_record_model_json
-        ).__dict__
+        inventory_resource_record_model_dict = InventoryResourceRecord.from_dict(inventory_resource_record_model_json).__dict__
         inventory_resource_record_model2 = InventoryResourceRecord(**inventory_resource_record_model_dict)
 
         # Verify the model instances are equivalent
@@ -14646,6 +14531,70 @@ class TestModel_InventoryResourceRecordList:
 
         # Construct dict forms of any model objects needed in order to build this model.
 
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        bastion_resource_definition_model = {}  # BastionResourceDefinition
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        variable_metadata_model = {}  # VariableMetadata
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        variable_data_model = {}  # VariableData
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        inventory_view_model = {}  # InventoryView
+        inventory_view_model['groups'] = [group_model]
+
         inventory_resource_record_model = {}  # InventoryResourceRecord
         inventory_resource_record_model['name'] = 'testString'
         inventory_resource_record_model['description'] = 'testString'
@@ -14653,24 +14602,25 @@ class TestModel_InventoryResourceRecordList:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a json representation of a InventoryResourceRecordList model
         inventory_resource_record_list_model_json = {}
-        inventory_resource_record_list_model_json['total_count'] = 26
-        inventory_resource_record_list_model_json['limit'] = 26
-        inventory_resource_record_list_model_json['offset'] = 26
+        inventory_resource_record_list_model_json['total_count'] = 0
+        inventory_resource_record_list_model_json['limit'] = 0
+        inventory_resource_record_list_model_json['offset'] = 0
         inventory_resource_record_list_model_json['inventories'] = [inventory_resource_record_model]
 
         # Construct a model instance of InventoryResourceRecordList by calling from_dict on the json representation
-        inventory_resource_record_list_model = InventoryResourceRecordList.from_dict(
-            inventory_resource_record_list_model_json
-        )
+        inventory_resource_record_list_model = InventoryResourceRecordList.from_dict(inventory_resource_record_list_model_json)
         assert inventory_resource_record_list_model != False
 
         # Construct a model instance of InventoryResourceRecordList by calling from_dict on the json representation
-        inventory_resource_record_list_model_dict = InventoryResourceRecordList.from_dict(
-            inventory_resource_record_list_model_json
-        ).__dict__
+        inventory_resource_record_list_model_dict = InventoryResourceRecordList.from_dict(inventory_resource_record_list_model_json).__dict__
         inventory_resource_record_list_model2 = InventoryResourceRecordList(**inventory_resource_record_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -14679,6 +14629,95 @@ class TestModel_InventoryResourceRecordList:
         # Convert model instance back to dict and verify no loss of data
         inventory_resource_record_list_model_json2 = inventory_resource_record_list_model.to_dict()
         assert inventory_resource_record_list_model_json2 == inventory_resource_record_list_model_json
+
+
+class TestModel_InventoryView:
+    """
+    Test Class for InventoryView
+    """
+
+    def test_inventory_view_serialization(self):
+        """
+        Test serialization/deserialization for InventoryView
+        """
+
+        # Construct dict forms of any model objects needed in order to build this model.
+
+        variable_metadata_model = {}  # VariableMetadata
+        variable_metadata_model['type'] = 'boolean'
+        variable_metadata_model['aliases'] = ['testString']
+        variable_metadata_model['description'] = 'testString'
+        variable_metadata_model['cloud_data_type'] = 'testString'
+        variable_metadata_model['default_value'] = 'testString'
+        variable_metadata_model['link_status'] = 'normal'
+        variable_metadata_model['secure'] = True
+        variable_metadata_model['immutable'] = True
+        variable_metadata_model['hidden'] = True
+        variable_metadata_model['required'] = True
+        variable_metadata_model['options'] = ['testString']
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
+        variable_metadata_model['matches'] = 'testString'
+        variable_metadata_model['position'] = 0
+        variable_metadata_model['group_by'] = 'testString'
+        variable_metadata_model['source'] = 'testString'
+
+        variable_data_model = {}  # VariableData
+        variable_data_model['name'] = 'testString'
+        variable_data_model['value'] = 'testString'
+        variable_data_model['use_default'] = True
+        variable_data_model['metadata'] = variable_metadata_model
+
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        # Construct a json representation of a InventoryView model
+        inventory_view_model_json = {}
+        inventory_view_model_json['groups'] = [group_model]
+
+        # Construct a model instance of InventoryView by calling from_dict on the json representation
+        inventory_view_model = InventoryView.from_dict(inventory_view_model_json)
+        assert inventory_view_model != False
+
+        # Construct a model instance of InventoryView by calling from_dict on the json representation
+        inventory_view_model_dict = InventoryView.from_dict(inventory_view_model_json).__dict__
+        inventory_view_model2 = InventoryView(**inventory_view_model_dict)
+
+        # Verify the model instances are equivalent
+        assert inventory_view_model == inventory_view_model2
+
+        # Convert model instance back to dict and verify no loss of data
+        inventory_view_model_json2 = inventory_view_model.to_dict()
+        assert inventory_view_model_json2 == inventory_view_model_json
 
 
 class TestModel_Job:
@@ -14705,12 +14744,12 @@ class TestModel_Job:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -14739,7 +14778,7 @@ class TestModel_Job:
         job_status_template_model = {}  # JobStatusTemplate
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -14791,7 +14830,7 @@ class TestModel_Job:
         job_data_template_model = {}  # JobDataTemplate
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -14807,6 +14846,43 @@ class TestModel_Job:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        bastion_resource_definition_model = {}  # BastionResourceDefinition
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        inventory_view_model = {}  # InventoryView
+        inventory_view_model['groups'] = [group_model]
+
         inventory_resource_record_model = {}  # InventoryResourceRecord
         inventory_resource_record_model['name'] = 'testString'
         inventory_resource_record_model['description'] = 'testString'
@@ -14814,6 +14890,11 @@ class TestModel_Job:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         job_data_action_model = {}  # JobDataAction
         job_data_action_model['action_name'] = 'testString'
@@ -14895,10 +14976,6 @@ class TestModel_Job:
         job_data_model['action_job_data'] = job_data_action_model
         job_data_model['system_job_data'] = job_data_system_model
         job_data_model['flow_job_data'] = job_data_flow_model
-
-        bastion_resource_definition_model = {}  # BastionResourceDefinition
-        bastion_resource_definition_model['name'] = 'testString'
-        bastion_resource_definition_model['host'] = 'testString'
 
         job_log_summary_repo_download_job_model = {}  # JobLogSummaryRepoDownloadJob
 
@@ -14998,12 +15075,12 @@ class TestModel_JobData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15016,7 +15093,7 @@ class TestModel_JobData:
         job_data_template_model = {}  # JobDataTemplate
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -15032,6 +15109,43 @@ class TestModel_JobData:
         job_data_workspace_model['template_data'] = [job_data_template_model]
         job_data_workspace_model['updated_at'] = '2019-01-01T12:00:00Z'
 
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        bastion_resource_definition_model = {}  # BastionResourceDefinition
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        inventory_view_model = {}  # InventoryView
+        inventory_view_model['groups'] = [group_model]
+
         inventory_resource_record_model = {}  # InventoryResourceRecord
         inventory_resource_record_model['name'] = 'testString'
         inventory_resource_record_model['description'] = 'testString'
@@ -15039,6 +15153,11 @@ class TestModel_JobData:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         job_data_action_model = {}  # JobDataAction
         job_data_action_model['action_name'] = 'testString'
@@ -15162,12 +15281,12 @@ class TestModel_JobDataAction:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15177,6 +15296,43 @@ class TestModel_JobDataAction:
         variable_data_model['use_default'] = True
         variable_data_model['metadata'] = variable_metadata_model
 
+        credential_variable_metadata_model = {}  # CredentialVariableMetadata
+        credential_variable_metadata_model['type'] = 'string'
+        credential_variable_metadata_model['aliases'] = ['testString']
+        credential_variable_metadata_model['description'] = 'testString'
+        credential_variable_metadata_model['cloud_data_type'] = 'testString'
+        credential_variable_metadata_model['default_value'] = 'testString'
+        credential_variable_metadata_model['link_status'] = 'normal'
+        credential_variable_metadata_model['immutable'] = True
+        credential_variable_metadata_model['hidden'] = True
+        credential_variable_metadata_model['required'] = True
+        credential_variable_metadata_model['position'] = 0
+        credential_variable_metadata_model['group_by'] = 'testString'
+        credential_variable_metadata_model['source'] = 'testString'
+
+        credential_variable_data_model = {}  # CredentialVariableData
+        credential_variable_data_model['name'] = 'testString'
+        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['use_default'] = True
+        credential_variable_data_model['metadata'] = credential_variable_metadata_model
+
+        bastion_resource_definition_model = {}  # BastionResourceDefinition
+        bastion_resource_definition_model['name'] = 'testString'
+        bastion_resource_definition_model['host'] = 'testString'
+
+        host_model = {}  # Host
+        host_model['name'] = 'testString'
+        host_model['credential'] = [credential_variable_data_model]
+
+        group_model = {}  # Group
+        group_model['name'] = 'testString'
+        group_model['vars'] = [variable_data_model]
+        group_model['credentials'] = [credential_variable_data_model]
+        group_model['hosts'] = [host_model]
+
+        inventory_view_model = {}  # InventoryView
+        inventory_view_model['groups'] = [group_model]
+
         inventory_resource_record_model = {}  # InventoryResourceRecord
         inventory_resource_record_model['name'] = 'testString'
         inventory_resource_record_model['description'] = 'testString'
@@ -15184,6 +15340,11 @@ class TestModel_JobDataAction:
         inventory_resource_record_model['resource_group'] = 'testString'
         inventory_resource_record_model['inventories_ini'] = 'testString'
         inventory_resource_record_model['resource_queries'] = ['testString']
+        inventory_resource_record_model['connection_type'] = 'testString'
+        inventory_resource_record_model['credentials'] = [credential_variable_data_model]
+        inventory_resource_record_model['bastion'] = bastion_resource_definition_model
+        inventory_resource_record_model['bastion_credential'] = credential_variable_data_model
+        inventory_resource_record_model['inventory_view'] = inventory_view_model
 
         # Construct a json representation of a JobDataAction model
         job_data_action_model_json = {}
@@ -15269,12 +15430,12 @@ class TestModel_JobDataFlow:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15383,12 +15544,12 @@ class TestModel_JobDataTemplate:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15402,7 +15563,7 @@ class TestModel_JobDataTemplate:
         job_data_template_model_json = {}
         job_data_template_model_json['template_id'] = 'testString'
         job_data_template_model_json['template_name'] = 'testString'
-        job_data_template_model_json['flow_index'] = 38
+        job_data_template_model_json['flow_index'] = 0
         job_data_template_model_json['inputs'] = [variable_data_model]
         job_data_template_model_json['outputs'] = [variable_data_model]
         job_data_template_model_json['settings'] = [variable_data_model]
@@ -15482,12 +15643,12 @@ class TestModel_JobDataWorkItem:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15558,9 +15719,7 @@ class TestModel_JobDataWorkItemLastJob:
         assert job_data_work_item_last_job_model != False
 
         # Construct a model instance of JobDataWorkItemLastJob by calling from_dict on the json representation
-        job_data_work_item_last_job_model_dict = JobDataWorkItemLastJob.from_dict(
-            job_data_work_item_last_job_model_json
-        ).__dict__
+        job_data_work_item_last_job_model_dict = JobDataWorkItemLastJob.from_dict(job_data_work_item_last_job_model_json).__dict__
         job_data_work_item_last_job_model2 = JobDataWorkItemLastJob(**job_data_work_item_last_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -15595,12 +15754,12 @@ class TestModel_JobDataWorkspace:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -15613,7 +15772,7 @@ class TestModel_JobDataWorkspace:
         job_data_template_model = {}  # JobDataTemplate
         job_data_template_model['template_id'] = 'testString'
         job_data_template_model['template_name'] = 'testString'
-        job_data_template_model['flow_index'] = 38
+        job_data_template_model['flow_index'] = 0
         job_data_template_model['inputs'] = [variable_data_model]
         job_data_template_model['outputs'] = [variable_data_model]
         job_data_template_model['settings'] = [variable_data_model]
@@ -15787,7 +15946,7 @@ class TestModel_JobList:
         job_status_template_model = {}  # JobStatusTemplate
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -15893,9 +16052,9 @@ class TestModel_JobList:
 
         # Construct a json representation of a JobList model
         job_list_model_json = {}
-        job_list_model_json['total_count'] = 26
-        job_list_model_json['limit'] = 26
-        job_list_model_json['offset'] = 26
+        job_list_model_json['total_count'] = 0
+        job_list_model_json['limit'] = 0
+        job_list_model_json['offset'] = 0
         job_list_model_json['jobs'] = [job_lite_model]
 
         # Construct a model instance of JobList by calling from_dict on the json representation
@@ -15945,7 +16104,7 @@ class TestModel_JobLite:
         job_status_template_model = {}  # JobStatusTemplate
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -16223,9 +16382,7 @@ class TestModel_JobLogSummaryWorkitems:
         assert job_log_summary_workitems_model != False
 
         # Construct a model instance of JobLogSummaryWorkitems by calling from_dict on the json representation
-        job_log_summary_workitems_model_dict = JobLogSummaryWorkitems.from_dict(
-            job_log_summary_workitems_model_json
-        ).__dict__
+        job_log_summary_workitems_model_dict = JobLogSummaryWorkitems.from_dict(job_log_summary_workitems_model_json).__dict__
         job_log_summary_workitems_model2 = JobLogSummaryWorkitems(**job_log_summary_workitems_model_dict)
 
         # Verify the model instances are equivalent
@@ -16265,9 +16422,7 @@ class TestModel_JobLogSummaryActionJob:
         assert job_log_summary_action_job_model != False
 
         # Construct a model instance of JobLogSummaryActionJob by calling from_dict on the json representation
-        job_log_summary_action_job_model_dict = JobLogSummaryActionJob.from_dict(
-            job_log_summary_action_job_model_json
-        ).__dict__
+        job_log_summary_action_job_model_dict = JobLogSummaryActionJob.from_dict(job_log_summary_action_job_model_json).__dict__
         job_log_summary_action_job_model2 = JobLogSummaryActionJob(**job_log_summary_action_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16298,18 +16453,12 @@ class TestModel_JobLogSummaryActionJobRecap:
         job_log_summary_action_job_recap_model_json['unreachable'] = 72.5
 
         # Construct a model instance of JobLogSummaryActionJobRecap by calling from_dict on the json representation
-        job_log_summary_action_job_recap_model = JobLogSummaryActionJobRecap.from_dict(
-            job_log_summary_action_job_recap_model_json
-        )
+        job_log_summary_action_job_recap_model = JobLogSummaryActionJobRecap.from_dict(job_log_summary_action_job_recap_model_json)
         assert job_log_summary_action_job_recap_model != False
 
         # Construct a model instance of JobLogSummaryActionJobRecap by calling from_dict on the json representation
-        job_log_summary_action_job_recap_model_dict = JobLogSummaryActionJobRecap.from_dict(
-            job_log_summary_action_job_recap_model_json
-        ).__dict__
-        job_log_summary_action_job_recap_model2 = JobLogSummaryActionJobRecap(
-            **job_log_summary_action_job_recap_model_dict
-        )
+        job_log_summary_action_job_recap_model_dict = JobLogSummaryActionJobRecap.from_dict(job_log_summary_action_job_recap_model_json).__dict__
+        job_log_summary_action_job_recap_model2 = JobLogSummaryActionJobRecap(**job_log_summary_action_job_recap_model_dict)
 
         # Verify the model instances are equivalent
         assert job_log_summary_action_job_recap_model == job_log_summary_action_job_recap_model2
@@ -16345,9 +16494,7 @@ class TestModel_JobLogSummaryFlowJob:
         assert job_log_summary_flow_job_model != False
 
         # Construct a model instance of JobLogSummaryFlowJob by calling from_dict on the json representation
-        job_log_summary_flow_job_model_dict = JobLogSummaryFlowJob.from_dict(
-            job_log_summary_flow_job_model_json
-        ).__dict__
+        job_log_summary_flow_job_model_dict = JobLogSummaryFlowJob.from_dict(job_log_summary_flow_job_model_json).__dict__
         job_log_summary_flow_job_model2 = JobLogSummaryFlowJob(**job_log_summary_flow_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16379,9 +16526,7 @@ class TestModel_JobLogSummaryLogErrors:
         assert job_log_summary_log_errors_model != False
 
         # Construct a model instance of JobLogSummaryLogErrors by calling from_dict on the json representation
-        job_log_summary_log_errors_model_dict = JobLogSummaryLogErrors.from_dict(
-            job_log_summary_log_errors_model_json
-        ).__dict__
+        job_log_summary_log_errors_model_dict = JobLogSummaryLogErrors.from_dict(job_log_summary_log_errors_model_json).__dict__
         job_log_summary_log_errors_model2 = JobLogSummaryLogErrors(**job_log_summary_log_errors_model_dict)
 
         # Verify the model instances are equivalent
@@ -16406,18 +16551,12 @@ class TestModel_JobLogSummaryRepoDownloadJob:
         job_log_summary_repo_download_job_model_json = {}
 
         # Construct a model instance of JobLogSummaryRepoDownloadJob by calling from_dict on the json representation
-        job_log_summary_repo_download_job_model = JobLogSummaryRepoDownloadJob.from_dict(
-            job_log_summary_repo_download_job_model_json
-        )
+        job_log_summary_repo_download_job_model = JobLogSummaryRepoDownloadJob.from_dict(job_log_summary_repo_download_job_model_json)
         assert job_log_summary_repo_download_job_model != False
 
         # Construct a model instance of JobLogSummaryRepoDownloadJob by calling from_dict on the json representation
-        job_log_summary_repo_download_job_model_dict = JobLogSummaryRepoDownloadJob.from_dict(
-            job_log_summary_repo_download_job_model_json
-        ).__dict__
-        job_log_summary_repo_download_job_model2 = JobLogSummaryRepoDownloadJob(
-            **job_log_summary_repo_download_job_model_dict
-        )
+        job_log_summary_repo_download_job_model_dict = JobLogSummaryRepoDownloadJob.from_dict(job_log_summary_repo_download_job_model_json).__dict__
+        job_log_summary_repo_download_job_model2 = JobLogSummaryRepoDownloadJob(**job_log_summary_repo_download_job_model_dict)
 
         # Verify the model instances are equivalent
         assert job_log_summary_repo_download_job_model == job_log_summary_repo_download_job_model2
@@ -16447,9 +16586,7 @@ class TestModel_JobLogSummarySystemJob:
         assert job_log_summary_system_job_model != False
 
         # Construct a model instance of JobLogSummarySystemJob by calling from_dict on the json representation
-        job_log_summary_system_job_model_dict = JobLogSummarySystemJob.from_dict(
-            job_log_summary_system_job_model_json
-        ).__dict__
+        job_log_summary_system_job_model_dict = JobLogSummarySystemJob.from_dict(job_log_summary_system_job_model_json).__dict__
         job_log_summary_system_job_model2 = JobLogSummarySystemJob(**job_log_summary_system_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16474,15 +16611,11 @@ class TestModel_JobLogSummaryWorkspaceJob:
         job_log_summary_workspace_job_model_json = {}
 
         # Construct a model instance of JobLogSummaryWorkspaceJob by calling from_dict on the json representation
-        job_log_summary_workspace_job_model = JobLogSummaryWorkspaceJob.from_dict(
-            job_log_summary_workspace_job_model_json
-        )
+        job_log_summary_workspace_job_model = JobLogSummaryWorkspaceJob.from_dict(job_log_summary_workspace_job_model_json)
         assert job_log_summary_workspace_job_model != False
 
         # Construct a model instance of JobLogSummaryWorkspaceJob by calling from_dict on the json representation
-        job_log_summary_workspace_job_model_dict = JobLogSummaryWorkspaceJob.from_dict(
-            job_log_summary_workspace_job_model_json
-        ).__dict__
+        job_log_summary_workspace_job_model_dict = JobLogSummaryWorkspaceJob.from_dict(job_log_summary_workspace_job_model_json).__dict__
         job_log_summary_workspace_job_model2 = JobLogSummaryWorkspaceJob(**job_log_summary_workspace_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16524,7 +16657,7 @@ class TestModel_JobStatus:
         job_status_template_model = {}  # JobStatusTemplate
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -16684,18 +16817,12 @@ class TestModel_JobStatusSchematicsResources:
         job_status_schematics_resources_model_json['updated_at'] = '2019-01-01T12:00:00Z'
 
         # Construct a model instance of JobStatusSchematicsResources by calling from_dict on the json representation
-        job_status_schematics_resources_model = JobStatusSchematicsResources.from_dict(
-            job_status_schematics_resources_model_json
-        )
+        job_status_schematics_resources_model = JobStatusSchematicsResources.from_dict(job_status_schematics_resources_model_json)
         assert job_status_schematics_resources_model != False
 
         # Construct a model instance of JobStatusSchematicsResources by calling from_dict on the json representation
-        job_status_schematics_resources_model_dict = JobStatusSchematicsResources.from_dict(
-            job_status_schematics_resources_model_json
-        ).__dict__
-        job_status_schematics_resources_model2 = JobStatusSchematicsResources(
-            **job_status_schematics_resources_model_dict
-        )
+        job_status_schematics_resources_model_dict = JobStatusSchematicsResources.from_dict(job_status_schematics_resources_model_json).__dict__
+        job_status_schematics_resources_model2 = JobStatusSchematicsResources(**job_status_schematics_resources_model_dict)
 
         # Verify the model instances are equivalent
         assert job_status_schematics_resources_model == job_status_schematics_resources_model2
@@ -16760,7 +16887,7 @@ class TestModel_JobStatusTemplate:
         job_status_template_model_json = {}
         job_status_template_model_json['template_id'] = 'testString'
         job_status_template_model_json['template_name'] = 'testString'
-        job_status_template_model_json['flow_index'] = 38
+        job_status_template_model_json['flow_index'] = 0
         job_status_template_model_json['status_code'] = 'job_pending'
         job_status_template_model_json['status_message'] = 'testString'
         job_status_template_model_json['updated_at'] = '2019-01-01T12:00:00Z'
@@ -16847,7 +16974,7 @@ class TestModel_JobStatusWorkspace:
         job_status_template_model = {}  # JobStatusTemplate
         job_status_template_model['template_id'] = 'testString'
         job_status_template_model['template_name'] = 'testString'
-        job_status_template_model['flow_index'] = 38
+        job_status_template_model['flow_index'] = 0
         job_status_template_model['status_code'] = 'job_pending'
         job_status_template_model['status_message'] = 'testString'
         job_status_template_model['updated_at'] = '2019-01-01T12:00:00Z'
@@ -16906,9 +17033,9 @@ class TestModel_KMSDiscovery:
 
         # Construct a json representation of a KMSDiscovery model
         kms_discovery_model_json = {}
-        kms_discovery_model_json['total_count'] = 26
-        kms_discovery_model_json['limit'] = 26
-        kms_discovery_model_json['offset'] = 26
+        kms_discovery_model_json['total_count'] = 0
+        kms_discovery_model_json['limit'] = 0
+        kms_discovery_model_json['offset'] = 0
         kms_discovery_model_json['kms_instances'] = [kms_instances_model]
 
         # Construct a model instance of KMSDiscovery by calling from_dict on the json representation
@@ -17070,9 +17197,7 @@ class TestModel_KMSSettingsPrimaryCrk:
         assert kms_settings_primary_crk_model != False
 
         # Construct a model instance of KMSSettingsPrimaryCrk by calling from_dict on the json representation
-        kms_settings_primary_crk_model_dict = KMSSettingsPrimaryCrk.from_dict(
-            kms_settings_primary_crk_model_json
-        ).__dict__
+        kms_settings_primary_crk_model_dict = KMSSettingsPrimaryCrk.from_dict(kms_settings_primary_crk_model_json).__dict__
         kms_settings_primary_crk_model2 = KMSSettingsPrimaryCrk(**kms_settings_primary_crk_model_dict)
 
         # Verify the model instances are equivalent
@@ -17104,9 +17229,7 @@ class TestModel_KMSSettingsSecondaryCrk:
         assert kms_settings_secondary_crk_model != False
 
         # Construct a model instance of KMSSettingsSecondaryCrk by calling from_dict on the json representation
-        kms_settings_secondary_crk_model_dict = KMSSettingsSecondaryCrk.from_dict(
-            kms_settings_secondary_crk_model_json
-        ).__dict__
+        kms_settings_secondary_crk_model_dict = KMSSettingsSecondaryCrk.from_dict(kms_settings_secondary_crk_model_json).__dict__
         kms_settings_secondary_crk_model2 = KMSSettingsSecondaryCrk(**kms_settings_secondary_crk_model_dict)
 
         # Verify the model instances are equivalent
@@ -17234,13 +17357,13 @@ class TestModel_LogSummary:
         log_summary_model_json = {}
         log_summary_model_json['activity_status'] = 'testString'
         log_summary_model_json['detected_template_type'] = 'testString'
-        log_summary_model_json['discarded_files'] = 26
+        log_summary_model_json['discarded_files'] = 0
         log_summary_model_json['error'] = 'testString'
-        log_summary_model_json['resources_added'] = 26
-        log_summary_model_json['resources_destroyed'] = 26
-        log_summary_model_json['resources_modified'] = 26
-        log_summary_model_json['scanned_files'] = 26
-        log_summary_model_json['template_variable_count'] = 26
+        log_summary_model_json['resources_added'] = 0
+        log_summary_model_json['resources_destroyed'] = 0
+        log_summary_model_json['resources_modified'] = 0
+        log_summary_model_json['scanned_files'] = 0
+        log_summary_model_json['template_variable_count'] = 0
         log_summary_model_json['time_taken'] = 72.5
 
         # Construct a model instance of LogSummary by calling from_dict on the json representation
@@ -17373,7 +17496,7 @@ class TestModel_PolicyList:
 
         # Construct a json representation of a PolicyList model
         policy_list_model_json = {}
-        policy_list_model_json['offset'] = 26
+        policy_list_model_json['offset'] = 0
 
         # Construct a model instance of PolicyList by calling from_dict on the json representation
         policy_list_model = PolicyList.from_dict(policy_list_model_json)
@@ -17570,9 +17693,7 @@ class TestModel_ResourceGroupResponse:
         assert resource_group_response_model != False
 
         # Construct a model instance of ResourceGroupResponse by calling from_dict on the json representation
-        resource_group_response_model_dict = ResourceGroupResponse.from_dict(
-            resource_group_response_model_json
-        ).__dict__
+        resource_group_response_model_dict = ResourceGroupResponse.from_dict(resource_group_response_model_json).__dict__
         resource_group_response_model2 = ResourceGroupResponse(**resource_group_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -17727,9 +17848,9 @@ class TestModel_ResourceQueryRecordList:
 
         # Construct a json representation of a ResourceQueryRecordList model
         resource_query_record_list_model_json = {}
-        resource_query_record_list_model_json['total_count'] = 26
-        resource_query_record_list_model_json['limit'] = 26
-        resource_query_record_list_model_json['offset'] = 26
+        resource_query_record_list_model_json['total_count'] = 0
+        resource_query_record_list_model_json['limit'] = 0
+        resource_query_record_list_model_json['offset'] = 0
         resource_query_record_list_model_json['resource_queries'] = [resource_query_record_model]
 
         # Construct a model instance of ResourceQueryRecordList by calling from_dict on the json representation
@@ -17737,9 +17858,7 @@ class TestModel_ResourceQueryRecordList:
         assert resource_query_record_list_model != False
 
         # Construct a model instance of ResourceQueryRecordList by calling from_dict on the json representation
-        resource_query_record_list_model_dict = ResourceQueryRecordList.from_dict(
-            resource_query_record_list_model_json
-        ).__dict__
+        resource_query_record_list_model_dict = ResourceQueryRecordList.from_dict(resource_query_record_list_model_json).__dict__
         resource_query_record_list_model2 = ResourceQueryRecordList(**resource_query_record_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -17775,24 +17894,18 @@ class TestModel_ResourceQueryResponseRecord:
         resource_query_response_record_response_model['query_type'] = 'workspaces'
         resource_query_response_record_response_model['query_condition'] = [resource_query_param_model]
         resource_query_response_record_response_model['query_select'] = ['testString']
-        resource_query_response_record_response_model['query_output'] = [
-            resource_query_response_record_query_output_model
-        ]
+        resource_query_response_record_response_model['query_output'] = [resource_query_response_record_query_output_model]
 
         # Construct a json representation of a ResourceQueryResponseRecord model
         resource_query_response_record_model_json = {}
         resource_query_response_record_model_json['response'] = [resource_query_response_record_response_model]
 
         # Construct a model instance of ResourceQueryResponseRecord by calling from_dict on the json representation
-        resource_query_response_record_model = ResourceQueryResponseRecord.from_dict(
-            resource_query_response_record_model_json
-        )
+        resource_query_response_record_model = ResourceQueryResponseRecord.from_dict(resource_query_response_record_model_json)
         assert resource_query_response_record_model != False
 
         # Construct a model instance of ResourceQueryResponseRecord by calling from_dict on the json representation
-        resource_query_response_record_model_dict = ResourceQueryResponseRecord.from_dict(
-            resource_query_response_record_model_json
-        ).__dict__
+        resource_query_response_record_model_dict = ResourceQueryResponseRecord.from_dict(resource_query_response_record_model_json).__dict__
         resource_query_response_record_model2 = ResourceQueryResponseRecord(**resource_query_response_record_model_dict)
 
         # Verify the model instances are equivalent
@@ -17819,30 +17932,19 @@ class TestModel_ResourceQueryResponseRecordQueryOutput:
         resource_query_response_record_query_output_model_json['value'] = 'testString'
 
         # Construct a model instance of ResourceQueryResponseRecordQueryOutput by calling from_dict on the json representation
-        resource_query_response_record_query_output_model = ResourceQueryResponseRecordQueryOutput.from_dict(
-            resource_query_response_record_query_output_model_json
-        )
+        resource_query_response_record_query_output_model = ResourceQueryResponseRecordQueryOutput.from_dict(resource_query_response_record_query_output_model_json)
         assert resource_query_response_record_query_output_model != False
 
         # Construct a model instance of ResourceQueryResponseRecordQueryOutput by calling from_dict on the json representation
-        resource_query_response_record_query_output_model_dict = ResourceQueryResponseRecordQueryOutput.from_dict(
-            resource_query_response_record_query_output_model_json
-        ).__dict__
-        resource_query_response_record_query_output_model2 = ResourceQueryResponseRecordQueryOutput(
-            **resource_query_response_record_query_output_model_dict
-        )
+        resource_query_response_record_query_output_model_dict = ResourceQueryResponseRecordQueryOutput.from_dict(resource_query_response_record_query_output_model_json).__dict__
+        resource_query_response_record_query_output_model2 = ResourceQueryResponseRecordQueryOutput(**resource_query_response_record_query_output_model_dict)
 
         # Verify the model instances are equivalent
         assert resource_query_response_record_query_output_model == resource_query_response_record_query_output_model2
 
         # Convert model instance back to dict and verify no loss of data
-        resource_query_response_record_query_output_model_json2 = (
-            resource_query_response_record_query_output_model.to_dict()
-        )
-        assert (
-            resource_query_response_record_query_output_model_json2
-            == resource_query_response_record_query_output_model_json
-        )
+        resource_query_response_record_query_output_model_json2 = resource_query_response_record_query_output_model.to_dict()
+        assert resource_query_response_record_query_output_model_json2 == resource_query_response_record_query_output_model_json
 
 
 class TestModel_ResourceQueryResponseRecordResponse:
@@ -17871,23 +17973,15 @@ class TestModel_ResourceQueryResponseRecordResponse:
         resource_query_response_record_response_model_json['query_type'] = 'workspaces'
         resource_query_response_record_response_model_json['query_condition'] = [resource_query_param_model]
         resource_query_response_record_response_model_json['query_select'] = ['testString']
-        resource_query_response_record_response_model_json['query_output'] = [
-            resource_query_response_record_query_output_model
-        ]
+        resource_query_response_record_response_model_json['query_output'] = [resource_query_response_record_query_output_model]
 
         # Construct a model instance of ResourceQueryResponseRecordResponse by calling from_dict on the json representation
-        resource_query_response_record_response_model = ResourceQueryResponseRecordResponse.from_dict(
-            resource_query_response_record_response_model_json
-        )
+        resource_query_response_record_response_model = ResourceQueryResponseRecordResponse.from_dict(resource_query_response_record_response_model_json)
         assert resource_query_response_record_response_model != False
 
         # Construct a model instance of ResourceQueryResponseRecordResponse by calling from_dict on the json representation
-        resource_query_response_record_response_model_dict = ResourceQueryResponseRecordResponse.from_dict(
-            resource_query_response_record_response_model_json
-        ).__dict__
-        resource_query_response_record_response_model2 = ResourceQueryResponseRecordResponse(
-            **resource_query_response_record_response_model_dict
-        )
+        resource_query_response_record_response_model_dict = ResourceQueryResponseRecordResponse.from_dict(resource_query_response_record_response_model_json).__dict__
+        resource_query_response_record_response_model2 = ResourceQueryResponseRecordResponse(**resource_query_response_record_response_model_dict)
 
         # Verify the model instances are equivalent
         assert resource_query_response_record_response_model == resource_query_response_record_response_model2
@@ -17895,52 +17989,6 @@ class TestModel_ResourceQueryResponseRecordResponse:
         # Convert model instance back to dict and verify no loss of data
         resource_query_response_record_response_model_json2 = resource_query_response_record_response_model.to_dict()
         assert resource_query_response_record_response_model_json2 == resource_query_response_record_response_model_json
-
-
-class TestModel_SchematicsLocations:
-    """
-    Test Class for SchematicsLocations
-    """
-
-    def test_schematics_locations_serialization(self):
-        """
-        Test serialization/deserialization for SchematicsLocations
-        """
-
-        # Construct dict forms of any model objects needed in order to build this model.
-
-        agent_metadata_info_model = {}  # AgentMetadataInfo
-        agent_metadata_info_model['name'] = 'purpose'
-        agent_metadata_info_model['value'] = ['git', 'terraform', 'ansible']
-
-        # Construct a json representation of a SchematicsLocations model
-        schematics_locations_model_json = {}
-        schematics_locations_model_json['name'] = 'testString'
-        schematics_locations_model_json['id'] = 'testString'
-        schematics_locations_model_json['country'] = 'testString'
-        schematics_locations_model_json['geography'] = 'testString'
-        schematics_locations_model_json['geography_code'] = 'testString'
-        schematics_locations_model_json['metro'] = 'testString'
-        schematics_locations_model_json['multizone_metro'] = 'testString'
-        schematics_locations_model_json['kind'] = 'testString'
-        schematics_locations_model_json['paired_region'] = ['testString']
-        schematics_locations_model_json['restricted'] = True
-        schematics_locations_model_json['agent_metadata'] = [agent_metadata_info_model]
-
-        # Construct a model instance of SchematicsLocations by calling from_dict on the json representation
-        schematics_locations_model = SchematicsLocations.from_dict(schematics_locations_model_json)
-        assert schematics_locations_model != False
-
-        # Construct a model instance of SchematicsLocations by calling from_dict on the json representation
-        schematics_locations_model_dict = SchematicsLocations.from_dict(schematics_locations_model_json).__dict__
-        schematics_locations_model2 = SchematicsLocations(**schematics_locations_model_dict)
-
-        # Verify the model instances are equivalent
-        assert schematics_locations_model == schematics_locations_model2
-
-        # Convert model instance back to dict and verify no loss of data
-        schematics_locations_model_json2 = schematics_locations_model.to_dict()
-        assert schematics_locations_model_json2 == schematics_locations_model_json
 
 
 class TestModel_SchematicsLocationsList:
@@ -17977,9 +18025,7 @@ class TestModel_SchematicsLocationsList:
         assert schematics_locations_list_model != False
 
         # Construct a model instance of SchematicsLocationsList by calling from_dict on the json representation
-        schematics_locations_list_model_dict = SchematicsLocationsList.from_dict(
-            schematics_locations_list_model_json
-        ).__dict__
+        schematics_locations_list_model_dict = SchematicsLocationsList.from_dict(schematics_locations_list_model_json).__dict__
         schematics_locations_list_model2 = SchematicsLocationsList(**schematics_locations_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -18019,9 +18065,7 @@ class TestModel_SchematicsLocationsLite:
         assert schematics_locations_lite_model != False
 
         # Construct a model instance of SchematicsLocationsLite by calling from_dict on the json representation
-        schematics_locations_lite_model_dict = SchematicsLocationsLite.from_dict(
-            schematics_locations_lite_model_json
-        ).__dict__
+        schematics_locations_lite_model_dict = SchematicsLocationsLite.from_dict(schematics_locations_lite_model_json).__dict__
         schematics_locations_lite_model2 = SchematicsLocationsLite(**schematics_locations_lite_model_dict)
 
         # Verify the model instances are equivalent
@@ -18115,7 +18159,7 @@ class TestModel_SharedTargetData:
         shared_target_data_model_json['namespace'] = 'testString'
         shared_target_data_model_json['region'] = 'testString'
         shared_target_data_model_json['resource_group_id'] = 'testString'
-        shared_target_data_model_json['worker_count'] = 26
+        shared_target_data_model_json['worker_count'] = 0
         shared_target_data_model_json['worker_machine_type'] = 'testString'
 
         # Construct a model instance of SharedTargetData by calling from_dict on the json representation
@@ -18158,9 +18202,7 @@ class TestModel_SharedTargetDataResponse:
         assert shared_target_data_response_model != False
 
         # Construct a model instance of SharedTargetDataResponse by calling from_dict on the json representation
-        shared_target_data_response_model_dict = SharedTargetDataResponse.from_dict(
-            shared_target_data_response_model_json
-        ).__dict__
+        shared_target_data_response_model_dict = SharedTargetDataResponse.from_dict(shared_target_data_response_model_json).__dict__
         shared_target_data_response_model2 = SharedTargetDataResponse(**shared_target_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -18231,9 +18273,7 @@ class TestModel_StateStoreResponseList:
         assert state_store_response_list_model != False
 
         # Construct a model instance of StateStoreResponseList by calling from_dict on the json representation
-        state_store_response_list_model_dict = StateStoreResponseList.from_dict(
-            state_store_response_list_model_json
-        ).__dict__
+        state_store_response_list_model_dict = StateStoreResponseList.from_dict(state_store_response_list_model_json).__dict__
         state_store_response_list_model2 = StateStoreResponseList(**state_store_response_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -18300,12 +18340,12 @@ class TestModel_TemplateMetaDataResponse:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -18325,9 +18365,7 @@ class TestModel_TemplateMetaDataResponse:
         assert template_meta_data_response_model != False
 
         # Construct a model instance of TemplateMetaDataResponse by calling from_dict on the json representation
-        template_meta_data_response_model_dict = TemplateMetaDataResponse.from_dict(
-            template_meta_data_response_model_json
-        ).__dict__
+        template_meta_data_response_model_dict = TemplateMetaDataResponse.from_dict(template_meta_data_response_model_json).__dict__
         template_meta_data_response_model2 = TemplateMetaDataResponse(**template_meta_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -18457,18 +18495,12 @@ class TestModel_TemplateRepoTarUploadResponse:
         template_repo_tar_upload_response_model_json['id'] = 'testString'
 
         # Construct a model instance of TemplateRepoTarUploadResponse by calling from_dict on the json representation
-        template_repo_tar_upload_response_model = TemplateRepoTarUploadResponse.from_dict(
-            template_repo_tar_upload_response_model_json
-        )
+        template_repo_tar_upload_response_model = TemplateRepoTarUploadResponse.from_dict(template_repo_tar_upload_response_model_json)
         assert template_repo_tar_upload_response_model != False
 
         # Construct a model instance of TemplateRepoTarUploadResponse by calling from_dict on the json representation
-        template_repo_tar_upload_response_model_dict = TemplateRepoTarUploadResponse.from_dict(
-            template_repo_tar_upload_response_model_json
-        ).__dict__
-        template_repo_tar_upload_response_model2 = TemplateRepoTarUploadResponse(
-            **template_repo_tar_upload_response_model_dict
-        )
+        template_repo_tar_upload_response_model_dict = TemplateRepoTarUploadResponse.from_dict(template_repo_tar_upload_response_model_json).__dict__
+        template_repo_tar_upload_response_model2 = TemplateRepoTarUploadResponse(**template_repo_tar_upload_response_model_dict)
 
         # Verify the model instances are equivalent
         assert template_repo_tar_upload_response_model == template_repo_tar_upload_response_model2
@@ -18498,15 +18530,11 @@ class TestModel_TemplateRepoUpdateRequest:
         template_repo_update_request_model_json['skip_submodules_checkout'] = True
 
         # Construct a model instance of TemplateRepoUpdateRequest by calling from_dict on the json representation
-        template_repo_update_request_model = TemplateRepoUpdateRequest.from_dict(
-            template_repo_update_request_model_json
-        )
+        template_repo_update_request_model = TemplateRepoUpdateRequest.from_dict(template_repo_update_request_model_json)
         assert template_repo_update_request_model != False
 
         # Construct a model instance of TemplateRepoUpdateRequest by calling from_dict on the json representation
-        template_repo_update_request_model_dict = TemplateRepoUpdateRequest.from_dict(
-            template_repo_update_request_model_json
-        ).__dict__
+        template_repo_update_request_model_dict = TemplateRepoUpdateRequest.from_dict(template_repo_update_request_model_json).__dict__
         template_repo_update_request_model2 = TemplateRepoUpdateRequest(**template_repo_update_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -18535,7 +18563,7 @@ class TestModel_TemplateResources:
         template_resources_model_json['null_resources'] = [{'anyKey': 'anyValue'}]
         template_resources_model_json['related_resources'] = [{'anyKey': 'anyValue'}]
         template_resources_model_json['resources'] = [{'anyKey': 'anyValue'}]
-        template_resources_model_json['resources_count'] = 26
+        template_resources_model_json['resources_count'] = 0
         template_resources_model_json['type'] = 'testString'
 
         # Construct a model instance of TemplateResources by calling from_dict on the json representation
@@ -18576,18 +18604,12 @@ class TestModel_TemplateRunTimeDataResponse:
         template_run_time_data_response_model_json['state_store_url'] = 'testString'
 
         # Construct a model instance of TemplateRunTimeDataResponse by calling from_dict on the json representation
-        template_run_time_data_response_model = TemplateRunTimeDataResponse.from_dict(
-            template_run_time_data_response_model_json
-        )
+        template_run_time_data_response_model = TemplateRunTimeDataResponse.from_dict(template_run_time_data_response_model_json)
         assert template_run_time_data_response_model != False
 
         # Construct a model instance of TemplateRunTimeDataResponse by calling from_dict on the json representation
-        template_run_time_data_response_model_dict = TemplateRunTimeDataResponse.from_dict(
-            template_run_time_data_response_model_json
-        ).__dict__
-        template_run_time_data_response_model2 = TemplateRunTimeDataResponse(
-            **template_run_time_data_response_model_dict
-        )
+        template_run_time_data_response_model_dict = TemplateRunTimeDataResponse.from_dict(template_run_time_data_response_model_json).__dict__
+        template_run_time_data_response_model2 = TemplateRunTimeDataResponse(**template_run_time_data_response_model_dict)
 
         # Verify the model instances are equivalent
         assert template_run_time_data_response_model == template_run_time_data_response_model2
@@ -18624,9 +18646,7 @@ class TestModel_TemplateSourceDataRequest:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [
-            inject_terraform_template_inner_tft_parameters_item_model
-        ]
+        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
 
         workspace_variable_request_model = {}  # WorkspaceVariableRequest
         workspace_variable_request_model['description'] = 'testString'
@@ -18651,15 +18671,11 @@ class TestModel_TemplateSourceDataRequest:
         template_source_data_request_model_json['variablestore'] = [workspace_variable_request_model]
 
         # Construct a model instance of TemplateSourceDataRequest by calling from_dict on the json representation
-        template_source_data_request_model = TemplateSourceDataRequest.from_dict(
-            template_source_data_request_model_json
-        )
+        template_source_data_request_model = TemplateSourceDataRequest.from_dict(template_source_data_request_model_json)
         assert template_source_data_request_model != False
 
         # Construct a model instance of TemplateSourceDataRequest by calling from_dict on the json representation
-        template_source_data_request_model_dict = TemplateSourceDataRequest.from_dict(
-            template_source_data_request_model_json
-        ).__dict__
+        template_source_data_request_model_dict = TemplateSourceDataRequest.from_dict(template_source_data_request_model_json).__dict__
         template_source_data_request_model2 = TemplateSourceDataRequest(**template_source_data_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -18710,15 +18726,11 @@ class TestModel_TemplateSourceDataResponse:
         template_source_data_response_model_json['variablestore'] = [workspace_variable_response_model]
 
         # Construct a model instance of TemplateSourceDataResponse by calling from_dict on the json representation
-        template_source_data_response_model = TemplateSourceDataResponse.from_dict(
-            template_source_data_response_model_json
-        )
+        template_source_data_response_model = TemplateSourceDataResponse.from_dict(template_source_data_response_model_json)
         assert template_source_data_response_model != False
 
         # Construct a model instance of TemplateSourceDataResponse by calling from_dict on the json representation
-        template_source_data_response_model_dict = TemplateSourceDataResponse.from_dict(
-            template_source_data_response_model_json
-        ).__dict__
+        template_source_data_response_model_dict = TemplateSourceDataResponse.from_dict(template_source_data_response_model_json).__dict__
         template_source_data_response_model2 = TemplateSourceDataResponse(**template_source_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -18933,12 +18945,12 @@ class TestModel_VariableData:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -18988,12 +19000,12 @@ class TestModel_VariableMetadata:
         variable_metadata_model_json['hidden'] = True
         variable_metadata_model_json['required'] = True
         variable_metadata_model_json['options'] = ['testString']
-        variable_metadata_model_json['min_value'] = 38
-        variable_metadata_model_json['max_value'] = 38
-        variable_metadata_model_json['min_length'] = 38
-        variable_metadata_model_json['max_length'] = 38
+        variable_metadata_model_json['min_value'] = 0
+        variable_metadata_model_json['max_value'] = 0
+        variable_metadata_model_json['min_length'] = 0
+        variable_metadata_model_json['max_length'] = 0
         variable_metadata_model_json['matches'] = 'testString'
-        variable_metadata_model_json['position'] = 38
+        variable_metadata_model_json['position'] = 0
         variable_metadata_model_json['group_by'] = 'testString'
         variable_metadata_model_json['source'] = 'testString'
 
@@ -19065,13 +19077,13 @@ class TestModel_WorkspaceActivities:
         log_summary_model = {}  # LogSummary
         log_summary_model['activity_status'] = 'testString'
         log_summary_model['detected_template_type'] = 'testString'
-        log_summary_model['discarded_files'] = 26
+        log_summary_model['discarded_files'] = 0
         log_summary_model['error'] = 'testString'
-        log_summary_model['resources_added'] = 26
-        log_summary_model['resources_destroyed'] = 26
-        log_summary_model['resources_modified'] = 26
-        log_summary_model['scanned_files'] = 26
-        log_summary_model['template_variable_count'] = 26
+        log_summary_model['resources_added'] = 0
+        log_summary_model['resources_destroyed'] = 0
+        log_summary_model['resources_modified'] = 0
+        log_summary_model['scanned_files'] = 0
+        log_summary_model['template_variable_count'] = 0
         log_summary_model['time_taken'] = 72.5
 
         workspace_activity_template_model = {}  # WorkspaceActivityTemplate
@@ -19130,13 +19142,13 @@ class TestModel_WorkspaceActivity:
         log_summary_model = {}  # LogSummary
         log_summary_model['activity_status'] = 'testString'
         log_summary_model['detected_template_type'] = 'testString'
-        log_summary_model['discarded_files'] = 26
+        log_summary_model['discarded_files'] = 0
         log_summary_model['error'] = 'testString'
-        log_summary_model['resources_added'] = 26
-        log_summary_model['resources_destroyed'] = 26
-        log_summary_model['resources_modified'] = 26
-        log_summary_model['scanned_files'] = 26
-        log_summary_model['template_variable_count'] = 26
+        log_summary_model['resources_added'] = 0
+        log_summary_model['resources_destroyed'] = 0
+        log_summary_model['resources_modified'] = 0
+        log_summary_model['scanned_files'] = 0
+        log_summary_model['template_variable_count'] = 0
         log_summary_model['time_taken'] = 72.5
 
         workspace_activity_template_model = {}  # WorkspaceActivityTemplate
@@ -19190,18 +19202,12 @@ class TestModel_WorkspaceActivityApplyResult:
         workspace_activity_apply_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityApplyResult by calling from_dict on the json representation
-        workspace_activity_apply_result_model = WorkspaceActivityApplyResult.from_dict(
-            workspace_activity_apply_result_model_json
-        )
+        workspace_activity_apply_result_model = WorkspaceActivityApplyResult.from_dict(workspace_activity_apply_result_model_json)
         assert workspace_activity_apply_result_model != False
 
         # Construct a model instance of WorkspaceActivityApplyResult by calling from_dict on the json representation
-        workspace_activity_apply_result_model_dict = WorkspaceActivityApplyResult.from_dict(
-            workspace_activity_apply_result_model_json
-        ).__dict__
-        workspace_activity_apply_result_model2 = WorkspaceActivityApplyResult(
-            **workspace_activity_apply_result_model_dict
-        )
+        workspace_activity_apply_result_model_dict = WorkspaceActivityApplyResult.from_dict(workspace_activity_apply_result_model_json).__dict__
+        workspace_activity_apply_result_model2 = WorkspaceActivityApplyResult(**workspace_activity_apply_result_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_apply_result_model == workspace_activity_apply_result_model2
@@ -19226,18 +19232,12 @@ class TestModel_WorkspaceActivityCommandResult:
         workspace_activity_command_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityCommandResult by calling from_dict on the json representation
-        workspace_activity_command_result_model = WorkspaceActivityCommandResult.from_dict(
-            workspace_activity_command_result_model_json
-        )
+        workspace_activity_command_result_model = WorkspaceActivityCommandResult.from_dict(workspace_activity_command_result_model_json)
         assert workspace_activity_command_result_model != False
 
         # Construct a model instance of WorkspaceActivityCommandResult by calling from_dict on the json representation
-        workspace_activity_command_result_model_dict = WorkspaceActivityCommandResult.from_dict(
-            workspace_activity_command_result_model_json
-        ).__dict__
-        workspace_activity_command_result_model2 = WorkspaceActivityCommandResult(
-            **workspace_activity_command_result_model_dict
-        )
+        workspace_activity_command_result_model_dict = WorkspaceActivityCommandResult.from_dict(workspace_activity_command_result_model_json).__dict__
+        workspace_activity_command_result_model2 = WorkspaceActivityCommandResult(**workspace_activity_command_result_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_command_result_model == workspace_activity_command_result_model2
@@ -19262,18 +19262,12 @@ class TestModel_WorkspaceActivityDestroyResult:
         workspace_activity_destroy_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityDestroyResult by calling from_dict on the json representation
-        workspace_activity_destroy_result_model = WorkspaceActivityDestroyResult.from_dict(
-            workspace_activity_destroy_result_model_json
-        )
+        workspace_activity_destroy_result_model = WorkspaceActivityDestroyResult.from_dict(workspace_activity_destroy_result_model_json)
         assert workspace_activity_destroy_result_model != False
 
         # Construct a model instance of WorkspaceActivityDestroyResult by calling from_dict on the json representation
-        workspace_activity_destroy_result_model_dict = WorkspaceActivityDestroyResult.from_dict(
-            workspace_activity_destroy_result_model_json
-        ).__dict__
-        workspace_activity_destroy_result_model2 = WorkspaceActivityDestroyResult(
-            **workspace_activity_destroy_result_model_dict
-        )
+        workspace_activity_destroy_result_model_dict = WorkspaceActivityDestroyResult.from_dict(workspace_activity_destroy_result_model_json).__dict__
+        workspace_activity_destroy_result_model2 = WorkspaceActivityDestroyResult(**workspace_activity_destroy_result_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_destroy_result_model == workspace_activity_destroy_result_model2
@@ -19311,9 +19305,7 @@ class TestModel_WorkspaceActivityLogs:
         assert workspace_activity_logs_model != False
 
         # Construct a model instance of WorkspaceActivityLogs by calling from_dict on the json representation
-        workspace_activity_logs_model_dict = WorkspaceActivityLogs.from_dict(
-            workspace_activity_logs_model_json
-        ).__dict__
+        workspace_activity_logs_model_dict = WorkspaceActivityLogs.from_dict(workspace_activity_logs_model_json).__dict__
         workspace_activity_logs_model2 = WorkspaceActivityLogs(**workspace_activity_logs_model_dict)
 
         # Verify the model instances are equivalent
@@ -19340,18 +19332,12 @@ class TestModel_WorkspaceActivityOptionsTemplate:
         workspace_activity_options_template_model_json['tf_vars'] = ['testString']
 
         # Construct a model instance of WorkspaceActivityOptionsTemplate by calling from_dict on the json representation
-        workspace_activity_options_template_model = WorkspaceActivityOptionsTemplate.from_dict(
-            workspace_activity_options_template_model_json
-        )
+        workspace_activity_options_template_model = WorkspaceActivityOptionsTemplate.from_dict(workspace_activity_options_template_model_json)
         assert workspace_activity_options_template_model != False
 
         # Construct a model instance of WorkspaceActivityOptionsTemplate by calling from_dict on the json representation
-        workspace_activity_options_template_model_dict = WorkspaceActivityOptionsTemplate.from_dict(
-            workspace_activity_options_template_model_json
-        ).__dict__
-        workspace_activity_options_template_model2 = WorkspaceActivityOptionsTemplate(
-            **workspace_activity_options_template_model_dict
-        )
+        workspace_activity_options_template_model_dict = WorkspaceActivityOptionsTemplate.from_dict(workspace_activity_options_template_model_json).__dict__
+        workspace_activity_options_template_model2 = WorkspaceActivityOptionsTemplate(**workspace_activity_options_template_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_options_template_model == workspace_activity_options_template_model2
@@ -19376,15 +19362,11 @@ class TestModel_WorkspaceActivityPlanResult:
         workspace_activity_plan_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityPlanResult by calling from_dict on the json representation
-        workspace_activity_plan_result_model = WorkspaceActivityPlanResult.from_dict(
-            workspace_activity_plan_result_model_json
-        )
+        workspace_activity_plan_result_model = WorkspaceActivityPlanResult.from_dict(workspace_activity_plan_result_model_json)
         assert workspace_activity_plan_result_model != False
 
         # Construct a model instance of WorkspaceActivityPlanResult by calling from_dict on the json representation
-        workspace_activity_plan_result_model_dict = WorkspaceActivityPlanResult.from_dict(
-            workspace_activity_plan_result_model_json
-        ).__dict__
+        workspace_activity_plan_result_model_dict = WorkspaceActivityPlanResult.from_dict(workspace_activity_plan_result_model_json).__dict__
         workspace_activity_plan_result_model2 = WorkspaceActivityPlanResult(**workspace_activity_plan_result_model_dict)
 
         # Verify the model instances are equivalent
@@ -19410,18 +19392,12 @@ class TestModel_WorkspaceActivityRefreshResult:
         workspace_activity_refresh_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityRefreshResult by calling from_dict on the json representation
-        workspace_activity_refresh_result_model = WorkspaceActivityRefreshResult.from_dict(
-            workspace_activity_refresh_result_model_json
-        )
+        workspace_activity_refresh_result_model = WorkspaceActivityRefreshResult.from_dict(workspace_activity_refresh_result_model_json)
         assert workspace_activity_refresh_result_model != False
 
         # Construct a model instance of WorkspaceActivityRefreshResult by calling from_dict on the json representation
-        workspace_activity_refresh_result_model_dict = WorkspaceActivityRefreshResult.from_dict(
-            workspace_activity_refresh_result_model_json
-        ).__dict__
-        workspace_activity_refresh_result_model2 = WorkspaceActivityRefreshResult(
-            **workspace_activity_refresh_result_model_dict
-        )
+        workspace_activity_refresh_result_model_dict = WorkspaceActivityRefreshResult.from_dict(workspace_activity_refresh_result_model_json).__dict__
+        workspace_activity_refresh_result_model2 = WorkspaceActivityRefreshResult(**workspace_activity_refresh_result_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_refresh_result_model == workspace_activity_refresh_result_model2
@@ -19446,13 +19422,13 @@ class TestModel_WorkspaceActivityTemplate:
         log_summary_model = {}  # LogSummary
         log_summary_model['activity_status'] = 'testString'
         log_summary_model['detected_template_type'] = 'testString'
-        log_summary_model['discarded_files'] = 26
+        log_summary_model['discarded_files'] = 0
         log_summary_model['error'] = 'testString'
-        log_summary_model['resources_added'] = 26
-        log_summary_model['resources_destroyed'] = 26
-        log_summary_model['resources_modified'] = 26
-        log_summary_model['scanned_files'] = 26
-        log_summary_model['template_variable_count'] = 26
+        log_summary_model['resources_added'] = 0
+        log_summary_model['resources_destroyed'] = 0
+        log_summary_model['resources_modified'] = 0
+        log_summary_model['scanned_files'] = 0
+        log_summary_model['template_variable_count'] = 0
         log_summary_model['time_taken'] = 72.5
 
         # Construct a json representation of a WorkspaceActivityTemplate model
@@ -19471,9 +19447,7 @@ class TestModel_WorkspaceActivityTemplate:
         assert workspace_activity_template_model != False
 
         # Construct a model instance of WorkspaceActivityTemplate by calling from_dict on the json representation
-        workspace_activity_template_model_dict = WorkspaceActivityTemplate.from_dict(
-            workspace_activity_template_model_json
-        ).__dict__
+        workspace_activity_template_model_dict = WorkspaceActivityTemplate.from_dict(workspace_activity_template_model_json).__dict__
         workspace_activity_template_model2 = WorkspaceActivityTemplate(**workspace_activity_template_model_dict)
 
         # Verify the model instances are equivalent
@@ -19501,18 +19475,12 @@ class TestModel_WorkspaceActivityTemplateLogs:
         workspace_activity_template_logs_model_json['template_type'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityTemplateLogs by calling from_dict on the json representation
-        workspace_activity_template_logs_model = WorkspaceActivityTemplateLogs.from_dict(
-            workspace_activity_template_logs_model_json
-        )
+        workspace_activity_template_logs_model = WorkspaceActivityTemplateLogs.from_dict(workspace_activity_template_logs_model_json)
         assert workspace_activity_template_logs_model != False
 
         # Construct a model instance of WorkspaceActivityTemplateLogs by calling from_dict on the json representation
-        workspace_activity_template_logs_model_dict = WorkspaceActivityTemplateLogs.from_dict(
-            workspace_activity_template_logs_model_json
-        ).__dict__
-        workspace_activity_template_logs_model2 = WorkspaceActivityTemplateLogs(
-            **workspace_activity_template_logs_model_dict
-        )
+        workspace_activity_template_logs_model_dict = WorkspaceActivityTemplateLogs.from_dict(workspace_activity_template_logs_model_json).__dict__
+        workspace_activity_template_logs_model2 = WorkspaceActivityTemplateLogs(**workspace_activity_template_logs_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_activity_template_logs_model == workspace_activity_template_logs_model2
@@ -19538,15 +19506,11 @@ class TestModel_WorkspaceBulkDeleteResponse:
         workspace_bulk_delete_response_model_json['job_id'] = 'testString'
 
         # Construct a model instance of WorkspaceBulkDeleteResponse by calling from_dict on the json representation
-        workspace_bulk_delete_response_model = WorkspaceBulkDeleteResponse.from_dict(
-            workspace_bulk_delete_response_model_json
-        )
+        workspace_bulk_delete_response_model = WorkspaceBulkDeleteResponse.from_dict(workspace_bulk_delete_response_model_json)
         assert workspace_bulk_delete_response_model != False
 
         # Construct a model instance of WorkspaceBulkDeleteResponse by calling from_dict on the json representation
-        workspace_bulk_delete_response_model_dict = WorkspaceBulkDeleteResponse.from_dict(
-            workspace_bulk_delete_response_model_json
-        ).__dict__
+        workspace_bulk_delete_response_model_dict = WorkspaceBulkDeleteResponse.from_dict(workspace_bulk_delete_response_model_json).__dict__
         workspace_bulk_delete_response_model2 = WorkspaceBulkDeleteResponse(**workspace_bulk_delete_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -19617,9 +19581,7 @@ class TestModel_WorkspaceJobStatusType:
         assert workspace_job_status_type_model != False
 
         # Construct a model instance of WorkspaceJobStatusType by calling from_dict on the json representation
-        workspace_job_status_type_model_dict = WorkspaceJobStatusType.from_dict(
-            workspace_job_status_type_model_json
-        ).__dict__
+        workspace_job_status_type_model_dict = WorkspaceJobStatusType.from_dict(workspace_job_status_type_model_json).__dict__
         workspace_job_status_type_model2 = WorkspaceJobStatusType(**workspace_job_status_type_model_dict)
 
         # Verify the model instances are equivalent
@@ -19741,12 +19703,12 @@ class TestModel_WorkspaceResponse:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -19909,12 +19871,12 @@ class TestModel_WorkspaceResponseList:
         variable_metadata_model['hidden'] = True
         variable_metadata_model['required'] = True
         variable_metadata_model['options'] = ['testString']
-        variable_metadata_model['min_value'] = 38
-        variable_metadata_model['max_value'] = 38
-        variable_metadata_model['min_length'] = 38
-        variable_metadata_model['max_length'] = 38
+        variable_metadata_model['min_value'] = 0
+        variable_metadata_model['max_value'] = 0
+        variable_metadata_model['min_length'] = 0
+        variable_metadata_model['max_length'] = 0
         variable_metadata_model['matches'] = 'testString'
-        variable_metadata_model['position'] = 38
+        variable_metadata_model['position'] = 0
         variable_metadata_model['group_by'] = 'testString'
         variable_metadata_model['source'] = 'testString'
 
@@ -19951,9 +19913,9 @@ class TestModel_WorkspaceResponseList:
 
         # Construct a json representation of a WorkspaceResponseList model
         workspace_response_list_model_json = {}
-        workspace_response_list_model_json['count'] = 26
-        workspace_response_list_model_json['limit'] = 26
-        workspace_response_list_model_json['offset'] = 26
+        workspace_response_list_model_json['count'] = 0
+        workspace_response_list_model_json['limit'] = 0
+        workspace_response_list_model_json['offset'] = 0
         workspace_response_list_model_json['workspaces'] = [workspace_response_model]
 
         # Construct a model instance of WorkspaceResponseList by calling from_dict on the json representation
@@ -19961,9 +19923,7 @@ class TestModel_WorkspaceResponseList:
         assert workspace_response_list_model != False
 
         # Construct a model instance of WorkspaceResponseList by calling from_dict on the json representation
-        workspace_response_list_model_dict = WorkspaceResponseList.from_dict(
-            workspace_response_list_model_json
-        ).__dict__
+        workspace_response_list_model_dict = WorkspaceResponseList.from_dict(workspace_response_list_model_json).__dict__
         workspace_response_list_model2 = WorkspaceResponseList(**workspace_response_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -19994,9 +19954,7 @@ class TestModel_WorkspaceStatusMessage:
         assert workspace_status_message_model != False
 
         # Construct a model instance of WorkspaceStatusMessage by calling from_dict on the json representation
-        workspace_status_message_model_dict = WorkspaceStatusMessage.from_dict(
-            workspace_status_message_model_json
-        ).__dict__
+        workspace_status_message_model_dict = WorkspaceStatusMessage.from_dict(workspace_status_message_model_json).__dict__
         workspace_status_message_model2 = WorkspaceStatusMessage(**workspace_status_message_model_dict)
 
         # Verify the model instances are equivalent
@@ -20031,9 +19989,7 @@ class TestModel_WorkspaceStatusRequest:
         assert workspace_status_request_model != False
 
         # Construct a model instance of WorkspaceStatusRequest by calling from_dict on the json representation
-        workspace_status_request_model_dict = WorkspaceStatusRequest.from_dict(
-            workspace_status_request_model_json
-        ).__dict__
+        workspace_status_request_model_dict = WorkspaceStatusRequest.from_dict(workspace_status_request_model_json).__dict__
         workspace_status_request_model2 = WorkspaceStatusRequest(**workspace_status_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -20068,9 +20024,7 @@ class TestModel_WorkspaceStatusResponse:
         assert workspace_status_response_model != False
 
         # Construct a model instance of WorkspaceStatusResponse by calling from_dict on the json representation
-        workspace_status_response_model_dict = WorkspaceStatusResponse.from_dict(
-            workspace_status_response_model_json
-        ).__dict__
+        workspace_status_response_model_dict = WorkspaceStatusResponse.from_dict(workspace_status_response_model_json).__dict__
         workspace_status_response_model2 = WorkspaceStatusResponse(**workspace_status_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -20101,18 +20055,12 @@ class TestModel_WorkspaceStatusUpdateRequest:
         workspace_status_update_request_model_json['locked_time'] = '2019-01-01T12:00:00Z'
 
         # Construct a model instance of WorkspaceStatusUpdateRequest by calling from_dict on the json representation
-        workspace_status_update_request_model = WorkspaceStatusUpdateRequest.from_dict(
-            workspace_status_update_request_model_json
-        )
+        workspace_status_update_request_model = WorkspaceStatusUpdateRequest.from_dict(workspace_status_update_request_model_json)
         assert workspace_status_update_request_model != False
 
         # Construct a model instance of WorkspaceStatusUpdateRequest by calling from_dict on the json representation
-        workspace_status_update_request_model_dict = WorkspaceStatusUpdateRequest.from_dict(
-            workspace_status_update_request_model_json
-        ).__dict__
-        workspace_status_update_request_model2 = WorkspaceStatusUpdateRequest(
-            **workspace_status_update_request_model_dict
-        )
+        workspace_status_update_request_model_dict = WorkspaceStatusUpdateRequest.from_dict(workspace_status_update_request_model_json).__dict__
+        workspace_status_update_request_model2 = WorkspaceStatusUpdateRequest(**workspace_status_update_request_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_status_update_request_model == workspace_status_update_request_model2
@@ -20153,7 +20101,7 @@ class TestModel_WorkspaceTemplateValuesResponse:
         shared_target_data_model['namespace'] = 'testString'
         shared_target_data_model['region'] = 'testString'
         shared_target_data_model['resource_group_id'] = 'testString'
-        shared_target_data_model['worker_count'] = 26
+        shared_target_data_model['worker_count'] = 0
         shared_target_data_model['worker_machine_type'] = 'testString'
 
         env_variable_response_model = {}  # EnvVariableResponse
@@ -20189,18 +20137,12 @@ class TestModel_WorkspaceTemplateValuesResponse:
         workspace_template_values_response_model_json['template_data'] = [template_source_data_response_model]
 
         # Construct a model instance of WorkspaceTemplateValuesResponse by calling from_dict on the json representation
-        workspace_template_values_response_model = WorkspaceTemplateValuesResponse.from_dict(
-            workspace_template_values_response_model_json
-        )
+        workspace_template_values_response_model = WorkspaceTemplateValuesResponse.from_dict(workspace_template_values_response_model_json)
         assert workspace_template_values_response_model != False
 
         # Construct a model instance of WorkspaceTemplateValuesResponse by calling from_dict on the json representation
-        workspace_template_values_response_model_dict = WorkspaceTemplateValuesResponse.from_dict(
-            workspace_template_values_response_model_json
-        ).__dict__
-        workspace_template_values_response_model2 = WorkspaceTemplateValuesResponse(
-            **workspace_template_values_response_model_dict
-        )
+        workspace_template_values_response_model_dict = WorkspaceTemplateValuesResponse.from_dict(workspace_template_values_response_model_json).__dict__
+        workspace_template_values_response_model2 = WorkspaceTemplateValuesResponse(**workspace_template_values_response_model_dict)
 
         # Verify the model instances are equivalent
         assert workspace_template_values_response_model == workspace_template_values_response_model2
@@ -20234,9 +20176,7 @@ class TestModel_WorkspaceVariableRequest:
         assert workspace_variable_request_model != False
 
         # Construct a model instance of WorkspaceVariableRequest by calling from_dict on the json representation
-        workspace_variable_request_model_dict = WorkspaceVariableRequest.from_dict(
-            workspace_variable_request_model_json
-        ).__dict__
+        workspace_variable_request_model_dict = WorkspaceVariableRequest.from_dict(workspace_variable_request_model_json).__dict__
         workspace_variable_request_model2 = WorkspaceVariableRequest(**workspace_variable_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -20270,9 +20210,7 @@ class TestModel_WorkspaceVariableResponse:
         assert workspace_variable_response_model != False
 
         # Construct a model instance of WorkspaceVariableResponse by calling from_dict on the json representation
-        workspace_variable_response_model_dict = WorkspaceVariableResponse.from_dict(
-            workspace_variable_response_model_json
-        ).__dict__
+        workspace_variable_response_model_dict = WorkspaceVariableResponse.from_dict(workspace_variable_response_model_json).__dict__
         workspace_variable_response_model2 = WorkspaceVariableResponse(**workspace_variable_response_model_dict)
 
         # Verify the model instances are equivalent
