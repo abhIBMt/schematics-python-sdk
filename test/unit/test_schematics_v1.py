@@ -31,12 +31,10 @@ import requests
 import responses
 import tempfile
 import urllib
-from ibm_cloud.schematics_v1 import *
+from ibm_schematics.schematics_v1 import *
 
 
-_service = SchematicsV1(
-    authenticator=NoAuthAuthenticator()
-)
+_service = SchematicsV1(authenticator=NoAuthAuthenticator())
 
 _base_url = 'https://schematics.cloud.ibm.com'
 _service.set_service_url(_base_url)
@@ -672,7 +670,9 @@ class TestCreateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -887,7 +887,9 @@ class TestCreateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1187,7 +1189,9 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1400,7 +1404,9 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1611,7 +1617,9 @@ class TestReplaceWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -1930,7 +1938,9 @@ class TestUpdateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -2141,7 +2151,9 @@ class TestUpdateWorkspace:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a dict representation of a WorkspaceVariableRequest model
         workspace_variable_request_model = {}
@@ -2890,7 +2902,9 @@ class TestGetWorkspaceOutputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/output_values')
-        mock_response = '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
+        mock_response = (
+            '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
+        )
         responses.add(
             responses.GET,
             url,
@@ -2928,7 +2942,9 @@ class TestGetWorkspaceOutputs:
         """
         # Set up mock
         url = preprocess_url('/v1/workspaces/testString/output_values')
-        mock_response = '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
+        mock_response = (
+            '[{"folder": "folder", "id": "id", "output_values": [{"anyKey": "anyValue"}], "value_type": "value_type"}]'
+        )
         responses.add(
             responses.GET,
             url,
@@ -3868,7 +3884,9 @@ class TestCreateAction:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -3961,7 +3979,10 @@ class TestCreateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        assert (
+            req_body['description']
+            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        )
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4067,7 +4088,9 @@ class TestCreateAction:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4158,7 +4181,10 @@ class TestCreateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        assert (
+            req_body['description']
+            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        )
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4509,7 +4535,9 @@ class TestUpdateAction:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4604,7 +4632,10 @@ class TestUpdateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        assert (
+            req_body['description']
+            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        )
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4710,7 +4741,9 @@ class TestUpdateAction:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -4803,7 +4836,10 @@ class TestUpdateAction:
         # Validate body params
         req_body = json.loads(str(responses.calls[0].request.body, 'utf-8'))
         assert req_body['name'] == 'Stop Action'
-        assert req_body['description'] == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        assert (
+            req_body['description']
+            == 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        )
         assert req_body['location'] == 'us-south'
         assert req_body['resource_group'] == 'testString'
         assert req_body['bastion_connection_type'] == 'ssh'
@@ -4909,7 +4945,9 @@ class TestUpdateAction:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -6424,7 +6462,9 @@ class TestCreateJob:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -6832,7 +6872,9 @@ class TestCreateJob:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -7338,7 +7380,9 @@ class TestUpdateJob:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -7748,7 +7792,9 @@ class TestUpdateJob:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -8637,7 +8683,9 @@ class TestCreateInventory:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -8911,7 +8959,9 @@ class TestReplaceInventory:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -9056,7 +9106,9 @@ class TestReplaceInventory:
         # Construct a dict representation of a CredentialVariableData model
         credential_variable_data_model = {}
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -10810,7 +10862,9 @@ class TestGetAgentVersions:
         """
         # Set up mock
         url = preprocess_url('/v2/agents/versions')
-        mock_response = '{"supported_agent_versions": [{"display_name": "display_name", "agent_version": "agent_version"}]}'
+        mock_response = (
+            '{"supported_agent_versions": [{"display_name": "display_name", "agent_version": "agent_version"}]}'
+        )
         responses.add(
             responses.GET,
             url,
@@ -12656,7 +12710,9 @@ class TestModel_Action:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -12694,7 +12750,9 @@ class TestModel_Action:
         # Construct a json representation of a Action model
         action_model_json = {}
         action_model_json['name'] = 'Stop Action'
-        action_model_json['description'] = 'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        action_model_json['description'] = (
+            'The description of your action. The description can be up to 2048 characters long in size. **Example** you can use the description to stop the targets.'
+        )
         action_model_json['location'] = 'us-south'
         action_model_json['resource_group'] = 'testString'
         action_model_json['bastion_connection_type'] = 'ssh'
@@ -12916,12 +12974,18 @@ class TestModel_AgentAssignmentPolicyParameter:
         agent_assignment_policy_parameter_model_json['selector_scope'] = [policy_object_selector_model]
 
         # Construct a model instance of AgentAssignmentPolicyParameter by calling from_dict on the json representation
-        agent_assignment_policy_parameter_model = AgentAssignmentPolicyParameter.from_dict(agent_assignment_policy_parameter_model_json)
+        agent_assignment_policy_parameter_model = AgentAssignmentPolicyParameter.from_dict(
+            agent_assignment_policy_parameter_model_json
+        )
         assert agent_assignment_policy_parameter_model != False
 
         # Construct a model instance of AgentAssignmentPolicyParameter by calling from_dict on the json representation
-        agent_assignment_policy_parameter_model_dict = AgentAssignmentPolicyParameter.from_dict(agent_assignment_policy_parameter_model_json).__dict__
-        agent_assignment_policy_parameter_model2 = AgentAssignmentPolicyParameter(**agent_assignment_policy_parameter_model_dict)
+        agent_assignment_policy_parameter_model_dict = AgentAssignmentPolicyParameter.from_dict(
+            agent_assignment_policy_parameter_model_json
+        ).__dict__
+        agent_assignment_policy_parameter_model2 = AgentAssignmentPolicyParameter(
+            **agent_assignment_policy_parameter_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert agent_assignment_policy_parameter_model == agent_assignment_policy_parameter_model2
@@ -13157,7 +13221,9 @@ class TestModel_AgentDataRecentDeployJob:
         assert agent_data_recent_deploy_job_model != False
 
         # Construct a model instance of AgentDataRecentDeployJob by calling from_dict on the json representation
-        agent_data_recent_deploy_job_model_dict = AgentDataRecentDeployJob.from_dict(agent_data_recent_deploy_job_model_json).__dict__
+        agent_data_recent_deploy_job_model_dict = AgentDataRecentDeployJob.from_dict(
+            agent_data_recent_deploy_job_model_json
+        ).__dict__
         agent_data_recent_deploy_job_model2 = AgentDataRecentDeployJob(**agent_data_recent_deploy_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13187,11 +13253,15 @@ class TestModel_AgentDataRecentDestroyJob:
         agent_data_recent_destroy_job_model_json['log_url'] = 'testString'
 
         # Construct a model instance of AgentDataRecentDestroyJob by calling from_dict on the json representation
-        agent_data_recent_destroy_job_model = AgentDataRecentDestroyJob.from_dict(agent_data_recent_destroy_job_model_json)
+        agent_data_recent_destroy_job_model = AgentDataRecentDestroyJob.from_dict(
+            agent_data_recent_destroy_job_model_json
+        )
         assert agent_data_recent_destroy_job_model != False
 
         # Construct a model instance of AgentDataRecentDestroyJob by calling from_dict on the json representation
-        agent_data_recent_destroy_job_model_dict = AgentDataRecentDestroyJob.from_dict(agent_data_recent_destroy_job_model_json).__dict__
+        agent_data_recent_destroy_job_model_dict = AgentDataRecentDestroyJob.from_dict(
+            agent_data_recent_destroy_job_model_json
+        ).__dict__
         agent_data_recent_destroy_job_model2 = AgentDataRecentDestroyJob(**agent_data_recent_destroy_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13225,7 +13295,9 @@ class TestModel_AgentDataRecentHealthJob:
         assert agent_data_recent_health_job_model != False
 
         # Construct a model instance of AgentDataRecentHealthJob by calling from_dict on the json representation
-        agent_data_recent_health_job_model_dict = AgentDataRecentHealthJob.from_dict(agent_data_recent_health_job_model_json).__dict__
+        agent_data_recent_health_job_model_dict = AgentDataRecentHealthJob.from_dict(
+            agent_data_recent_health_job_model_json
+        ).__dict__
         agent_data_recent_health_job_model2 = AgentDataRecentHealthJob(**agent_data_recent_health_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13259,7 +13331,9 @@ class TestModel_AgentDataRecentPrsJob:
         assert agent_data_recent_prs_job_model != False
 
         # Construct a model instance of AgentDataRecentPrsJob by calling from_dict on the json representation
-        agent_data_recent_prs_job_model_dict = AgentDataRecentPrsJob.from_dict(agent_data_recent_prs_job_model_json).__dict__
+        agent_data_recent_prs_job_model_dict = AgentDataRecentPrsJob.from_dict(
+            agent_data_recent_prs_job_model_json
+        ).__dict__
         agent_data_recent_prs_job_model2 = AgentDataRecentPrsJob(**agent_data_recent_prs_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -13685,7 +13759,9 @@ class TestModel_BastionResourceDefinition:
         assert bastion_resource_definition_model != False
 
         # Construct a model instance of BastionResourceDefinition by calling from_dict on the json representation
-        bastion_resource_definition_model_dict = BastionResourceDefinition.from_dict(bastion_resource_definition_model_json).__dict__
+        bastion_resource_definition_model_dict = BastionResourceDefinition.from_dict(
+            bastion_resource_definition_model_json
+        ).__dict__
         bastion_resource_definition_model2 = BastionResourceDefinition(**bastion_resource_definition_model_dict)
 
         # Verify the model instances are equivalent
@@ -13883,7 +13959,9 @@ class TestModel_CredentialVariableData:
         # Construct a json representation of a CredentialVariableData model
         credential_variable_data_model_json = {}
         credential_variable_data_model_json['name'] = 'testString'
-        credential_variable_data_model_json['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model_json['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model_json['use_default'] = True
         credential_variable_data_model_json['metadata'] = credential_variable_metadata_model
 
@@ -13892,7 +13970,9 @@ class TestModel_CredentialVariableData:
         assert credential_variable_data_model != False
 
         # Construct a model instance of CredentialVariableData by calling from_dict on the json representation
-        credential_variable_data_model_dict = CredentialVariableData.from_dict(credential_variable_data_model_json).__dict__
+        credential_variable_data_model_dict = CredentialVariableData.from_dict(
+            credential_variable_data_model_json
+        ).__dict__
         credential_variable_data_model2 = CredentialVariableData(**credential_variable_data_model_dict)
 
         # Verify the model instances are equivalent
@@ -13929,11 +14009,15 @@ class TestModel_CredentialVariableMetadata:
         credential_variable_metadata_model_json['source'] = 'testString'
 
         # Construct a model instance of CredentialVariableMetadata by calling from_dict on the json representation
-        credential_variable_metadata_model = CredentialVariableMetadata.from_dict(credential_variable_metadata_model_json)
+        credential_variable_metadata_model = CredentialVariableMetadata.from_dict(
+            credential_variable_metadata_model_json
+        )
         assert credential_variable_metadata_model != False
 
         # Construct a model instance of CredentialVariableMetadata by calling from_dict on the json representation
-        credential_variable_metadata_model_dict = CredentialVariableMetadata.from_dict(credential_variable_metadata_model_json).__dict__
+        credential_variable_metadata_model_dict = CredentialVariableMetadata.from_dict(
+            credential_variable_metadata_model_json
+        ).__dict__
         credential_variable_metadata_model2 = CredentialVariableMetadata(**credential_variable_metadata_model_dict)
 
         # Verify the model instances are equivalent
@@ -14028,7 +14112,9 @@ class TestModel_EnvVariableRequestMap:
         assert env_variable_request_map_model != False
 
         # Construct a model instance of EnvVariableRequestMap by calling from_dict on the json representation
-        env_variable_request_map_model_dict = EnvVariableRequestMap.from_dict(env_variable_request_map_model_json).__dict__
+        env_variable_request_map_model_dict = EnvVariableRequestMap.from_dict(
+            env_variable_request_map_model_json
+        ).__dict__
         env_variable_request_map_model2 = EnvVariableRequestMap(**env_variable_request_map_model_dict)
 
         # Verify the model instances are equivalent
@@ -14093,7 +14179,9 @@ class TestModel_EnvironmentValuesMetadata:
         assert environment_values_metadata_model != False
 
         # Construct a model instance of EnvironmentValuesMetadata by calling from_dict on the json representation
-        environment_values_metadata_model_dict = EnvironmentValuesMetadata.from_dict(environment_values_metadata_model_json).__dict__
+        environment_values_metadata_model_dict = EnvironmentValuesMetadata.from_dict(
+            environment_values_metadata_model_json
+        ).__dict__
         environment_values_metadata_model2 = EnvironmentValuesMetadata(**environment_values_metadata_model_dict)
 
         # Verify the model instances are equivalent
@@ -14257,7 +14345,9 @@ class TestModel_Group:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -14316,7 +14406,9 @@ class TestModel_Host:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -14357,19 +14449,37 @@ class TestModel_InjectTerraformTemplateInnerTftParametersItem:
         inject_terraform_template_inner_tft_parameters_item_model_json['value'] = 'testString'
 
         # Construct a model instance of InjectTerraformTemplateInnerTftParametersItem by calling from_dict on the json representation
-        inject_terraform_template_inner_tft_parameters_item_model = InjectTerraformTemplateInnerTftParametersItem.from_dict(inject_terraform_template_inner_tft_parameters_item_model_json)
+        inject_terraform_template_inner_tft_parameters_item_model = (
+            InjectTerraformTemplateInnerTftParametersItem.from_dict(
+                inject_terraform_template_inner_tft_parameters_item_model_json
+            )
+        )
         assert inject_terraform_template_inner_tft_parameters_item_model != False
 
         # Construct a model instance of InjectTerraformTemplateInnerTftParametersItem by calling from_dict on the json representation
-        inject_terraform_template_inner_tft_parameters_item_model_dict = InjectTerraformTemplateInnerTftParametersItem.from_dict(inject_terraform_template_inner_tft_parameters_item_model_json).__dict__
-        inject_terraform_template_inner_tft_parameters_item_model2 = InjectTerraformTemplateInnerTftParametersItem(**inject_terraform_template_inner_tft_parameters_item_model_dict)
+        inject_terraform_template_inner_tft_parameters_item_model_dict = (
+            InjectTerraformTemplateInnerTftParametersItem.from_dict(
+                inject_terraform_template_inner_tft_parameters_item_model_json
+            ).__dict__
+        )
+        inject_terraform_template_inner_tft_parameters_item_model2 = InjectTerraformTemplateInnerTftParametersItem(
+            **inject_terraform_template_inner_tft_parameters_item_model_dict
+        )
 
         # Verify the model instances are equivalent
-        assert inject_terraform_template_inner_tft_parameters_item_model == inject_terraform_template_inner_tft_parameters_item_model2
+        assert (
+            inject_terraform_template_inner_tft_parameters_item_model
+            == inject_terraform_template_inner_tft_parameters_item_model2
+        )
 
         # Convert model instance back to dict and verify no loss of data
-        inject_terraform_template_inner_tft_parameters_item_model_json2 = inject_terraform_template_inner_tft_parameters_item_model.to_dict()
-        assert inject_terraform_template_inner_tft_parameters_item_model_json2 == inject_terraform_template_inner_tft_parameters_item_model_json
+        inject_terraform_template_inner_tft_parameters_item_model_json2 = (
+            inject_terraform_template_inner_tft_parameters_item_model.to_dict()
+        )
+        assert (
+            inject_terraform_template_inner_tft_parameters_item_model_json2
+            == inject_terraform_template_inner_tft_parameters_item_model_json
+        )
 
 
 class TestModel_InjectTerraformTemplateInner:
@@ -14395,15 +14505,23 @@ class TestModel_InjectTerraformTemplateInner:
         inject_terraform_template_inner_model_json['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model_json['injection_type'] = 'testString'
         inject_terraform_template_inner_model_json['tft_name'] = 'testString'
-        inject_terraform_template_inner_model_json['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model_json['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         # Construct a model instance of InjectTerraformTemplateInner by calling from_dict on the json representation
-        inject_terraform_template_inner_model = InjectTerraformTemplateInner.from_dict(inject_terraform_template_inner_model_json)
+        inject_terraform_template_inner_model = InjectTerraformTemplateInner.from_dict(
+            inject_terraform_template_inner_model_json
+        )
         assert inject_terraform_template_inner_model != False
 
         # Construct a model instance of InjectTerraformTemplateInner by calling from_dict on the json representation
-        inject_terraform_template_inner_model_dict = InjectTerraformTemplateInner.from_dict(inject_terraform_template_inner_model_json).__dict__
-        inject_terraform_template_inner_model2 = InjectTerraformTemplateInner(**inject_terraform_template_inner_model_dict)
+        inject_terraform_template_inner_model_dict = InjectTerraformTemplateInner.from_dict(
+            inject_terraform_template_inner_model_json
+        ).__dict__
+        inject_terraform_template_inner_model2 = InjectTerraformTemplateInner(
+            **inject_terraform_template_inner_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert inject_terraform_template_inner_model == inject_terraform_template_inner_model2
@@ -14441,7 +14559,9 @@ class TestModel_InventoryResourceRecord:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -14508,7 +14628,9 @@ class TestModel_InventoryResourceRecord:
         assert inventory_resource_record_model != False
 
         # Construct a model instance of InventoryResourceRecord by calling from_dict on the json representation
-        inventory_resource_record_model_dict = InventoryResourceRecord.from_dict(inventory_resource_record_model_json).__dict__
+        inventory_resource_record_model_dict = InventoryResourceRecord.from_dict(
+            inventory_resource_record_model_json
+        ).__dict__
         inventory_resource_record_model2 = InventoryResourceRecord(**inventory_resource_record_model_dict)
 
         # Verify the model instances are equivalent
@@ -14547,7 +14669,9 @@ class TestModel_InventoryResourceRecordList:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -14616,11 +14740,15 @@ class TestModel_InventoryResourceRecordList:
         inventory_resource_record_list_model_json['inventories'] = [inventory_resource_record_model]
 
         # Construct a model instance of InventoryResourceRecordList by calling from_dict on the json representation
-        inventory_resource_record_list_model = InventoryResourceRecordList.from_dict(inventory_resource_record_list_model_json)
+        inventory_resource_record_list_model = InventoryResourceRecordList.from_dict(
+            inventory_resource_record_list_model_json
+        )
         assert inventory_resource_record_list_model != False
 
         # Construct a model instance of InventoryResourceRecordList by calling from_dict on the json representation
-        inventory_resource_record_list_model_dict = InventoryResourceRecordList.from_dict(inventory_resource_record_list_model_json).__dict__
+        inventory_resource_record_list_model_dict = InventoryResourceRecordList.from_dict(
+            inventory_resource_record_list_model_json
+        ).__dict__
         inventory_resource_record_list_model2 = InventoryResourceRecordList(**inventory_resource_record_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -14686,7 +14814,9 @@ class TestModel_InventoryView:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -14862,7 +14992,9 @@ class TestModel_Job:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -15125,7 +15257,9 @@ class TestModel_JobData:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -15312,7 +15446,9 @@ class TestModel_JobDataAction:
 
         credential_variable_data_model = {}  # CredentialVariableData
         credential_variable_data_model['name'] = 'testString'
-        credential_variable_data_model['value'] = '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        credential_variable_data_model['value'] = (
+            '-----BEGIN OPENSSH PRIVATE KEY-----\\nXXXXXXXXXXXXX\\n-----END OPENSSH PRIVATE KEY-----\\n'
+        )
         credential_variable_data_model['use_default'] = True
         credential_variable_data_model['metadata'] = credential_variable_metadata_model
 
@@ -15719,7 +15855,9 @@ class TestModel_JobDataWorkItemLastJob:
         assert job_data_work_item_last_job_model != False
 
         # Construct a model instance of JobDataWorkItemLastJob by calling from_dict on the json representation
-        job_data_work_item_last_job_model_dict = JobDataWorkItemLastJob.from_dict(job_data_work_item_last_job_model_json).__dict__
+        job_data_work_item_last_job_model_dict = JobDataWorkItemLastJob.from_dict(
+            job_data_work_item_last_job_model_json
+        ).__dict__
         job_data_work_item_last_job_model2 = JobDataWorkItemLastJob(**job_data_work_item_last_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16382,7 +16520,9 @@ class TestModel_JobLogSummaryWorkitems:
         assert job_log_summary_workitems_model != False
 
         # Construct a model instance of JobLogSummaryWorkitems by calling from_dict on the json representation
-        job_log_summary_workitems_model_dict = JobLogSummaryWorkitems.from_dict(job_log_summary_workitems_model_json).__dict__
+        job_log_summary_workitems_model_dict = JobLogSummaryWorkitems.from_dict(
+            job_log_summary_workitems_model_json
+        ).__dict__
         job_log_summary_workitems_model2 = JobLogSummaryWorkitems(**job_log_summary_workitems_model_dict)
 
         # Verify the model instances are equivalent
@@ -16422,7 +16562,9 @@ class TestModel_JobLogSummaryActionJob:
         assert job_log_summary_action_job_model != False
 
         # Construct a model instance of JobLogSummaryActionJob by calling from_dict on the json representation
-        job_log_summary_action_job_model_dict = JobLogSummaryActionJob.from_dict(job_log_summary_action_job_model_json).__dict__
+        job_log_summary_action_job_model_dict = JobLogSummaryActionJob.from_dict(
+            job_log_summary_action_job_model_json
+        ).__dict__
         job_log_summary_action_job_model2 = JobLogSummaryActionJob(**job_log_summary_action_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16453,12 +16595,18 @@ class TestModel_JobLogSummaryActionJobRecap:
         job_log_summary_action_job_recap_model_json['unreachable'] = 72.5
 
         # Construct a model instance of JobLogSummaryActionJobRecap by calling from_dict on the json representation
-        job_log_summary_action_job_recap_model = JobLogSummaryActionJobRecap.from_dict(job_log_summary_action_job_recap_model_json)
+        job_log_summary_action_job_recap_model = JobLogSummaryActionJobRecap.from_dict(
+            job_log_summary_action_job_recap_model_json
+        )
         assert job_log_summary_action_job_recap_model != False
 
         # Construct a model instance of JobLogSummaryActionJobRecap by calling from_dict on the json representation
-        job_log_summary_action_job_recap_model_dict = JobLogSummaryActionJobRecap.from_dict(job_log_summary_action_job_recap_model_json).__dict__
-        job_log_summary_action_job_recap_model2 = JobLogSummaryActionJobRecap(**job_log_summary_action_job_recap_model_dict)
+        job_log_summary_action_job_recap_model_dict = JobLogSummaryActionJobRecap.from_dict(
+            job_log_summary_action_job_recap_model_json
+        ).__dict__
+        job_log_summary_action_job_recap_model2 = JobLogSummaryActionJobRecap(
+            **job_log_summary_action_job_recap_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert job_log_summary_action_job_recap_model == job_log_summary_action_job_recap_model2
@@ -16494,7 +16642,9 @@ class TestModel_JobLogSummaryFlowJob:
         assert job_log_summary_flow_job_model != False
 
         # Construct a model instance of JobLogSummaryFlowJob by calling from_dict on the json representation
-        job_log_summary_flow_job_model_dict = JobLogSummaryFlowJob.from_dict(job_log_summary_flow_job_model_json).__dict__
+        job_log_summary_flow_job_model_dict = JobLogSummaryFlowJob.from_dict(
+            job_log_summary_flow_job_model_json
+        ).__dict__
         job_log_summary_flow_job_model2 = JobLogSummaryFlowJob(**job_log_summary_flow_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16526,7 +16676,9 @@ class TestModel_JobLogSummaryLogErrors:
         assert job_log_summary_log_errors_model != False
 
         # Construct a model instance of JobLogSummaryLogErrors by calling from_dict on the json representation
-        job_log_summary_log_errors_model_dict = JobLogSummaryLogErrors.from_dict(job_log_summary_log_errors_model_json).__dict__
+        job_log_summary_log_errors_model_dict = JobLogSummaryLogErrors.from_dict(
+            job_log_summary_log_errors_model_json
+        ).__dict__
         job_log_summary_log_errors_model2 = JobLogSummaryLogErrors(**job_log_summary_log_errors_model_dict)
 
         # Verify the model instances are equivalent
@@ -16551,12 +16703,18 @@ class TestModel_JobLogSummaryRepoDownloadJob:
         job_log_summary_repo_download_job_model_json = {}
 
         # Construct a model instance of JobLogSummaryRepoDownloadJob by calling from_dict on the json representation
-        job_log_summary_repo_download_job_model = JobLogSummaryRepoDownloadJob.from_dict(job_log_summary_repo_download_job_model_json)
+        job_log_summary_repo_download_job_model = JobLogSummaryRepoDownloadJob.from_dict(
+            job_log_summary_repo_download_job_model_json
+        )
         assert job_log_summary_repo_download_job_model != False
 
         # Construct a model instance of JobLogSummaryRepoDownloadJob by calling from_dict on the json representation
-        job_log_summary_repo_download_job_model_dict = JobLogSummaryRepoDownloadJob.from_dict(job_log_summary_repo_download_job_model_json).__dict__
-        job_log_summary_repo_download_job_model2 = JobLogSummaryRepoDownloadJob(**job_log_summary_repo_download_job_model_dict)
+        job_log_summary_repo_download_job_model_dict = JobLogSummaryRepoDownloadJob.from_dict(
+            job_log_summary_repo_download_job_model_json
+        ).__dict__
+        job_log_summary_repo_download_job_model2 = JobLogSummaryRepoDownloadJob(
+            **job_log_summary_repo_download_job_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert job_log_summary_repo_download_job_model == job_log_summary_repo_download_job_model2
@@ -16586,7 +16744,9 @@ class TestModel_JobLogSummarySystemJob:
         assert job_log_summary_system_job_model != False
 
         # Construct a model instance of JobLogSummarySystemJob by calling from_dict on the json representation
-        job_log_summary_system_job_model_dict = JobLogSummarySystemJob.from_dict(job_log_summary_system_job_model_json).__dict__
+        job_log_summary_system_job_model_dict = JobLogSummarySystemJob.from_dict(
+            job_log_summary_system_job_model_json
+        ).__dict__
         job_log_summary_system_job_model2 = JobLogSummarySystemJob(**job_log_summary_system_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16611,11 +16771,15 @@ class TestModel_JobLogSummaryWorkspaceJob:
         job_log_summary_workspace_job_model_json = {}
 
         # Construct a model instance of JobLogSummaryWorkspaceJob by calling from_dict on the json representation
-        job_log_summary_workspace_job_model = JobLogSummaryWorkspaceJob.from_dict(job_log_summary_workspace_job_model_json)
+        job_log_summary_workspace_job_model = JobLogSummaryWorkspaceJob.from_dict(
+            job_log_summary_workspace_job_model_json
+        )
         assert job_log_summary_workspace_job_model != False
 
         # Construct a model instance of JobLogSummaryWorkspaceJob by calling from_dict on the json representation
-        job_log_summary_workspace_job_model_dict = JobLogSummaryWorkspaceJob.from_dict(job_log_summary_workspace_job_model_json).__dict__
+        job_log_summary_workspace_job_model_dict = JobLogSummaryWorkspaceJob.from_dict(
+            job_log_summary_workspace_job_model_json
+        ).__dict__
         job_log_summary_workspace_job_model2 = JobLogSummaryWorkspaceJob(**job_log_summary_workspace_job_model_dict)
 
         # Verify the model instances are equivalent
@@ -16817,12 +16981,18 @@ class TestModel_JobStatusSchematicsResources:
         job_status_schematics_resources_model_json['updated_at'] = '2019-01-01T12:00:00Z'
 
         # Construct a model instance of JobStatusSchematicsResources by calling from_dict on the json representation
-        job_status_schematics_resources_model = JobStatusSchematicsResources.from_dict(job_status_schematics_resources_model_json)
+        job_status_schematics_resources_model = JobStatusSchematicsResources.from_dict(
+            job_status_schematics_resources_model_json
+        )
         assert job_status_schematics_resources_model != False
 
         # Construct a model instance of JobStatusSchematicsResources by calling from_dict on the json representation
-        job_status_schematics_resources_model_dict = JobStatusSchematicsResources.from_dict(job_status_schematics_resources_model_json).__dict__
-        job_status_schematics_resources_model2 = JobStatusSchematicsResources(**job_status_schematics_resources_model_dict)
+        job_status_schematics_resources_model_dict = JobStatusSchematicsResources.from_dict(
+            job_status_schematics_resources_model_json
+        ).__dict__
+        job_status_schematics_resources_model2 = JobStatusSchematicsResources(
+            **job_status_schematics_resources_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert job_status_schematics_resources_model == job_status_schematics_resources_model2
@@ -17197,7 +17367,9 @@ class TestModel_KMSSettingsPrimaryCrk:
         assert kms_settings_primary_crk_model != False
 
         # Construct a model instance of KMSSettingsPrimaryCrk by calling from_dict on the json representation
-        kms_settings_primary_crk_model_dict = KMSSettingsPrimaryCrk.from_dict(kms_settings_primary_crk_model_json).__dict__
+        kms_settings_primary_crk_model_dict = KMSSettingsPrimaryCrk.from_dict(
+            kms_settings_primary_crk_model_json
+        ).__dict__
         kms_settings_primary_crk_model2 = KMSSettingsPrimaryCrk(**kms_settings_primary_crk_model_dict)
 
         # Verify the model instances are equivalent
@@ -17229,7 +17401,9 @@ class TestModel_KMSSettingsSecondaryCrk:
         assert kms_settings_secondary_crk_model != False
 
         # Construct a model instance of KMSSettingsSecondaryCrk by calling from_dict on the json representation
-        kms_settings_secondary_crk_model_dict = KMSSettingsSecondaryCrk.from_dict(kms_settings_secondary_crk_model_json).__dict__
+        kms_settings_secondary_crk_model_dict = KMSSettingsSecondaryCrk.from_dict(
+            kms_settings_secondary_crk_model_json
+        ).__dict__
         kms_settings_secondary_crk_model2 = KMSSettingsSecondaryCrk(**kms_settings_secondary_crk_model_dict)
 
         # Verify the model instances are equivalent
@@ -17693,7 +17867,9 @@ class TestModel_ResourceGroupResponse:
         assert resource_group_response_model != False
 
         # Construct a model instance of ResourceGroupResponse by calling from_dict on the json representation
-        resource_group_response_model_dict = ResourceGroupResponse.from_dict(resource_group_response_model_json).__dict__
+        resource_group_response_model_dict = ResourceGroupResponse.from_dict(
+            resource_group_response_model_json
+        ).__dict__
         resource_group_response_model2 = ResourceGroupResponse(**resource_group_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -17858,7 +18034,9 @@ class TestModel_ResourceQueryRecordList:
         assert resource_query_record_list_model != False
 
         # Construct a model instance of ResourceQueryRecordList by calling from_dict on the json representation
-        resource_query_record_list_model_dict = ResourceQueryRecordList.from_dict(resource_query_record_list_model_json).__dict__
+        resource_query_record_list_model_dict = ResourceQueryRecordList.from_dict(
+            resource_query_record_list_model_json
+        ).__dict__
         resource_query_record_list_model2 = ResourceQueryRecordList(**resource_query_record_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -17894,18 +18072,24 @@ class TestModel_ResourceQueryResponseRecord:
         resource_query_response_record_response_model['query_type'] = 'workspaces'
         resource_query_response_record_response_model['query_condition'] = [resource_query_param_model]
         resource_query_response_record_response_model['query_select'] = ['testString']
-        resource_query_response_record_response_model['query_output'] = [resource_query_response_record_query_output_model]
+        resource_query_response_record_response_model['query_output'] = [
+            resource_query_response_record_query_output_model
+        ]
 
         # Construct a json representation of a ResourceQueryResponseRecord model
         resource_query_response_record_model_json = {}
         resource_query_response_record_model_json['response'] = [resource_query_response_record_response_model]
 
         # Construct a model instance of ResourceQueryResponseRecord by calling from_dict on the json representation
-        resource_query_response_record_model = ResourceQueryResponseRecord.from_dict(resource_query_response_record_model_json)
+        resource_query_response_record_model = ResourceQueryResponseRecord.from_dict(
+            resource_query_response_record_model_json
+        )
         assert resource_query_response_record_model != False
 
         # Construct a model instance of ResourceQueryResponseRecord by calling from_dict on the json representation
-        resource_query_response_record_model_dict = ResourceQueryResponseRecord.from_dict(resource_query_response_record_model_json).__dict__
+        resource_query_response_record_model_dict = ResourceQueryResponseRecord.from_dict(
+            resource_query_response_record_model_json
+        ).__dict__
         resource_query_response_record_model2 = ResourceQueryResponseRecord(**resource_query_response_record_model_dict)
 
         # Verify the model instances are equivalent
@@ -17932,19 +18116,30 @@ class TestModel_ResourceQueryResponseRecordQueryOutput:
         resource_query_response_record_query_output_model_json['value'] = 'testString'
 
         # Construct a model instance of ResourceQueryResponseRecordQueryOutput by calling from_dict on the json representation
-        resource_query_response_record_query_output_model = ResourceQueryResponseRecordQueryOutput.from_dict(resource_query_response_record_query_output_model_json)
+        resource_query_response_record_query_output_model = ResourceQueryResponseRecordQueryOutput.from_dict(
+            resource_query_response_record_query_output_model_json
+        )
         assert resource_query_response_record_query_output_model != False
 
         # Construct a model instance of ResourceQueryResponseRecordQueryOutput by calling from_dict on the json representation
-        resource_query_response_record_query_output_model_dict = ResourceQueryResponseRecordQueryOutput.from_dict(resource_query_response_record_query_output_model_json).__dict__
-        resource_query_response_record_query_output_model2 = ResourceQueryResponseRecordQueryOutput(**resource_query_response_record_query_output_model_dict)
+        resource_query_response_record_query_output_model_dict = ResourceQueryResponseRecordQueryOutput.from_dict(
+            resource_query_response_record_query_output_model_json
+        ).__dict__
+        resource_query_response_record_query_output_model2 = ResourceQueryResponseRecordQueryOutput(
+            **resource_query_response_record_query_output_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert resource_query_response_record_query_output_model == resource_query_response_record_query_output_model2
 
         # Convert model instance back to dict and verify no loss of data
-        resource_query_response_record_query_output_model_json2 = resource_query_response_record_query_output_model.to_dict()
-        assert resource_query_response_record_query_output_model_json2 == resource_query_response_record_query_output_model_json
+        resource_query_response_record_query_output_model_json2 = (
+            resource_query_response_record_query_output_model.to_dict()
+        )
+        assert (
+            resource_query_response_record_query_output_model_json2
+            == resource_query_response_record_query_output_model_json
+        )
 
 
 class TestModel_ResourceQueryResponseRecordResponse:
@@ -17973,15 +18168,23 @@ class TestModel_ResourceQueryResponseRecordResponse:
         resource_query_response_record_response_model_json['query_type'] = 'workspaces'
         resource_query_response_record_response_model_json['query_condition'] = [resource_query_param_model]
         resource_query_response_record_response_model_json['query_select'] = ['testString']
-        resource_query_response_record_response_model_json['query_output'] = [resource_query_response_record_query_output_model]
+        resource_query_response_record_response_model_json['query_output'] = [
+            resource_query_response_record_query_output_model
+        ]
 
         # Construct a model instance of ResourceQueryResponseRecordResponse by calling from_dict on the json representation
-        resource_query_response_record_response_model = ResourceQueryResponseRecordResponse.from_dict(resource_query_response_record_response_model_json)
+        resource_query_response_record_response_model = ResourceQueryResponseRecordResponse.from_dict(
+            resource_query_response_record_response_model_json
+        )
         assert resource_query_response_record_response_model != False
 
         # Construct a model instance of ResourceQueryResponseRecordResponse by calling from_dict on the json representation
-        resource_query_response_record_response_model_dict = ResourceQueryResponseRecordResponse.from_dict(resource_query_response_record_response_model_json).__dict__
-        resource_query_response_record_response_model2 = ResourceQueryResponseRecordResponse(**resource_query_response_record_response_model_dict)
+        resource_query_response_record_response_model_dict = ResourceQueryResponseRecordResponse.from_dict(
+            resource_query_response_record_response_model_json
+        ).__dict__
+        resource_query_response_record_response_model2 = ResourceQueryResponseRecordResponse(
+            **resource_query_response_record_response_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert resource_query_response_record_response_model == resource_query_response_record_response_model2
@@ -18025,7 +18228,9 @@ class TestModel_SchematicsLocationsList:
         assert schematics_locations_list_model != False
 
         # Construct a model instance of SchematicsLocationsList by calling from_dict on the json representation
-        schematics_locations_list_model_dict = SchematicsLocationsList.from_dict(schematics_locations_list_model_json).__dict__
+        schematics_locations_list_model_dict = SchematicsLocationsList.from_dict(
+            schematics_locations_list_model_json
+        ).__dict__
         schematics_locations_list_model2 = SchematicsLocationsList(**schematics_locations_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -18065,7 +18270,9 @@ class TestModel_SchematicsLocationsLite:
         assert schematics_locations_lite_model != False
 
         # Construct a model instance of SchematicsLocationsLite by calling from_dict on the json representation
-        schematics_locations_lite_model_dict = SchematicsLocationsLite.from_dict(schematics_locations_lite_model_json).__dict__
+        schematics_locations_lite_model_dict = SchematicsLocationsLite.from_dict(
+            schematics_locations_lite_model_json
+        ).__dict__
         schematics_locations_lite_model2 = SchematicsLocationsLite(**schematics_locations_lite_model_dict)
 
         # Verify the model instances are equivalent
@@ -18202,7 +18409,9 @@ class TestModel_SharedTargetDataResponse:
         assert shared_target_data_response_model != False
 
         # Construct a model instance of SharedTargetDataResponse by calling from_dict on the json representation
-        shared_target_data_response_model_dict = SharedTargetDataResponse.from_dict(shared_target_data_response_model_json).__dict__
+        shared_target_data_response_model_dict = SharedTargetDataResponse.from_dict(
+            shared_target_data_response_model_json
+        ).__dict__
         shared_target_data_response_model2 = SharedTargetDataResponse(**shared_target_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -18273,7 +18482,9 @@ class TestModel_StateStoreResponseList:
         assert state_store_response_list_model != False
 
         # Construct a model instance of StateStoreResponseList by calling from_dict on the json representation
-        state_store_response_list_model_dict = StateStoreResponseList.from_dict(state_store_response_list_model_json).__dict__
+        state_store_response_list_model_dict = StateStoreResponseList.from_dict(
+            state_store_response_list_model_json
+        ).__dict__
         state_store_response_list_model2 = StateStoreResponseList(**state_store_response_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -18365,7 +18576,9 @@ class TestModel_TemplateMetaDataResponse:
         assert template_meta_data_response_model != False
 
         # Construct a model instance of TemplateMetaDataResponse by calling from_dict on the json representation
-        template_meta_data_response_model_dict = TemplateMetaDataResponse.from_dict(template_meta_data_response_model_json).__dict__
+        template_meta_data_response_model_dict = TemplateMetaDataResponse.from_dict(
+            template_meta_data_response_model_json
+        ).__dict__
         template_meta_data_response_model2 = TemplateMetaDataResponse(**template_meta_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -18495,12 +18708,18 @@ class TestModel_TemplateRepoTarUploadResponse:
         template_repo_tar_upload_response_model_json['id'] = 'testString'
 
         # Construct a model instance of TemplateRepoTarUploadResponse by calling from_dict on the json representation
-        template_repo_tar_upload_response_model = TemplateRepoTarUploadResponse.from_dict(template_repo_tar_upload_response_model_json)
+        template_repo_tar_upload_response_model = TemplateRepoTarUploadResponse.from_dict(
+            template_repo_tar_upload_response_model_json
+        )
         assert template_repo_tar_upload_response_model != False
 
         # Construct a model instance of TemplateRepoTarUploadResponse by calling from_dict on the json representation
-        template_repo_tar_upload_response_model_dict = TemplateRepoTarUploadResponse.from_dict(template_repo_tar_upload_response_model_json).__dict__
-        template_repo_tar_upload_response_model2 = TemplateRepoTarUploadResponse(**template_repo_tar_upload_response_model_dict)
+        template_repo_tar_upload_response_model_dict = TemplateRepoTarUploadResponse.from_dict(
+            template_repo_tar_upload_response_model_json
+        ).__dict__
+        template_repo_tar_upload_response_model2 = TemplateRepoTarUploadResponse(
+            **template_repo_tar_upload_response_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert template_repo_tar_upload_response_model == template_repo_tar_upload_response_model2
@@ -18530,11 +18749,15 @@ class TestModel_TemplateRepoUpdateRequest:
         template_repo_update_request_model_json['skip_submodules_checkout'] = True
 
         # Construct a model instance of TemplateRepoUpdateRequest by calling from_dict on the json representation
-        template_repo_update_request_model = TemplateRepoUpdateRequest.from_dict(template_repo_update_request_model_json)
+        template_repo_update_request_model = TemplateRepoUpdateRequest.from_dict(
+            template_repo_update_request_model_json
+        )
         assert template_repo_update_request_model != False
 
         # Construct a model instance of TemplateRepoUpdateRequest by calling from_dict on the json representation
-        template_repo_update_request_model_dict = TemplateRepoUpdateRequest.from_dict(template_repo_update_request_model_json).__dict__
+        template_repo_update_request_model_dict = TemplateRepoUpdateRequest.from_dict(
+            template_repo_update_request_model_json
+        ).__dict__
         template_repo_update_request_model2 = TemplateRepoUpdateRequest(**template_repo_update_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -18604,12 +18827,18 @@ class TestModel_TemplateRunTimeDataResponse:
         template_run_time_data_response_model_json['state_store_url'] = 'testString'
 
         # Construct a model instance of TemplateRunTimeDataResponse by calling from_dict on the json representation
-        template_run_time_data_response_model = TemplateRunTimeDataResponse.from_dict(template_run_time_data_response_model_json)
+        template_run_time_data_response_model = TemplateRunTimeDataResponse.from_dict(
+            template_run_time_data_response_model_json
+        )
         assert template_run_time_data_response_model != False
 
         # Construct a model instance of TemplateRunTimeDataResponse by calling from_dict on the json representation
-        template_run_time_data_response_model_dict = TemplateRunTimeDataResponse.from_dict(template_run_time_data_response_model_json).__dict__
-        template_run_time_data_response_model2 = TemplateRunTimeDataResponse(**template_run_time_data_response_model_dict)
+        template_run_time_data_response_model_dict = TemplateRunTimeDataResponse.from_dict(
+            template_run_time_data_response_model_json
+        ).__dict__
+        template_run_time_data_response_model2 = TemplateRunTimeDataResponse(
+            **template_run_time_data_response_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert template_run_time_data_response_model == template_run_time_data_response_model2
@@ -18646,7 +18875,9 @@ class TestModel_TemplateSourceDataRequest:
         inject_terraform_template_inner_model['tft_prefix'] = 'testString'
         inject_terraform_template_inner_model['injection_type'] = 'testString'
         inject_terraform_template_inner_model['tft_name'] = 'testString'
-        inject_terraform_template_inner_model['tft_parameters'] = [inject_terraform_template_inner_tft_parameters_item_model]
+        inject_terraform_template_inner_model['tft_parameters'] = [
+            inject_terraform_template_inner_tft_parameters_item_model
+        ]
 
         workspace_variable_request_model = {}  # WorkspaceVariableRequest
         workspace_variable_request_model['description'] = 'testString'
@@ -18671,11 +18902,15 @@ class TestModel_TemplateSourceDataRequest:
         template_source_data_request_model_json['variablestore'] = [workspace_variable_request_model]
 
         # Construct a model instance of TemplateSourceDataRequest by calling from_dict on the json representation
-        template_source_data_request_model = TemplateSourceDataRequest.from_dict(template_source_data_request_model_json)
+        template_source_data_request_model = TemplateSourceDataRequest.from_dict(
+            template_source_data_request_model_json
+        )
         assert template_source_data_request_model != False
 
         # Construct a model instance of TemplateSourceDataRequest by calling from_dict on the json representation
-        template_source_data_request_model_dict = TemplateSourceDataRequest.from_dict(template_source_data_request_model_json).__dict__
+        template_source_data_request_model_dict = TemplateSourceDataRequest.from_dict(
+            template_source_data_request_model_json
+        ).__dict__
         template_source_data_request_model2 = TemplateSourceDataRequest(**template_source_data_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -18726,11 +18961,15 @@ class TestModel_TemplateSourceDataResponse:
         template_source_data_response_model_json['variablestore'] = [workspace_variable_response_model]
 
         # Construct a model instance of TemplateSourceDataResponse by calling from_dict on the json representation
-        template_source_data_response_model = TemplateSourceDataResponse.from_dict(template_source_data_response_model_json)
+        template_source_data_response_model = TemplateSourceDataResponse.from_dict(
+            template_source_data_response_model_json
+        )
         assert template_source_data_response_model != False
 
         # Construct a model instance of TemplateSourceDataResponse by calling from_dict on the json representation
-        template_source_data_response_model_dict = TemplateSourceDataResponse.from_dict(template_source_data_response_model_json).__dict__
+        template_source_data_response_model_dict = TemplateSourceDataResponse.from_dict(
+            template_source_data_response_model_json
+        ).__dict__
         template_source_data_response_model2 = TemplateSourceDataResponse(**template_source_data_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -19202,12 +19441,18 @@ class TestModel_WorkspaceActivityApplyResult:
         workspace_activity_apply_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityApplyResult by calling from_dict on the json representation
-        workspace_activity_apply_result_model = WorkspaceActivityApplyResult.from_dict(workspace_activity_apply_result_model_json)
+        workspace_activity_apply_result_model = WorkspaceActivityApplyResult.from_dict(
+            workspace_activity_apply_result_model_json
+        )
         assert workspace_activity_apply_result_model != False
 
         # Construct a model instance of WorkspaceActivityApplyResult by calling from_dict on the json representation
-        workspace_activity_apply_result_model_dict = WorkspaceActivityApplyResult.from_dict(workspace_activity_apply_result_model_json).__dict__
-        workspace_activity_apply_result_model2 = WorkspaceActivityApplyResult(**workspace_activity_apply_result_model_dict)
+        workspace_activity_apply_result_model_dict = WorkspaceActivityApplyResult.from_dict(
+            workspace_activity_apply_result_model_json
+        ).__dict__
+        workspace_activity_apply_result_model2 = WorkspaceActivityApplyResult(
+            **workspace_activity_apply_result_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_apply_result_model == workspace_activity_apply_result_model2
@@ -19232,12 +19477,18 @@ class TestModel_WorkspaceActivityCommandResult:
         workspace_activity_command_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityCommandResult by calling from_dict on the json representation
-        workspace_activity_command_result_model = WorkspaceActivityCommandResult.from_dict(workspace_activity_command_result_model_json)
+        workspace_activity_command_result_model = WorkspaceActivityCommandResult.from_dict(
+            workspace_activity_command_result_model_json
+        )
         assert workspace_activity_command_result_model != False
 
         # Construct a model instance of WorkspaceActivityCommandResult by calling from_dict on the json representation
-        workspace_activity_command_result_model_dict = WorkspaceActivityCommandResult.from_dict(workspace_activity_command_result_model_json).__dict__
-        workspace_activity_command_result_model2 = WorkspaceActivityCommandResult(**workspace_activity_command_result_model_dict)
+        workspace_activity_command_result_model_dict = WorkspaceActivityCommandResult.from_dict(
+            workspace_activity_command_result_model_json
+        ).__dict__
+        workspace_activity_command_result_model2 = WorkspaceActivityCommandResult(
+            **workspace_activity_command_result_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_command_result_model == workspace_activity_command_result_model2
@@ -19262,12 +19513,18 @@ class TestModel_WorkspaceActivityDestroyResult:
         workspace_activity_destroy_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityDestroyResult by calling from_dict on the json representation
-        workspace_activity_destroy_result_model = WorkspaceActivityDestroyResult.from_dict(workspace_activity_destroy_result_model_json)
+        workspace_activity_destroy_result_model = WorkspaceActivityDestroyResult.from_dict(
+            workspace_activity_destroy_result_model_json
+        )
         assert workspace_activity_destroy_result_model != False
 
         # Construct a model instance of WorkspaceActivityDestroyResult by calling from_dict on the json representation
-        workspace_activity_destroy_result_model_dict = WorkspaceActivityDestroyResult.from_dict(workspace_activity_destroy_result_model_json).__dict__
-        workspace_activity_destroy_result_model2 = WorkspaceActivityDestroyResult(**workspace_activity_destroy_result_model_dict)
+        workspace_activity_destroy_result_model_dict = WorkspaceActivityDestroyResult.from_dict(
+            workspace_activity_destroy_result_model_json
+        ).__dict__
+        workspace_activity_destroy_result_model2 = WorkspaceActivityDestroyResult(
+            **workspace_activity_destroy_result_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_destroy_result_model == workspace_activity_destroy_result_model2
@@ -19305,7 +19562,9 @@ class TestModel_WorkspaceActivityLogs:
         assert workspace_activity_logs_model != False
 
         # Construct a model instance of WorkspaceActivityLogs by calling from_dict on the json representation
-        workspace_activity_logs_model_dict = WorkspaceActivityLogs.from_dict(workspace_activity_logs_model_json).__dict__
+        workspace_activity_logs_model_dict = WorkspaceActivityLogs.from_dict(
+            workspace_activity_logs_model_json
+        ).__dict__
         workspace_activity_logs_model2 = WorkspaceActivityLogs(**workspace_activity_logs_model_dict)
 
         # Verify the model instances are equivalent
@@ -19332,12 +19591,18 @@ class TestModel_WorkspaceActivityOptionsTemplate:
         workspace_activity_options_template_model_json['tf_vars'] = ['testString']
 
         # Construct a model instance of WorkspaceActivityOptionsTemplate by calling from_dict on the json representation
-        workspace_activity_options_template_model = WorkspaceActivityOptionsTemplate.from_dict(workspace_activity_options_template_model_json)
+        workspace_activity_options_template_model = WorkspaceActivityOptionsTemplate.from_dict(
+            workspace_activity_options_template_model_json
+        )
         assert workspace_activity_options_template_model != False
 
         # Construct a model instance of WorkspaceActivityOptionsTemplate by calling from_dict on the json representation
-        workspace_activity_options_template_model_dict = WorkspaceActivityOptionsTemplate.from_dict(workspace_activity_options_template_model_json).__dict__
-        workspace_activity_options_template_model2 = WorkspaceActivityOptionsTemplate(**workspace_activity_options_template_model_dict)
+        workspace_activity_options_template_model_dict = WorkspaceActivityOptionsTemplate.from_dict(
+            workspace_activity_options_template_model_json
+        ).__dict__
+        workspace_activity_options_template_model2 = WorkspaceActivityOptionsTemplate(
+            **workspace_activity_options_template_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_options_template_model == workspace_activity_options_template_model2
@@ -19362,11 +19627,15 @@ class TestModel_WorkspaceActivityPlanResult:
         workspace_activity_plan_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityPlanResult by calling from_dict on the json representation
-        workspace_activity_plan_result_model = WorkspaceActivityPlanResult.from_dict(workspace_activity_plan_result_model_json)
+        workspace_activity_plan_result_model = WorkspaceActivityPlanResult.from_dict(
+            workspace_activity_plan_result_model_json
+        )
         assert workspace_activity_plan_result_model != False
 
         # Construct a model instance of WorkspaceActivityPlanResult by calling from_dict on the json representation
-        workspace_activity_plan_result_model_dict = WorkspaceActivityPlanResult.from_dict(workspace_activity_plan_result_model_json).__dict__
+        workspace_activity_plan_result_model_dict = WorkspaceActivityPlanResult.from_dict(
+            workspace_activity_plan_result_model_json
+        ).__dict__
         workspace_activity_plan_result_model2 = WorkspaceActivityPlanResult(**workspace_activity_plan_result_model_dict)
 
         # Verify the model instances are equivalent
@@ -19392,12 +19661,18 @@ class TestModel_WorkspaceActivityRefreshResult:
         workspace_activity_refresh_result_model_json['activityid'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityRefreshResult by calling from_dict on the json representation
-        workspace_activity_refresh_result_model = WorkspaceActivityRefreshResult.from_dict(workspace_activity_refresh_result_model_json)
+        workspace_activity_refresh_result_model = WorkspaceActivityRefreshResult.from_dict(
+            workspace_activity_refresh_result_model_json
+        )
         assert workspace_activity_refresh_result_model != False
 
         # Construct a model instance of WorkspaceActivityRefreshResult by calling from_dict on the json representation
-        workspace_activity_refresh_result_model_dict = WorkspaceActivityRefreshResult.from_dict(workspace_activity_refresh_result_model_json).__dict__
-        workspace_activity_refresh_result_model2 = WorkspaceActivityRefreshResult(**workspace_activity_refresh_result_model_dict)
+        workspace_activity_refresh_result_model_dict = WorkspaceActivityRefreshResult.from_dict(
+            workspace_activity_refresh_result_model_json
+        ).__dict__
+        workspace_activity_refresh_result_model2 = WorkspaceActivityRefreshResult(
+            **workspace_activity_refresh_result_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_refresh_result_model == workspace_activity_refresh_result_model2
@@ -19447,7 +19722,9 @@ class TestModel_WorkspaceActivityTemplate:
         assert workspace_activity_template_model != False
 
         # Construct a model instance of WorkspaceActivityTemplate by calling from_dict on the json representation
-        workspace_activity_template_model_dict = WorkspaceActivityTemplate.from_dict(workspace_activity_template_model_json).__dict__
+        workspace_activity_template_model_dict = WorkspaceActivityTemplate.from_dict(
+            workspace_activity_template_model_json
+        ).__dict__
         workspace_activity_template_model2 = WorkspaceActivityTemplate(**workspace_activity_template_model_dict)
 
         # Verify the model instances are equivalent
@@ -19475,12 +19752,18 @@ class TestModel_WorkspaceActivityTemplateLogs:
         workspace_activity_template_logs_model_json['template_type'] = 'testString'
 
         # Construct a model instance of WorkspaceActivityTemplateLogs by calling from_dict on the json representation
-        workspace_activity_template_logs_model = WorkspaceActivityTemplateLogs.from_dict(workspace_activity_template_logs_model_json)
+        workspace_activity_template_logs_model = WorkspaceActivityTemplateLogs.from_dict(
+            workspace_activity_template_logs_model_json
+        )
         assert workspace_activity_template_logs_model != False
 
         # Construct a model instance of WorkspaceActivityTemplateLogs by calling from_dict on the json representation
-        workspace_activity_template_logs_model_dict = WorkspaceActivityTemplateLogs.from_dict(workspace_activity_template_logs_model_json).__dict__
-        workspace_activity_template_logs_model2 = WorkspaceActivityTemplateLogs(**workspace_activity_template_logs_model_dict)
+        workspace_activity_template_logs_model_dict = WorkspaceActivityTemplateLogs.from_dict(
+            workspace_activity_template_logs_model_json
+        ).__dict__
+        workspace_activity_template_logs_model2 = WorkspaceActivityTemplateLogs(
+            **workspace_activity_template_logs_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_activity_template_logs_model == workspace_activity_template_logs_model2
@@ -19506,11 +19789,15 @@ class TestModel_WorkspaceBulkDeleteResponse:
         workspace_bulk_delete_response_model_json['job_id'] = 'testString'
 
         # Construct a model instance of WorkspaceBulkDeleteResponse by calling from_dict on the json representation
-        workspace_bulk_delete_response_model = WorkspaceBulkDeleteResponse.from_dict(workspace_bulk_delete_response_model_json)
+        workspace_bulk_delete_response_model = WorkspaceBulkDeleteResponse.from_dict(
+            workspace_bulk_delete_response_model_json
+        )
         assert workspace_bulk_delete_response_model != False
 
         # Construct a model instance of WorkspaceBulkDeleteResponse by calling from_dict on the json representation
-        workspace_bulk_delete_response_model_dict = WorkspaceBulkDeleteResponse.from_dict(workspace_bulk_delete_response_model_json).__dict__
+        workspace_bulk_delete_response_model_dict = WorkspaceBulkDeleteResponse.from_dict(
+            workspace_bulk_delete_response_model_json
+        ).__dict__
         workspace_bulk_delete_response_model2 = WorkspaceBulkDeleteResponse(**workspace_bulk_delete_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -19581,7 +19868,9 @@ class TestModel_WorkspaceJobStatusType:
         assert workspace_job_status_type_model != False
 
         # Construct a model instance of WorkspaceJobStatusType by calling from_dict on the json representation
-        workspace_job_status_type_model_dict = WorkspaceJobStatusType.from_dict(workspace_job_status_type_model_json).__dict__
+        workspace_job_status_type_model_dict = WorkspaceJobStatusType.from_dict(
+            workspace_job_status_type_model_json
+        ).__dict__
         workspace_job_status_type_model2 = WorkspaceJobStatusType(**workspace_job_status_type_model_dict)
 
         # Verify the model instances are equivalent
@@ -19923,7 +20212,9 @@ class TestModel_WorkspaceResponseList:
         assert workspace_response_list_model != False
 
         # Construct a model instance of WorkspaceResponseList by calling from_dict on the json representation
-        workspace_response_list_model_dict = WorkspaceResponseList.from_dict(workspace_response_list_model_json).__dict__
+        workspace_response_list_model_dict = WorkspaceResponseList.from_dict(
+            workspace_response_list_model_json
+        ).__dict__
         workspace_response_list_model2 = WorkspaceResponseList(**workspace_response_list_model_dict)
 
         # Verify the model instances are equivalent
@@ -19954,7 +20245,9 @@ class TestModel_WorkspaceStatusMessage:
         assert workspace_status_message_model != False
 
         # Construct a model instance of WorkspaceStatusMessage by calling from_dict on the json representation
-        workspace_status_message_model_dict = WorkspaceStatusMessage.from_dict(workspace_status_message_model_json).__dict__
+        workspace_status_message_model_dict = WorkspaceStatusMessage.from_dict(
+            workspace_status_message_model_json
+        ).__dict__
         workspace_status_message_model2 = WorkspaceStatusMessage(**workspace_status_message_model_dict)
 
         # Verify the model instances are equivalent
@@ -19989,7 +20282,9 @@ class TestModel_WorkspaceStatusRequest:
         assert workspace_status_request_model != False
 
         # Construct a model instance of WorkspaceStatusRequest by calling from_dict on the json representation
-        workspace_status_request_model_dict = WorkspaceStatusRequest.from_dict(workspace_status_request_model_json).__dict__
+        workspace_status_request_model_dict = WorkspaceStatusRequest.from_dict(
+            workspace_status_request_model_json
+        ).__dict__
         workspace_status_request_model2 = WorkspaceStatusRequest(**workspace_status_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -20024,7 +20319,9 @@ class TestModel_WorkspaceStatusResponse:
         assert workspace_status_response_model != False
 
         # Construct a model instance of WorkspaceStatusResponse by calling from_dict on the json representation
-        workspace_status_response_model_dict = WorkspaceStatusResponse.from_dict(workspace_status_response_model_json).__dict__
+        workspace_status_response_model_dict = WorkspaceStatusResponse.from_dict(
+            workspace_status_response_model_json
+        ).__dict__
         workspace_status_response_model2 = WorkspaceStatusResponse(**workspace_status_response_model_dict)
 
         # Verify the model instances are equivalent
@@ -20055,12 +20352,18 @@ class TestModel_WorkspaceStatusUpdateRequest:
         workspace_status_update_request_model_json['locked_time'] = '2019-01-01T12:00:00Z'
 
         # Construct a model instance of WorkspaceStatusUpdateRequest by calling from_dict on the json representation
-        workspace_status_update_request_model = WorkspaceStatusUpdateRequest.from_dict(workspace_status_update_request_model_json)
+        workspace_status_update_request_model = WorkspaceStatusUpdateRequest.from_dict(
+            workspace_status_update_request_model_json
+        )
         assert workspace_status_update_request_model != False
 
         # Construct a model instance of WorkspaceStatusUpdateRequest by calling from_dict on the json representation
-        workspace_status_update_request_model_dict = WorkspaceStatusUpdateRequest.from_dict(workspace_status_update_request_model_json).__dict__
-        workspace_status_update_request_model2 = WorkspaceStatusUpdateRequest(**workspace_status_update_request_model_dict)
+        workspace_status_update_request_model_dict = WorkspaceStatusUpdateRequest.from_dict(
+            workspace_status_update_request_model_json
+        ).__dict__
+        workspace_status_update_request_model2 = WorkspaceStatusUpdateRequest(
+            **workspace_status_update_request_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_status_update_request_model == workspace_status_update_request_model2
@@ -20137,12 +20440,18 @@ class TestModel_WorkspaceTemplateValuesResponse:
         workspace_template_values_response_model_json['template_data'] = [template_source_data_response_model]
 
         # Construct a model instance of WorkspaceTemplateValuesResponse by calling from_dict on the json representation
-        workspace_template_values_response_model = WorkspaceTemplateValuesResponse.from_dict(workspace_template_values_response_model_json)
+        workspace_template_values_response_model = WorkspaceTemplateValuesResponse.from_dict(
+            workspace_template_values_response_model_json
+        )
         assert workspace_template_values_response_model != False
 
         # Construct a model instance of WorkspaceTemplateValuesResponse by calling from_dict on the json representation
-        workspace_template_values_response_model_dict = WorkspaceTemplateValuesResponse.from_dict(workspace_template_values_response_model_json).__dict__
-        workspace_template_values_response_model2 = WorkspaceTemplateValuesResponse(**workspace_template_values_response_model_dict)
+        workspace_template_values_response_model_dict = WorkspaceTemplateValuesResponse.from_dict(
+            workspace_template_values_response_model_json
+        ).__dict__
+        workspace_template_values_response_model2 = WorkspaceTemplateValuesResponse(
+            **workspace_template_values_response_model_dict
+        )
 
         # Verify the model instances are equivalent
         assert workspace_template_values_response_model == workspace_template_values_response_model2
@@ -20176,7 +20485,9 @@ class TestModel_WorkspaceVariableRequest:
         assert workspace_variable_request_model != False
 
         # Construct a model instance of WorkspaceVariableRequest by calling from_dict on the json representation
-        workspace_variable_request_model_dict = WorkspaceVariableRequest.from_dict(workspace_variable_request_model_json).__dict__
+        workspace_variable_request_model_dict = WorkspaceVariableRequest.from_dict(
+            workspace_variable_request_model_json
+        ).__dict__
         workspace_variable_request_model2 = WorkspaceVariableRequest(**workspace_variable_request_model_dict)
 
         # Verify the model instances are equivalent
@@ -20210,7 +20521,9 @@ class TestModel_WorkspaceVariableResponse:
         assert workspace_variable_response_model != False
 
         # Construct a model instance of WorkspaceVariableResponse by calling from_dict on the json representation
-        workspace_variable_response_model_dict = WorkspaceVariableResponse.from_dict(workspace_variable_response_model_json).__dict__
+        workspace_variable_response_model_dict = WorkspaceVariableResponse.from_dict(
+            workspace_variable_response_model_json
+        ).__dict__
         workspace_variable_response_model2 = WorkspaceVariableResponse(**workspace_variable_response_model_dict)
 
         # Verify the model instances are equivalent

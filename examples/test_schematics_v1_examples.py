@@ -60,8 +60,7 @@ class TestSchematicsV1Examples:
 
             # begin-common
 
-            schematics_service = SchematicsV1.new_instance(
-            )
+            schematics_service = SchematicsV1.new_instance()
 
             # end-common
             assert schematics_service is not None
@@ -193,8 +192,7 @@ class TestSchematicsV1Examples:
 
             # begin-create_workspace
 
-            response = schematics_service.create_workspace(
-            )
+            response = schematics_service.create_workspace()
             workspace_response = response.get_result()
 
             print(json.dumps(workspace_response, indent=2))
@@ -617,8 +615,7 @@ class TestSchematicsV1Examples:
 
             # begin-create_action
 
-            response = schematics_service.create_action(
-            )
+            response = schematics_service.create_action()
             action = response.get_result()
 
             print(json.dumps(action, indent=2))
@@ -1060,8 +1057,7 @@ class TestSchematicsV1Examples:
 
             # begin-create_inventory
 
-            response = schematics_service.create_inventory(
-            )
+            response = schematics_service.create_inventory()
             inventory_resource_record = response.get_result()
 
             print(json.dumps(inventory_resource_record, indent=2))
@@ -1145,8 +1141,7 @@ class TestSchematicsV1Examples:
 
             # begin-create_resource_query
 
-            response = schematics_service.create_resource_query(
-            )
+            response = schematics_service.create_resource_query()
             resource_query_record = response.get_result()
 
             print(json.dumps(resource_query_record, indent=2))
@@ -1252,8 +1247,7 @@ class TestSchematicsV1Examples:
 
             # begin-create_agent_data
 
-            agent_infrastructure_model = {
-            }
+            agent_infrastructure_model = {}
 
             response = schematics_service.create_agent_data(
                 name='MyDevAgent',
@@ -1304,8 +1298,7 @@ class TestSchematicsV1Examples:
 
             # begin-update_agent_data
 
-            agent_infrastructure_model = {
-            }
+            agent_infrastructure_model = {}
 
             response = schematics_service.update_agent_data(
                 agent_id='testString',
@@ -1509,8 +1502,7 @@ class TestSchematicsV1Examples:
 
             # begin-update_kms_settings
 
-            response = schematics_service.update_kms_settings(
-            )
+            response = schematics_service.update_kms_settings()
             kms_settings = response.get_result()
 
             print(json.dumps(kms_settings, indent=2))
